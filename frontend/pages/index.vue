@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <logo />
+      <img src="images/dishare-main-logo.png" width="400px" height="300px">
       <h1 class="title">
-        dishare
+        dishare へようこそ
       </h1>
       <h2 class="subtitle">
         dishare is Nuxt.js and Rails(API) Project
