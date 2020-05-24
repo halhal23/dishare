@@ -37,7 +37,7 @@ export default {
     getShops(){
       this.$axios.$get('/api/', {
         params: {
-          keyid: "cccd05138db6e13ac16bf8e63a21cd2d",
+          keyid: process.env.gnavi_api_key,
           name: this.keyword
         }
       }).then( res => {
