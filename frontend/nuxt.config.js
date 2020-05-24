@@ -42,12 +42,23 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api': {
+      target: 'https://api.gnavi.co.jp/RestSearchAPI/v3/',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+      }
   },
   /*
   ** Build configuration

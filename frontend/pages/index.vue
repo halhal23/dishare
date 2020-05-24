@@ -5,7 +5,7 @@
       <h3>「美味しい」を共有しましょう</h3>
       <p>早速、キーワードを検索して、「美味しい」を検索してみましょう</p>
       <el-input placeholder="Please input" v-model="keyword" class="input-with-select" style="width:500px;">
-        <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-button @click="getShops" slot="append" icon="el-icon-search"></el-button>
       </el-input>
      
   </div>
@@ -16,6 +16,23 @@ export default {
   data(){
     return {
       keyword: ''
+    }
+  },
+  methods: {
+    getShops(){
+      this.$axios.$get('/api/', {
+        params: {
+          keyid: "cccd05138db6e13ac16bf8e63a21cd2d",
+          name: "肉"
+        }
+      }).then( res => {
+        console.log('成功です。')
+        console.log(res)
+        this.shops = res.rest
+      }).catch( err => {
+        console.log('失敗です。')
+        console.log(err)
+      })
     }
   }
 }
@@ -50,7 +67,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.7);
 }
 
 h2, h3, p {
