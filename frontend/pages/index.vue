@@ -1,72 +1,60 @@
 <template>
   <div class="container">
-    <div>
       <img src="images/dishare-main-logo.png" width="400px" height="300px">
-      <h1 class="title">
-        dishare へようこそ
-      </h1>
-      <h2 class="subtitle">
-        dishare is Nuxt.js and Rails(API) Project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+      <h2>Dishareへようこそ</h2>
+      <h3>「美味しい」を共有しましょう</h3>
+      <p>早速、キーワードを検索して、「美味しい」を検索してみましょう</p>
+      <el-input placeholder="Please input" v-model="keyword" class="input-with-select" style="width:500px;">
+        <el-button slot="append" icon="el-icon-search"></el-button>
+      </el-input>
+     
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  data(){
+    return {
+      keyword: ''
+    }
   }
 }
 </script>
 
 <style>
+/* .container: 1; */
+/* .container:before: -1; */
+/* header: 2; */
+
 .container {
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  padding: 100px 0;
+  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   text-align: center;
+  background-image: url(~@/static/images/top-bg-main.jpg);
+  background-size: cover;
+  background-position: center; 
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.container:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+h2, h3, p {
+  margin-top: 30px;
 }
 
-.links {
-  padding-top: 15px;
-}
 </style>
