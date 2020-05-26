@@ -1,6 +1,12 @@
+const environment = process.env.NODE_ENV || 'development';
+const envSet = require(`./env.${environment}.js`)
 
-export default {
+
+module.exports = {
+
   mode: 'universal',
+
+  env: envSet,
   /*
   ** Headers of the page
   */
@@ -23,7 +29,8 @@ export default {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/styles/common.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -42,12 +49,23 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api': {
+      target: 'https://api.gnavi.co.jp/RestSearchAPI/v3/',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+      }
   },
   /*
   ** Build configuration
