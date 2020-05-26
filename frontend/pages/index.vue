@@ -106,7 +106,7 @@ export default {
   background: rgba(255,255,255,0.7);
 }
 
-h2, h3, p {
+.main-container h2, h3, p {
   margin: 30px 0;
 }
 
