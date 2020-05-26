@@ -56,7 +56,9 @@
           <p class="infoContent">{{ shop.tel }}</p>
           
         </el-tab-pane>
-        <el-tab-pane label="マップ" name="second">Config</el-tab-pane>
+        <el-tab-pane label="マップ" name="second">
+          <shopMap />
+        </el-tab-pane>
         <el-tab-pane label="シェア" name="third">Role</el-tab-pane>
       </el-tabs>
     </el-dialog>
@@ -65,7 +67,11 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import shopMap from '~/components/shop-map.vue'
 export default {
+  components: {
+    shopMap
+  },
   data(){
     return {
       dialogFormVisible: false,

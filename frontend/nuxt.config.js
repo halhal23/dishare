@@ -36,7 +36,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    { src: "~plugins/vue2-google-maps.js" }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -71,7 +72,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/, /^vue2-google-maps($|\/)/],
     /*
     ** You can extend webpack config here
     */
