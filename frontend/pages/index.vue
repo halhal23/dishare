@@ -4,10 +4,9 @@
       <img src="images/dishare-main-logo.png" width="400px" height="300px">
       <h2>
         Dishareへようこそ <br>
-        「美味しい」を共有しましょう
+        「美味しい」を共有しましょう {{ name }}
       </h2>
       <p>早速、キーワードを検索して、「美味しい」を検索してみましょう</p>
-
       <el-input placeholder="Please input" v-model="keyword" class="input-with-select" style="width:600px;">
         <el-select v-model="select" slot="prepend" placeholder="現在位置から探す" style="width:200px;">
           <el-option label="現在位置から探す" value="1"></el-option>
@@ -16,25 +15,34 @@
         <el-button @click="getShops" slot="append" icon="el-icon-search"></el-button>
       </el-input>
     </div>
-    <ul class="searched-list">
-      <li class="shop-card" v-for="shop in shops" :key="shop.name">
-        {{ shop.name }}
-      </li>
-    </ul>
+    <shopLists /> <!-- 検索結果一覧を表示するコンポーネント -->
   </div>
 </template>
 
 <script>
+import shopLists from '~/components/shop-lists.vue'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
+  components: {
+    shopLists
+  },
   data(){
     return {
       keyword: '',
       select: '',
-      shops: []
+      dialogShopDetailVisible: false,
+      detailName: 'no name',
     }
+  },
+  computed: {
+    ...mapGetters({
+      name: 'shops/name',
+      shops: 'shops/shops'
+      })
   },
   methods: {
     getShops(){
+      console.log(this)
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
@@ -43,10 +51,10 @@ export default {
       }).then( res => {
         console.log('成功です。')
         console.log(res)
-        this.shops = res.rest
+        this.setShops(res.rest)
         this.$notify({
           type: 'success',
-          title: '10店ヒットしました！',
+          title: `${res.rest.length}店ヒットしました！`,
           message: `${this.keyword}の検索結果`,
           position: 'bottom-left',
           duration: 2000
@@ -55,7 +63,13 @@ export default {
         console.log('失敗です。')
         console.log(err)
       })
-    }
+    },
+    showShopDetail(name){
+      this.dialogShopDetailVisible = true
+      this.detailName = name
+      console.log('alert ' + name)
+    },
+    ...mapMutations({ setShops: 'shops/setShops'})
   }
 }
 </script>
@@ -96,19 +110,6 @@ h2, h3, p {
   margin: 30px 0;
 }
 
-.searched-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  background: #eee;
-}
 
-.shop-card {
-  flex-shrink: 0;
-  width: 400px;
-  height: 100px;
-  border: 1px solid gray;
-  margin: 10px 0;
-}
 
 </style>
