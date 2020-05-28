@@ -13,7 +13,8 @@
             <i class="el-icon-s-help"></i>
             <span>営業時間</span>
           </p>
-          <p class="infoContent">{{ shop.opentime }}</p>
+          <p class="infoContent" v-if="shop.opentime">{{ shop.opentime }}</p>
+          <p class="infoContent" v-else>サイトHPにてご確認下さい</p>
                     
           <p class="infoTitle">
             <i class="el-icon-s-help"></i>
@@ -26,9 +27,9 @@
             <span>予算</span>
           </p>
           <p class="infoContent">
-            昼: {{ shop.lunch }}円 <br>
-            夜: {{ shop.budget }}円 <br>
-            宴会: {{ shop.party }}円 <br>
+            <span v-if="shop.lunch">昼: {{ shop.lunch }}円</span> <br v-if="shop.lunch">
+            <span v-if="shop.budget">夜: {{ shop.budget }}円</span> <br v-if="shop.budget">
+            <span v-if="shop.party">宴会: {{ shop.party }}円</span> <br v-if="shop.party">
           </p>
           
           <p class="infoTitle">
@@ -54,6 +55,12 @@
             <span>電話番号</span>
           </p>
           <p class="infoContent">{{ shop.tel }}</p>
+          
+          <p class="infoTitle">
+            <i class="el-icon-s-help"></i>
+            <span>サイトURL</span>
+          </p>
+          <p class="infoContent"><a :href="shop.url" target="_blank">{{ shop.url }}</a></p>
           
         </el-tab-pane>
         <el-tab-pane label="マップ" name="second">
@@ -128,8 +135,11 @@ div.searched-list {
 .el-dialog {
   height: 600px;
 }
+.el-dialog__body {
+  padding: 0 20px;
+}
 .el-tabs__content {
-  height: 400px;
+  height: 450px;
   overflow-y: scroll;
 }
 .infoTitle {

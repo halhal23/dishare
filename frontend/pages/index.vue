@@ -32,8 +32,6 @@ export default {
       select: '',
       dialogShopDetailVisible: false,
       detailName: 'no name',
-      currentLat: 0,
-      currentLng: 0
     }
   },
   computed: {
@@ -53,9 +51,14 @@ export default {
         alert('Geolocation failed!');
         return;
       });
-      this.$alert('ログインして頂くと、より詳細な検索が可能です！', '検索ありがとうございます！', {
-        confirmButtonText: 'OK',
-      });
+      // this.$alert('ログインして頂くと、より詳細な検索が可能です！', 'ご検索ありがとうございます！', {
+      //   confirmButtonText: 'OK',
+      // });
+      this.$msgbox({
+        title: 'ご検索ありがとうございます!',
+        message: 'ログインしていただければ、より詳細な検索と友人との共有が可能です！',
+        confirmButtonText: 'OK'
+      })
     },
     showShopDetail(name){
       this.dialogShopDetailVisible = true
@@ -63,17 +66,13 @@ export default {
       console.log('alert ' + name)
     },
     success(position){
-      // this.geoPosition.lat = position.coords.latitude;
-      // this.geoPosition.lng = position.coords.longitude;
-      this.currentLat = position.coords.latitude
-      this.currentLng = position.coords.longitude
-      this.setCurrentPosition({ lat: position.coords.latitude, lng: position.coords.longitude})
+      this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
           name: this.keyword,
-          latitude: this.currentPosition.lat,
-          longitude: this.currentPosition.lng,
+          latitude: this.currentPosition.position.lat,
+          longitude: this.currentPosition.position.lng,
           range: 5
         }
       }).then( res => {
