@@ -49,3 +49,508 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ (erb):38
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:25:43 +0900
+  
+NoMethodError (undefined method `devise' for User (call 'User.connection' to establish a connection):Class):
+  
+app/models/user.rb:6:in `<class:User>'
+app/models/user.rb:3:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:4
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('5277929974492897470', 0)[0m
+  ↳ bin/rails:4
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+Migrating to DeviseTokenAuthCreateUsers (20200528042411)
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `provider` varchar(255) DEFAULT 'email' NOT NULL, `uid` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `allow_password_change` tinyint(1) DEFAULT FALSE, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `confirmation_token` varchar(255), `confirmed_at` datetime, `confirmation_sent_at` datetime, `unconfirmed_email` varchar(255), `name` varchar(255), `nickname` varchar(255), `image` varchar(255), `email` varchar(255), `tokens` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ db/migrate/20200528042411_devise_token_auth_create_users.rb:4
+  [1m[35m (30.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  ↳ db/migrate/20200528042411_devise_token_auth_create_users.rb:50
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_uid_and_provider`  ON `users` (`uid`, `provider`) [0m
+  ↳ db/migrate/20200528042411_devise_token_auth_create_users.rb:51
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  ↳ db/migrate/20200528042411_devise_token_auth_create_users.rb:52
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_confirmation_token`  ON `users` (`confirmation_token`) [0m
+  ↳ db/migrate/20200528042411_devise_token_auth_create_users.rb:53
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200528042411')[0m
+  ↳ bin/rails:4
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2020-05-28 04:26:24', '2020-05-28 04:26:24')[0m
+  ↳ bin/rails:4
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT RELEASE_LOCK('5277929974492897470')[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:26:57 +0900
+  
+NoMethodError (undefined method `devise' for User (call 'User.connection' to establish a connection):Class):
+  
+app/models/user.rb:6:in `<class:User>'
+app/models/user.rb:3:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:26:58 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:00 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:01 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:01 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:02 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:02 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:03 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:27:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:30:57 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (8.2ms)
+Completed 200 OK in 32ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:47:19 +0900
+  [1m[35m (1.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:47:20 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:53:32 +0900
+  [1m[35m (1.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (3.3ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 192.168.144.1 at 2020-05-28 13:54:29 +0900
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [21 times] (10.7ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (23.1ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (39.9ms)
+Completed 200 OK in 50ms (Views: 45.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth" for 192.168.144.1 at 2020-05-28 13:57:54 +0900
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+Started GET "/" for 192.168.144.1 at 2020-05-28 13:58:54 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-05-28 14:02:06 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth" for 192.168.144.1 at 2020-05-28 14:02:11 +0900
+Processing by DeviseTokenAuth::RegistrationsController#create as */*
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :name, :registration
+Unpermitted parameters: :name, :registration
+Unpermitted parameters: :name, :registration
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'halhal@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `email`, `created_at`, `updated_at`) VALUES ('halhal@gmail.com', '$2a$11$61Dagxw4qG6uW7TS.6J/YuNzHjOrv3Yr3kCP1CGrOjbzkrUlE6CW6', 'halhal@gmail.com', '2020-05-28 05:02:11', '2020-05-28 05:02:11')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"_T6eIBOMNm6NCd0yRFQ3UQ\":{\"token\":\"$2a$10$tL0hxw0bOrDC7WLNCYvATucxUzAN9qxtuLEzF3G/PYG1Fqn7pbN4i\",\"expiry\":1591851731}}', `updated_at` = '2020-05-28 05:02:12' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 394ms (Views: 0.2ms | ActiveRecord: 26.8ms)
+
+
