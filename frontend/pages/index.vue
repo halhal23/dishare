@@ -4,12 +4,12 @@
       <img src="images/dishare-main-logo.png" width="400px" height="300px">
       <h2>
         Dishareへようこそ <br>
-        「美味しい」を共有しましょう {{ name }}
+        「美味しい」を共有しましょう
       </h2>
       <p>早速、キーワードを検索して、「美味しい」を検索してみましょう</p>
       <el-input placeholder="Please input" v-model="keyword" class="input-with-select" style="width:600px;">
-        <el-select v-model="select" slot="prepend" placeholder="現在位置から探す" style="width:200px;">
-          <el-option label="現在位置から探す" value="1"></el-option>
+        <el-select v-model="select" slot="prepend" placeholder="近くの店を探す" style="width:200px;">
+          <el-option label="近くの店を探す" value="1"></el-option>
           <el-option label="人気店を探す" value="2"></el-option>
         </el-select>
         <el-button @click="getShops" slot="append" icon="el-icon-search"></el-button>
@@ -36,20 +36,48 @@ export default {
   },
   computed: {
     ...mapGetters({
-      name: 'shops/name',
-      shops: 'shops/shops'
+      shops: 'shops/shops',
+      currentPosition: 'shops/currentPosition'
       })
   },
   methods: {
     getShops(){
       console.log(this)
+      if (!navigator.geolocation) {
+        alert('Geolocation not supported');
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(this.success, function() {
+        alert('Geolocation failed!');
+        return;
+      });
+      // this.$alert('ログインして頂くと、より詳細な検索が可能です！', 'ご検索ありがとうございます！', {
+      //   confirmButtonText: 'OK',
+      // });
+      this.$msgbox({
+        title: 'ご検索ありがとうございます!',
+        message: 'ログインしていただければ、より詳細な検索と友人との共有が可能です！',
+        confirmButtonText: 'OK'
+      })
+    },
+    showShopDetail(name){
+      this.dialogShopDetailVisible = true
+      this.detailName = name
+      console.log('alert ' + name)
+    },
+    success(position){
+      this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
-          name: this.keyword
+          name: this.keyword,
+          latitude: this.currentPosition.position.lat,
+          longitude: this.currentPosition.position.lng,
+          range: 5
         }
       }).then( res => {
         console.log('成功です。')
+        console.log(this)
         console.log(res)
         this.setShops(res.rest)
         this.$notify({
@@ -63,13 +91,16 @@ export default {
         console.log('失敗です。')
         console.log(err)
       })
+      console.log('success!! geolocation');
     },
-    showShopDetail(name){
-      this.dialogShopDetailVisible = true
-      this.detailName = name
-      console.log('alert ' + name)
-    },
-    ...mapMutations({ setShops: 'shops/setShops'})
+    ...mapMutations({ 
+      setShops: 'shops/setShops',
+      setCurrentPosition: 'shops/setCurrentPosition',
+      })
+  },
+  mounted(){
+    console.log('↓mouted')
+    console.log(this)
   }
 }
 </script>
