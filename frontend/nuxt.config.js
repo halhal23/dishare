@@ -73,8 +73,8 @@ const config = {
   },
   auth: {
     redirect: {
-      login: '/login', 
-      logout: '/login',
+      login: '/', 
+      logout: '/',
       callback: false,
       home: '/'
     },
