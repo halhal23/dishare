@@ -81,8 +81,8 @@ const config = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'http://localhost:3000' + '/auth/sign_in', method: 'post', propertyName: false },
-          logout: { url: 'http://localhost:3000' + '/auth/sign_out', method: 'DELETE'},
+          login: { url: 'http://localhost:3000' + '/api/auth/sign_in', method: 'post', propertyName: false },
+          logout: { url: 'http://localhost:3000' + '/api/auth/sign_out', method: 'DELETE'},
           user: false
         }
       }
