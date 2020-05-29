@@ -97,10 +97,6 @@ export default {
       setShops: 'shops/setShops',
       setCurrentPosition: 'shops/setCurrentPosition',
       })
-  },
-  mounted(){
-    console.log('↓mouted')
-    console.log(this)
   }
 }
 </script>

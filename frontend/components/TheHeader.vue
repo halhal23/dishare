@@ -11,7 +11,8 @@
         <img src="images/text-logo.png" height="70px" width="210px">
       </li>
       <li>
-        <nuxt-link to="/">ログイン</nuxt-link>
+        <nuxt-link to="/login" v-if="!$auth.$state.loggedIn">ログイン</nuxt-link>
+        <a href="#" @click="logout" v-else>ログアウト</a>
       </li>
       <li>
         <nuxt-link to="/">新規登録</nuxt-link>
@@ -22,7 +23,22 @@
 
 <script>
 export default {
-  
+  methods: {
+    async logout(){
+      console.log(this.$store)
+      await this.$auth.logout({
+          email: 'halhal@gmail.com'
+      }).then( res => {
+        console.log('ログアウト成功')
+        console.log(res)
+        return res
+      }).catch( err => {
+        console.log('ログアウト失敗')
+        console.log(err)
+        return err
+      })
+    }
+  }
 }
 </script>
 

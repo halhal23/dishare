@@ -2,7 +2,7 @@ const environment = process.env.NODE_ENV || 'development';
 const envSet = require(`./env.${environment}.js`)
 
 
-module.exports = {
+const config = {
 
   mode: 'universal',
 
@@ -37,6 +37,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
+    { src: '~/plugins/axios.js', ssr: false },
     { src: "~plugins/vue2-google-maps.js" }
   ],
   /*
@@ -50,16 +51,18 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    proxy: true
+    proxy: true,
+    host: 'localhost',
+    port: 3000
   },
-
   proxy: {
     '/api': {
       target: 'https://api.gnavi.co.jp/RestSearchAPI/v3/',
@@ -67,6 +70,23 @@ module.exports = {
         '^/api' : '/'
         }
       }
+  },
+  auth: {
+    redirect: {
+      login: '/login', 
+      logout: '/login',
+      callback: false,
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'http://localhost:3000' + '/auth/sign_in', method: 'post', propertyName: false },
+          logout: { url: 'http://localhost:3000' + '/auth/sign_out', method: 'DELETE'},
+          user: false
+        }
+      }
+    }
   },
   /*
   ** Build configuration
@@ -76,7 +96,10 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    standalone: true,
     extend (config, ctx) {
     }
   }
 }
+
+export default config
