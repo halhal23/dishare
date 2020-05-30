@@ -12,11 +12,12 @@
         <img src="images/text-logo.png" height="70px" width="210px">
       </li>
       <li>
-        <a href="#" @click="dialogFormVisible = true" v-if="!$auth.$state.loggedIn">ログイン</a>
-        <a href="#" @click="logout" v-else>ログアウト</a>
+        <a href="#" @click="dialogFormVisible = true" v-if="true">ログイン</a>
+        <a href="#" @click="logout" v-else>{{ $store.state.current_user }}</a>
       </li>
       <li>
-        <nuxt-link to="/">新規登録</nuxt-link>
+        <nuxt-link to="/" v-if="true">新規登録</nuxt-link>
+        <a href="#" @click="logout" v-else>ログアウト</a>
       </li>
     </ul>
   </header>
@@ -53,16 +54,17 @@ export default {
 
   methods: {
     async login() {
-      await this.$auth.loginWith('local', {
-        data: {
+      await this.$axios.$post(process.env.browserBaseUrl + '/api/auth/sign_in', {
           name: this.form.name,
+          email: "halhal@gmail.com",
           password: this.form.password,
           password_confirmation: this.form.password
-        }
       })
         .then( res => {
           console.log('ログイン成功' + ' /pages/login.vue')
           console.log(res)
+          console.log(res.data.data)
+          this.$store.commit('user/setCurrentUser', res.data.data)
           this.dialogFormVisible = false
           return res
         }, err => {
@@ -73,8 +75,8 @@ export default {
     },
     async logout(){
       console.log(this.$store)
-      await this.$auth.logout({
-          name: 'halhal'
+      await this.$axios.$delete(process.env.browserBaseUrl + '/api/auth/sign_out', {
+          email: 'halhal@gmail.com'
       }).then( res => {
         console.log('ログアウト成功')
         console.log(res)
