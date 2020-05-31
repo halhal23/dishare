@@ -8,8 +8,8 @@ export default function({ $axios, redirect }) {
     config.headers.uid = window.localStorage.getItem("uid")
     config.headers["token-type"] = "Bearer"
     // config.headers["token-type"] = window.localStorage.getItem("token-type")
-    config.headers["expiry"] = 200
-    // config.headers["expiry"] = window.localStorage.getItem("expiry")
+    // config.headers["expiry"] = 200
+    config.headers["expiry"] = window.localStorage.getItem("expiry")
     config.headers["content-type"] = 'application/json'
     console.log(config)
   })

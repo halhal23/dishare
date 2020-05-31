@@ -1,5 +1,5 @@
 export const state = () => ({
-  current_user: {},
+  current_user: null,
   isLoggedIn:  false
 })
 
@@ -18,8 +18,8 @@ export const mutations = {
     state.isLoggedIn = true
     console.log(state)
   },
-  removeCurrentUser(state, user){
-    state.current_user = {}
+  removeCurrentUser(state){
+    state.current_user = null
     state.isLoggedIn = false
   },
 }

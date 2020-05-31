@@ -11,8 +11,8 @@
 export default {
   methods: {
     getUser(){
-      this.$axios.$get(process.env.browserBaseUrl + '/users/show', {
-        params: {user_id: 1}
+      this.$axios.$get(process.env.browserBaseUrl + '/api/users/show', {
+        params: {user_id: this.$store.state.user.current_user.id}
       }).then(res => {
         console.log(res)
       }).catch(err => {
