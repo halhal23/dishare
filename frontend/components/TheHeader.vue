@@ -96,7 +96,7 @@ export default {
 </script>
 
 <style>
-header {
+/* header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -118,7 +118,7 @@ a {
   line-height: 70px;
   text-decoration: none;
   color: black;
-}
+} */
 
 .header-wrapper .login .el-dialog{
   height: 300px;

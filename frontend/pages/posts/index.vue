@@ -1,24 +1,25 @@
 <template>
-<div style="margin-top: 70px;">
-  <h1>posts</h1>
-  <h1>posts</h1>
-  <h1>posts</h1>
-  <el-button @click="getUser" style="margin: 20px;">user show</el-button>
+<div>
+  <el-row style="margin-top: 100px;">
+    <el-col :span="6" :xs="24"><div class="grid-content bg-purple-dark"></div></el-col>
+    <el-col :span="6" :xs="24"><div class="grid-content bg-purple-dark"></div></el-col>
+  </el-row>
+
+  <el-row type="flex" justify="space-around" style="margin-top: 100px;">
+    <el-col :span="10" :xs="24"><div class="grid-content bg-purple-dark"></div></el-col>
+    <el-col :span="10" :xs="24"><div class="grid-content bg-purple-dark"></div></el-col>
+  </el-row>
 </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    getUser(){
-      this.$axios.$get(process.env.browserBaseUrl + '/api/users/show', {
-        params: {user_id: this.$store.state.user.current_user.id}
-      }).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
-    }
-  }
+<style>
+/* .el-row {
+  background: #ddd;
+  height: 50px;
 }
-</script>
+.el-col {
+  background: #999;
+  border: 1px solid #000;
+  height: 50px;
+} */
+</style>
