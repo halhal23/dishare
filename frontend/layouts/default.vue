@@ -1,8 +1,14 @@
 <template>
     <el-container>
       <Header />
-      <nuxt />
+      <transition name="page">    
+        <nuxt />
+      </transition>
     </el-container>
+    <!-- 
+      z-indexs
+      header: 10; 
+    -->
 </template>
 
 <script>
@@ -16,10 +22,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.el-container {
-  background: #ccc;
-  flex-direction: column;
-}
-</style>
