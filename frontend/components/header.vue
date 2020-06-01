@@ -57,10 +57,17 @@
   display: flex;
   background: transparent;
   flex-wrap: wrap;
+  border-bottom: none !important;
 }
 
 .header_menu_respon{
   display: none;
+}
+
+
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover {
+  background: rgb(151, 96, 24, .5);
 }
 
 @media (min-width: 0px) and (max-width: 768px) {

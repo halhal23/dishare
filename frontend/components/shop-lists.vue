@@ -1,8 +1,8 @@
 <template>
-  <div class="list-container">
-    <div class="searched-list"> 
+  <el-main class="list-container">
+    <div class="searched-list" > 
       <!-- <shopLists v-for="shop in shops" :key="shop.name" class="shop-card" :shopInfo="shop"/> -->
-      <div @click="showShopInfo(shop)" v-for="shop in shops" :key="shop.name" class="shop-card">{{ shop.name }}</div>
+      <div  @click="showShopInfo(shop)" v-for="shop in shops" :key="shop.name" class="shop-card">{{ shop.name }}</div>
     </div>
 
     <el-dialog class="showInfoDialog" :title="shop.name" :visible.sync="dialogFormVisible">
@@ -69,7 +69,7 @@
         <el-tab-pane label="シェア" name="third">Role</el-tab-pane>
       </el-tabs>
     </el-dialog>
-  </div>
+  </el-main>
 </template>
 
 <script>
@@ -109,7 +109,7 @@ export default {
 .list-container {
   width: 100%;
 }
-div.searched-list {
+.searched-list {
   width: 100%;
   /* border: 1px solid gray;
   width : 400px;
@@ -126,8 +126,8 @@ div.searched-list {
 
 .shop-card {
   flex-shrink: 0;
-  width: 400px;
-  height: 100px;
+  width: 600px;
+  height: 300px;
   border: 1px solid gray;
   margin: 10px 0;
 }
