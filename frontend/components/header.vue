@@ -2,7 +2,7 @@
   <el-header>
     <el-menu :default-active="activeIndex" :class="{header_menu: true,hidden: isHidden}" mode="horizontal" @select="handleSelect">
       <el-menu-item class="header_item_md logo">
-        <img src="images/text-logo.png" height="50px" width="130px" style="background: #fff;">
+        <img src="images/text-logo.png" height="50px" width="160px" style="background: #fff;padding:0 20px;border-radius: 20px;">
       </el-menu-item>
       <el-menu-item index="1" style="margin-left: auto;" class="header_item_md" @click="toggleHidden">
         <nuxt-link to="/top" >HOME</nuxt-link>
@@ -75,6 +75,7 @@
     padding: 0;
     position: fixed;
   }
+  
   .header_menu {
     position: absolute;
     width: 100%;
@@ -88,6 +89,7 @@
   }
   .header_menu_respon{
     display: flex;
+    background: transparent;
   }
   .header_item_md {
     width: 100%;

@@ -3,7 +3,7 @@
     <el-row class="top_contents" style="height: 100vh;">
       <el-col :span="11" class="left main"></el-col>
       <el-col :span="13" class="right main">
-        <p style="color: #777;">Welcome</p>
+        <p style="color: #777;">Our concept</p>
 
         <div class="concept">
           <p>
@@ -30,36 +30,13 @@
 import shopLists from '~/components/shop-lists.vue'
 import shopSearchForm from '~/components/shop-search-form.vue'
 export default {
-  data(){
-    return {
-      keyword: '',
-      select: ''
-    }
-  },
-  methods: {
-    do_either_search(){
-      switch (this.select) {
-        case '1':
-          console.log(1111)
-          break
-        case '2':
-          console.log(222222)
-          break
-        case '3', '':
-          console.log(333333)
-          break
-        default:
-          console.log('defaul');
-          break
-      }
-    }
-  },
   components: {
     shopLists,shopSearchForm
   }
 }
 // #F5F7FA
 </script>
+
 <style>
 .el-row.top_contents {
   background: #fff;
@@ -82,15 +59,6 @@ export default {
   flex-direction: column;
   justify-content: space-around;
 }
-.el-row.searchInput {
-  width: 600px;
-}
-
-button.el-button,
-.select .el-input__inner {
-  background: #F5F7FA;
-}
-
 .concept p {
   line-height: 0.9;
   font-size: 7.6vw;
@@ -98,11 +66,6 @@ button.el-button,
   font-family: "Maison Cacao", serif;
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
-  .el-row.searchInput {
-    width: 100%;
-  }
-}
 @media (min-width: 0px) and (max-width: 768px) {
   .el-row.top_contents {
     display: flex;
@@ -111,9 +74,6 @@ button.el-button,
   .el-row.top_contents .el-col.main {
     width: 100%;
     text-align: center;
-  }
-  .el-row.searchInput {
-    width: 100%;
   }
 }
 </style>
