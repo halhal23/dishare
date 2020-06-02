@@ -38,7 +38,8 @@ const config = {
   plugins: [
     '@/plugins/element-ui',
     { src: '~/plugins/axios.js', ssr: false },
-    { src: "~plugins/vue2-google-maps.js" }
+    { src: "~plugins/vue2-google-maps.js" },
+    { src: '@/plugins/localStorage', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules

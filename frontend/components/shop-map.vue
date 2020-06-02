@@ -1,10 +1,10 @@
 <template>
-<div v-if="shop">
+<div v-if="shop" style="width: 100%;">
   <GmapMap
     :center="shop_position.position"
     :zoom="15"
     map-type-id="terrain"
-    style="width: 500px; height: 500px;"
+    style="width: 100%; height: 450px;"
   >
     <GmapMarker
       :key="index"

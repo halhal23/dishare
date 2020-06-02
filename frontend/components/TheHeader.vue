@@ -12,20 +12,23 @@
         <img src="images/text-logo.png" height="70px" width="210px">
       </li>
       <li>
-        <a href="#" @click="dialogFormVisible = true" v-if="true">ログイン</a>
-        <a href="#" @click="logout" v-else>{{ $store.state.current_user }}</a>
+        <a href="#" @click="dialogFormVisible = true" v-if="!$store.state.auth.isLoggedIn">ログイン</a>
+        <a href="#" v-else>{{ $store.state.auth.currentUser.name }}</a>
       </li>
       <li>
-        <nuxt-link to="/" v-if="true">新規登録</nuxt-link>
+        <a href="#" @click="dialogSignUpVisible = true" v-if="!$store.state.auth.isLoggedIn">新規登録</a>
         <a href="#" @click="logout" v-else>ログアウト</a>
       </li>
     </ul>
   </header>
 
-  <el-dialog :center="true" title="ログイン" :visible.sync="dialogFormVisible">
+  <el-dialog class="login" :center="true" title="ログイン" :visible.sync="dialogFormVisible">
     <el-form :modle="form">
       <el-form-item label="名前" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="メールアドレス" :label-width="formLabelWidth">
+        <el-input v-model="form.email" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="パスワード" :label-width="formLabelWidth">
         <el-input v-model="form.password" show-password></el-input>
@@ -33,66 +36,67 @@
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogFormVisible = false">キャンセル</el-button>
-      <el-button type="primary" @click="login">ログイン</el-button>
+      <el-button type="primary" @click="signIn(form)">ログイン</el-button>
+    </span>
+  </el-dialog>
+
+  <el-dialog class="signUp" :center="true" title="新規登録" :visible.sync="dialogSignUpVisible">
+    <el-form :modle="form">
+      <el-form-item label="名前" :label-width="signUpLabelWidth">
+        <el-input v-model="form.name" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="メールアドレス" :label-width="signUpLabelWidth">
+        <el-input v-model="form.email" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="パスワード" :label-width="signUpLabelWidth">
+        <el-input v-model="form.password" show-password></el-input>
+      </el-form-item>
+      <el-form-item label="パスワード(確認用)" :label-width="signUpLabelWidth">
+        <el-input v-model="form.password_confirmation" show-password></el-input>
+      </el-form-item>
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogSignUpVisible = false">キャンセル</el-button>
+      <el-button type="primary" @click="signUp(form)">送信</el-button>
     </span>
   </el-dialog>
 </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data(){
     return {
       dialogFormVisible: false,
+      dialogSignUpVisible: false,
       form: {
         name: '',
-        password: ''
+        email: '',
+        password: '',
+        password_confirmation: ''
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      signUpLabelWidth: '150px',
     }
   },
 
   methods: {
-    async login() {
-      await this.$axios.$post(process.env.browserBaseUrl + '/api/auth/sign_in', {
-          name: this.form.name,
-          email: "halhal@gmail.com",
-          password: this.form.password,
-          password_confirmation: this.form.password
-      })
-        .then( res => {
-          console.log('ログイン成功' + ' /pages/login.vue')
-          console.log(res)
-          console.log(res.data.data)
-          this.$store.commit('user/setCurrentUser', res.data.data)
-          this.dialogFormVisible = false
-          return res
-        }, err => {
-          console.log('ログイン失敗' + ' /pages/login.vue')
-          console.log(err)
-          return err
-        })
+    signIn(formData){
+      this.login(formData)
+      this.dialogFormVisible = false
     },
-    async logout(){
-      console.log(this.$store)
-      await this.$axios.$delete(process.env.browserBaseUrl + '/api/auth/sign_out', {
-          email: 'halhal@gmail.com'
-      }).then( res => {
-        console.log('ログアウト成功')
-        console.log(res)
-        return res
-      }).catch( err => {
-        console.log('ログアウト失敗')
-        console.log(err)
-        return err
-      })
-    }
+    ...mapActions({
+      login: 'auth/login',
+      logout: 'auth/logout',
+      signUp: 'auth/signUp',
+    })
   }
 }
 </script>
 
 <style>
-header {
+/* header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -114,10 +118,13 @@ a {
   line-height: 70px;
   text-decoration: none;
   color: black;
-}
+} */
 
-.header-wrapper .el-dialog{
+.header-wrapper .login .el-dialog{
   height: 300px;
+}
+.header-wrapper .signUp .el-dialog{
+  height: 500px;
 }
 
 </style>
