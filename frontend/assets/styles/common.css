@@ -32,6 +32,13 @@ a {
   flex-direction: column;
 }
 
+.el-message-box {
+  width: 90%;
+}
+.el-message-box button.el-button {
+  color: rgb(67, 110, 228)
+}
+
 
 .page-enter {
   opacity: 0;
