@@ -11,7 +11,7 @@
       </el-select>
     </el-col>
     <el-col :span="8" :lg="4">
-      <el-button @click="getShops" icon="el-icon-search" style="width: 100%;"></el-button>
+      <el-button @click="do_either_search" icon="el-icon-search" style="width: 100%;" class="search-icon"></el-button>
     </el-col>
   </el-row>
 </template>
@@ -32,23 +32,39 @@ export default {
       })
   },
   methods: {
+    getFirst(){
+      this.$axios.$get('/api/', {
+        params: {
+          keyid: process.env.gnavi_api_key,
+          name: this.keyword,
+        }
+      }).then( res => {
+        this.setShops(res.rest)
+        this.$notify({
+          type: 'success',
+          title: `${res.rest.length}店ヒットしました！`,
+          message: `${this.keyword}の検索結果`,
+          position: 'bottom-left',
+          duration: 3000
+        })
+      }).catch( err => {
+        console.log(err)
+      })
+    },
     do_either_search(){
       switch (this.select) {
         case '1':
           console.log(1)
-          this.getShops
+          this.getShops()
           break
         case '2':
           console.log(2)
-          this.getShops
+          this.getFirst()
           break
-        case '3', '':
+        case '3':
+        case '':
           console.log(3)
-          this.getShops
-          break
-        default:
-          console.log(4)
-          this.getShops
+          this.getFirst()
           break
       }
     },
@@ -58,10 +74,18 @@ export default {
         alert('Geolocation not supported');
         return;
       }
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
       navigator.geolocation.getCurrentPosition(this.success, function() {
+        loading.close();
         alert('Geolocation failed!');
         return;
       });
+      loading.close();
       this.$msgbox({
         title: 'ご検索ありがとうございます!',
         message: 'ログインしていただければ、より詳細な検索と友人との共有が可能です！',
@@ -69,6 +93,7 @@ export default {
       })
     },
     success(position){
+
       this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
         params: {
@@ -80,6 +105,7 @@ export default {
         }
       }).then( res => {
         this.setShops(res.rest)
+        
         this.$notify({
           type: 'success',
           title: `${res.rest.length}店ヒットしました！`,
@@ -105,7 +131,7 @@ export default {
   width: 600px;
 }
 
-button.el-button,
+button.el-button.search-icon,
 .select .el-input__inner {
   background: #F5F7FA;
 }

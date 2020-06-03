@@ -9,10 +9,10 @@
         <div class="card_shop_info">
           <p class="name">{{ shop.name }}</p>
           <el-tag type="warning" size="mini">{{ shop.category }}</el-tag>
+          <p class="opentime" v-if="shop.access">{{ shop.access.station }}から{{ shop.access.walk }}分</p>
+          <p class="opentime" v-else>交通アクセス: 記載なし</p>
           <p class="opentime" v-if="shop.opentime">営業時間: {{ shop.opentime }}</p>
           <p class="opentime" v-else>営業時間: 記載なし</p>
-          <p class="opentime" v-if="shop.holiday">休業日: {{ shop.holiday }}</p>
-          <p class="opentime" v-else>休業日: 記載なし</p>
           <el-button @click="showShopInfo(shop)" type="success" size="small" plain round>詳細を見る</el-button>
         </div>
       </el-card>
