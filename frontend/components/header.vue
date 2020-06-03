@@ -7,9 +7,16 @@
       <el-menu-item index="1" style="margin-left: auto;" class="header_item_md" @click="toggleHidden">
         <nuxt-link to="/top" >HOME</nuxt-link>
       </el-menu-item>
-      <el-menu-item index="2" class="header_item_md" @click="toggleHidden">ABOUT</el-menu-item>
-      <el-menu-item index="4" class="header_item_md" @click="toggleHidden">LOGIN</el-menu-item>
-      <el-menu-item index="5" class="header_item_md" @click="toggleHidden">SIGNUP</el-menu-item>
+      <el-menu-item index="2" class="header_item_md" @click="toggleHidden">
+        <nuxt-link to="/top" >ABOUT</nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
+        <a href="#" @click="onModal(true)">LOGIN</a>
+        <!-- <nuxt-link to="/sign_in_up" >LOGIN</nuxt-link> -->
+      </el-menu-item>
+      <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
+        <nuxt-link to="/sign_in_up" >SIGNUP</nuxt-link>
+      </el-menu-item>
     </el-menu>
 
     <!-- 画面サイズ700px以下のデフォルトのヘッダーレイアウト -->
@@ -18,30 +25,39 @@
         <img src="images/text-logo.png" height="50px" width="130px">
       </el-menu-item>
       <el-menu-item style="margin-left: auto;" @click="toggleHidden" >
-        <i class="el-icon-s-operation" style="font-size: 30px;"></i>
+        <i class="el-icon-s-operation" style="font-size: 30px; margin: 0 20px;"></i>
       </el-menu-item>
     </el-menu>
+    <testModal :testModal="testModal" @onModal="onModal(false)" />
   </el-header>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        activeIndex: '',
-        activeIndex2: '1',
-        isHidden: true
-      };
+import testModal from '~/components/test-modal.vue'
+export default {
+  data() {
+    return {
+      activeIndex: '',
+      activeIndex2: '1',
+      isHidden: true,
+      testModal: false
+    };
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
     },
-    methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      toggleHidden(){
-        this.isHidden = !this.isHidden
-      }
-    }
+    toggleHidden(){
+      this.isHidden = !this.isHidden
+    },
+    onModal(testModal){
+      this.testModal = testModal
+    },
+  },
+  components: {
+    testModal
   }
+}
 </script>
 
 <style>
