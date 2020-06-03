@@ -5,17 +5,19 @@
         <img src="images/text-logo.png" height="50px" width="160px" style="background: #fff;padding:0 20px;border-radius: 20px;">
       </el-menu-item>
       <el-menu-item index="1" style="margin-left: auto;" class="header_item_md" @click="toggleHidden">
-        <nuxt-link to="/top" >HOME</nuxt-link>
+        <nuxt-link to="/" >HOME</nuxt-link>
       </el-menu-item>
       <el-menu-item index="2" class="header_item_md" @click="toggleHidden">
-        <nuxt-link to="/top" >ABOUT</nuxt-link>
+        <nuxt-link to="/" >ABOUT</nuxt-link>
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
-        <a href="#" @click="onModal(true)">LOGIN</a>
+        <a href="#" @click="onModal(true)" v-if="!isLoggedIn">LOGIN</a>
+        <a href="#" v-else>{{ currentUser.name }}</a>
         <!-- <nuxt-link to="/sign_in_up" >LOGIN</nuxt-link> -->
       </el-menu-item>
       <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
-        <nuxt-link to="/sign_in_up" >SIGNUP</nuxt-link>
+        <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link>
+        <a href="#" @click="logout" v-else>LOGOUT</a>
       </el-menu-item>
     </el-menu>
 
@@ -28,12 +30,13 @@
         <i class="el-icon-s-operation" style="font-size: 30px; margin: 0 20px;"></i>
       </el-menu-item>
     </el-menu>
-    <testModal :testModal="testModal" @onModal="onModal(false)" />
+    <authFormModal :testModal="testModal" @onModal="onModal(false)" />
   </el-header>
 </template>
 
 <script>
-import testModal from '~/components/test-modal.vue'
+import authFormModal from '~/components/auth-form-modal.vue'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -42,6 +45,12 @@ export default {
       isHidden: true,
       testModal: false
     };
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: 'auth/currentUser',
+      isLoggedIn: 'auth/isLoggedIn',
+    })
   },
   methods: {
     handleSelect(key, keyPath) {
@@ -53,9 +62,12 @@ export default {
     onModal(testModal){
       this.testModal = testModal
     },
+    ...mapActions({
+      logout: 'auth/logout'
+    })
   },
   components: {
-    testModal
+    authFormModal
   }
 }
 </script>

@@ -91,17 +91,16 @@
     </el-dialog>
     <!-- <el-button type="text" @click="onModal(true)">開けゴマ</el-button> -->
 
-    <testModal :testModal="testModal" @onModal="onModal(false)" />
+    
   </el-main>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import shopMap from '~/components/shop-map.vue'
-import testModal from '~/components/test-modal.vue'
 export default {
   components: {
-    shopMap,testModal
+    shopMap
   },
   data(){
     return {
