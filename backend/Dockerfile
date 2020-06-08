@@ -1,6 +1,6 @@
 FROM ruby:2.6.3-alpine
 
-ENV RUNTIME_PACKAGES "mysql-client mysql-dev tzdata nodejs"
+ENV RUNTIME_PACKAGES "mysql-client mysql-dev tzdata nodejs gmp make gcc linux-headers libxml2-dev libc-dev"
 ENV DEV_PACKAGES "build-base curl-dev"
 ENV APP_HOME /app
 ENV TZ Asia/Tokyo

@@ -2,7 +2,7 @@
   <el-header>
     <el-menu :default-active="activeIndex" :class="{header_menu: true,hidden: isHidden}" mode="horizontal" @select="handleSelect">
       <el-menu-item class="header_item_md logo">
-        <img src="images/text-logo.png" height="50px" width="160px" style="background: #fff;padding:0 20px;border-radius: 20px;">
+        <img src="~/static/images/text-logo.png" height="50px" width="160px" style="background: #fff;padding:0 20px;border-radius: 20px;">
       </el-menu-item>
       <el-menu-item index="1" style="margin-left: auto;" class="header_item_md" @click="toggleHidden">
         <nuxt-link to="/" >HOME</nuxt-link>
@@ -12,7 +12,7 @@
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
         <a href="#" @click="onModal(true)" v-if="!isLoggedIn">LOGIN</a>
-        <a href="#" v-else>{{ currentUser.name }}</a>
+        <nuxt-link to="/users/mypage" v-else>{{ $store.state.auth.currentUser.name }}</nuxt-link>
         <!-- <nuxt-link to="/sign_in_up" >LOGIN</nuxt-link> -->
       </el-menu-item>
       <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
@@ -25,7 +25,7 @@
     <!-- 画面サイズ700px以下のデフォルトのヘッダーレイアウト -->
     <el-menu class="header_menu_respon" mode="horizontal">
       <el-menu-item >
-        <img src="images/text-logo.png" height="50px" width="130px">
+        <img src="~/static/images/text-logo.png" height="50px" width="130px">
       </el-menu-item>
       <el-menu-item style="margin-left: auto;" @click="toggleHidden" >
         <i class="el-icon-s-operation" style="font-size: 30px; margin: 0 20px;"></i>

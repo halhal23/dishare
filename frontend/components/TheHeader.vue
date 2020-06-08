@@ -13,7 +13,7 @@
       </li>
       <li>
         <a href="#" @click="dialogFormVisible = true" v-if="!$store.state.auth.isLoggedIn">ログイン</a>
-        <a href="#" v-else>{{ $store.state.auth.currentUser.name }}</a>
+        <nuxt-link to="/users/mypage" v-else>{{ $store.state.auth.currentUser.name }}</nuxt-link>
       </li>
       <li>
         <a href="#" @click="dialogSignUpVisible = true" v-if="!$store.state.auth.isLoggedIn">新規登録</a>
@@ -90,7 +90,10 @@ export default {
       login: 'auth/login',
       logout: 'auth/logout',
       signUp: 'auth/signUp',
-    })
+    }),
+    hello(){
+      console.log('helo')
+    }
   }
 }
 </script>

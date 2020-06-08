@@ -193,11 +193,11 @@ export default {
 }
 
 .el-dialog {
-  height: 600px;
+  /* height: 600px; */
   width: 600px;
 }
 .el-dialog__body {
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 .el-tabs__content {
   height: 450px;
