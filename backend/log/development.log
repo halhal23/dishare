@@ -5199,3 +5199,334 @@ Processing by DeviseTokenAuth::SessionsController#destroy as JSON
 Completed 200 OK in 115ms (Views: 0.2ms | ActiveRecord: 9.3ms)
 
 
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 18:04:47 +0900
+  [1m[35m (2.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (3.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"naArGkF3jQpWahzAV4QBug\":{\"token\":\"$2a$10$DLOibq4X3A/RrQrdnqaUW.wFa4ZJp2d8G7e2nj7JYW2uxrFSdZ55O\",\"expiry\":1592384688}}', `updated_at` = '2020-06-03 09:04:48' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 30, `current_sign_in_at` = '2020-06-03 09:04:48', `last_sign_in_at` = '2020-05-31 03:23:15' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 244ms (Views: 0.2ms | ActiveRecord: 17.6ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-03 18:07:04 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630}}', `updated_at` = '2020-06-03 09:07:04' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 124ms (Views: 0.2ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 18:07:51 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"tzKwZVJbEpMbW9gGcKYyLg\":{\"token\":\"$2a$10$LkJqUcRaPMx9Z8t4q.Rwk.bHBMLk./ODZEvUkD0U8fEgYf2g.pmJy\",\"expiry\":1592384872}}', `updated_at` = '2020-06-03 09:07:52' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 31, `current_sign_in_at` = '2020-06-03 09:07:52', `last_sign_in_at` = '2020-06-03 09:04:48' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 222ms (Views: 0.2ms | ActiveRecord: 10.4ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-03 18:08:30 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630}}', `updated_at` = '2020-06-03 09:08:30' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 81ms (Views: 0.2ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 18:09:01 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"wdWz83vzNpOMfbZ1zUU9bw\":{\"token\":\"$2a$10$P6yLnU7WQBkPzCqseSiYse/4s72dqW.8qzU9rjMQgluf4WAKgTfZm\",\"expiry\":1592384941}}', `updated_at` = '2020-06-03 09:09:01' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 32, `current_sign_in_at` = '2020-06-03 09:09:01', `last_sign_in_at` = '2020-06-03 09:07:52' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 234ms (Views: 0.2ms | ActiveRecord: 13.1ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-03 18:09:11 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630}}', `updated_at` = '2020-06-03 09:09:11' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 80ms (Views: 0.2ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 18:11:32 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"HEVdbxyEEwRzHkEaw2UidA\":{\"token\":\"$2a$10$3VfCCC27YBUQ.IJytR9Wn.Kzbm1ym6aO/3EbmHe2LfCYFnzX2bBYa\",\"expiry\":1592385092}}', `updated_at` = '2020-06-03 09:11:32' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 33, `current_sign_in_at` = '2020-06-03 09:11:32', `last_sign_in_at` = '2020-06-03 09:09:01' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 234ms (Views: 0.2ms | ActiveRecord: 11.7ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-03 19:14:54 +0900
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630}}', `updated_at` = '2020-06-03 10:14:54' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 86ms (Views: 0.6ms | ActiveRecord: 16.2ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 19:16:05 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.4ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"Uqs7evQW85OjyxlI7vN7Zw\":{\"token\":\"$2a$10$KbEKjaIt85FvrrsI8fkXaOC98IGyc5rBhMnXtDvTNhOWNSWxqLozW\",\"expiry\":1592388965}}', `updated_at` = '2020-06-03 10:16:05' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 34, `current_sign_in_at` = '2020-06-03 10:16:05', `last_sign_in_at` = '2020-06-03 09:11:32' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 234ms (Views: 0.2ms | ActiveRecord: 9.1ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-03 19:16:12 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630}}', `updated_at` = '2020-06-03 10:16:12' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 85ms (Views: 0.2ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 19:21:32 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"jBnss9M843HQrE7oR6dikg\":{\"token\":\"$2a$10$vYvAtP2PcG8KcgzozbegGOIdkkd4FBif06lC8oK/zxim0zqfzsl1O\",\"expiry\":1592389292}}', `updated_at` = '2020-06-03 10:21:32' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 35, `current_sign_in_at` = '2020-06-03 10:21:32', `last_sign_in_at` = '2020-06-03 10:16:05' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 231ms (Views: 0.2ms | ActiveRecord: 12.4ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-03 23:57:19 +0900
+  [1m[35m (2.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630}}', `updated_at` = '2020-06-03 14:57:19' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 102ms (Views: 1.0ms | ActiveRecord: 13.1ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-03 23:57:24 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"mNfbZGWXJyCM_YiuiIi6-g\":{\"token\":\"$2a$10$0O1vOPMz.mebfVxoNNiLZO5nW8fEyJjZ7GBgiKEafL17keqhYDCzO\",\"expiry\":1592405844}}', `updated_at` = '2020-06-03 14:57:24' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 36, `current_sign_in_at` = '2020-06-03 14:57:24', `last_sign_in_at` = '2020-06-03 10:21:32' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 219ms (Views: 0.2ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/rails/info/routes" for 192.168.144.1 at 2020-06-04 17:17:50 +0900
+  [1m[35m (41.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [23 times] (817.8ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (72.8ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (1006.5ms)
+Completed 200 OK in 1307ms (Views: 1195.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 192.168.144.1 at 2020-06-04 17:17:53 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'

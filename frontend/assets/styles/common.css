@@ -36,7 +36,7 @@ a {
   flex-direction: column;
 }
 
-.el-menu-item {
+header .el-menu-item {
   padding: 0;
 }
 

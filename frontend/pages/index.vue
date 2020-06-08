@@ -1,142 +1,79 @@
 <template>
-  <div>
-    <div class="main-container">
-      <img src="images/dishare-main-logo.png" width="400px" height="300px">
-      <h2>
-        Dishareへようこそ <br>
-        「美味しい」を共有しましょう
-      </h2>
-      <p>早速、キーワードを検索して、「美味しい」を検索してみましょう</p>
-      <el-input placeholder="Please input" v-model="keyword" class="input-with-select" style="width:600px;">
-        <el-select v-model="select" slot="prepend" placeholder="近くの店を探す" style="width:200px;">
-          <el-option label="近くの店を探す" value="1"></el-option>
-          <el-option label="人気店を探す" value="2"></el-option>
-        </el-select>
-        <el-button @click="getShops" slot="append" icon="el-icon-search"></el-button>
-      </el-input>
-    </div>
+  <el-main class="top_main" style="padding: 0;">
+    <el-row class="top_contents" style="height: 100vh;">
+      <el-col :span="11" class="left main"></el-col>
+      <el-col :span="13" class="right main">
+        <p style="color: #777;">Our concept</p>
+
+        <div class="concept">
+          <p>
+            <span>DISHARE</span><br>
+            <span>THAT</span><br>
+            <span>SHARE</span><br>
+            <span>DELICIOUS</span>
+          </p>
+        </div>
+
+        <shopSearchForm /> <!-- レストラン検索フォームのコンポーネント -->
+
+        <p style="font-family: dnp-shuei-gothic-gin-std;">
+          まずはキーワードを入力して、<br>
+          レストランを検索してみましょう。
+        </p>
+      </el-col>
+    </el-row>
     <shopLists /> <!-- 検索結果一覧を表示するコンポーネント -->
-  </div>
+  </el-main>
 </template>
 
 <script>
 import shopLists from '~/components/shop-lists.vue'
-import { mapGetters, mapMutations } from 'vuex'
+import shopSearchForm from '~/components/shop-search-form.vue'
 export default {
   components: {
-    shopLists
-  },
-  data(){
-    return {
-      keyword: '',
-      select: '',
-      dialogShopDetailVisible: false,
-      detailName: 'no name',
-    }
-  },
-  computed: {
-    ...mapGetters({
-      shops: 'shops/shops',
-      currentPosition: 'shops/currentPosition'
-      })
-  },
-  methods: {
-    getShops(){
-      console.log(this)
-      if (!navigator.geolocation) {
-        alert('Geolocation not supported');
-        return;
-      }
-      navigator.geolocation.getCurrentPosition(this.success, function() {
-        alert('Geolocation failed!');
-        return;
-      });
-      // this.$alert('ログインして頂くと、より詳細な検索が可能です！', 'ご検索ありがとうございます！', {
-      //   confirmButtonText: 'OK',
-      // });
-      this.$msgbox({
-        title: 'ご検索ありがとうございます!',
-        message: 'ログインしていただければ、より詳細な検索と友人との共有が可能です！',
-        confirmButtonText: 'OK'
-      })
-    },
-    showShopDetail(name){
-      this.dialogShopDetailVisible = true
-      this.detailName = name
-      console.log('alert ' + name)
-    },
-    success(position){
-      this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
-      this.$axios.$get('/api/', {
-        params: {
-          keyid: process.env.gnavi_api_key,
-          name: this.keyword,
-          latitude: this.currentPosition.position.lat,
-          longitude: this.currentPosition.position.lng,
-          range: 5
-        }
-      }).then( res => {
-        console.log('成功です。')
-        console.log(this)
-        console.log(res)
-        this.setShops(res.rest)
-        this.$notify({
-          type: 'success',
-          title: `${res.rest.length}店ヒットしました！`,
-          message: `${this.keyword}の検索結果`,
-          position: 'bottom-left',
-          duration: 2000
-        })
-      }).catch( err => {
-        console.log('失敗です。')
-        console.log(err)
-      })
-      console.log('success!! geolocation');
-    },
-    ...mapMutations({ 
-      setShops: 'shops/setShops',
-      setCurrentPosition: 'shops/setCurrentPosition',
-      })
+    shopLists,shopSearchForm
   }
 }
+// #F5F7FA
 </script>
 
 <style>
-/* .container: 1; */
-/* .container:before: -1; */
-/* header: 2; */
-
-.main-container {
-  position: relative;
-  z-index: 1;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  padding: 100px 0;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-image: url(~@/static/images/top-bg-main.jpg);
+.el-row.top_contents {
+  background: #fff;
+}
+.el-row.top_contents .el-col.main {
+  /* border: 1px solid black; */
+  height: 100%;
+}
+.el-row.top_contents .el-col.left {
+  /* border: 1px solid black; */
+  height: 100%;
+  background-image: url(~@/static/images/top-left-dish.jpg);
   background-size: cover;
   background-position: center; 
 }
-
-.main-container:before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.7);
+.el-row.top_contents .el-col.right {
+  background: rgb(229, 226, 221);
+  display: flex;
+  padding: 70px 30px 10px ;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.concept p {
+  line-height: 0.9;
+  font-size: 7.6vw;
+  font-weight: 400;
+  font-family: "Maison Cacao", serif;
 }
 
-.main-container h2, h3, p {
-  margin: 30px 0;
+@media (min-width: 0px) and (max-width: 768px) {
+  .el-row.top_contents {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .el-row.top_contents .el-col.main {
+    width: 100%;
+    text-align: center;
+  }
 }
-
-
-
 </style>

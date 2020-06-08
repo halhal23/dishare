@@ -1,7 +1,8 @@
 <template>
     <el-container>
       <Header />
-      <transition name="page">    
+      <sideBar v-if="$store.state.auth.isLoggedIn" />
+      <transition name="page"> 
         <nuxt />
       </transition>
     </el-container>
@@ -14,11 +15,13 @@
 <script>
 import TheHeader from '~/components/TheHeader.vue'
 import Header from '~/components/header.vue'
+import sideBar from '~/components/side-bar.vue'
 
 export default {
   components: {
     TheHeader,
-    Header
+    Header,
+    sideBar
   }
 }
 </script>

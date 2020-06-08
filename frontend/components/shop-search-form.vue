@@ -74,18 +74,12 @@ export default {
         alert('Geolocation not supported');
         return;
       }
-      const loading = this.$loading({
-        lock: true,
-        text: 'Loading',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)'
-      });
+
       navigator.geolocation.getCurrentPosition(this.success, function() {
-        loading.close();
         alert('Geolocation failed!');
         return;
       });
-      loading.close();
+      
       this.$msgbox({
         title: 'ご検索ありがとうございます!',
         message: 'ログインしていただければ、より詳細な検索と友人との共有が可能です！',
@@ -93,6 +87,12 @@ export default {
       })
     },
     success(position){
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
 
       this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
@@ -104,6 +104,7 @@ export default {
           range: 5
         }
       }).then( res => {
+        loading.close();
         this.setShops(res.rest)
         
         this.$notify({
