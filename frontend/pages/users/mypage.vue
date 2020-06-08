@@ -11,6 +11,9 @@
       </div>
       <div class="text item">
         <h1>{{ currentUser.email }}</h1>
+        <div>
+          <img :src="currentUser.image.url" width="100px" height="100px" v-if="currentUser.image">
+        </div>
       </div>
     </el-card>
     <userEditForm :userEditFormModal="userEditFormModal" :currentUser="currentUser" @onModal="onModal(false)" />

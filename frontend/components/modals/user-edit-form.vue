@@ -10,12 +10,19 @@
       <el-form-item label="email" :label-width="formLabelWidth">
         <el-input v-model="email" autocomplete="off"></el-input>
       </el-form-item>
-      <!-- <el-form-item label="Zones" :label-width="formLabelWidth">
-        <el-select v-model="email" placeholder="Please select a zone">
-          <el-option label="Zone No.1" value="shanghai"></el-option>
-          <el-option label="Zone No.2" value="beijing"></el-option>
-        </el-select>
-      </el-form-item> -->
+      <el-form-item label="icon" :label-width="formLabelWidth">
+        <el-upload
+          class="upload-demo"
+          action="#"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :file-list="fileList"
+          :on-change="handleAdd"
+          list-type="picture">
+          <el-button size="small" type="primary" style="margin-right: 30px;">Click to upload</el-button>
+          <span slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</span>
+        </el-upload>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogFormVisible = false">Cancel</el-button>
@@ -31,7 +38,9 @@ export default {
     return {
       formLabelWidth: '120px',
       name: this.$props.currentUser.name,
-      email: this.$props.currentUser.email
+      email: this.$props.currentUser.email,
+      fileList: [],
+      imageFile: ""
     }
   },
   // computed: {
@@ -50,13 +59,13 @@ export default {
     async updateUser(){
       console.log('update desu')
       console.log(this)
-      // console.log(this.fileList[0])
-      // console.log(this.fileList[0].raw)
       // formData
       let formData = new FormData()
       formData.append("name", this.name)
       formData.append("email", this.email)
-      // formData.append("image", this.imageFile)
+      if (this.imageFile !== null ){
+        formData.append("image", this.imageFile)
+      }
       await this.$axios.$put( process.env.browserBaseUrl + '/api/auth', formData,{
         headers: {
             "Content-Type": "multipart/form-data"
@@ -65,10 +74,25 @@ export default {
         console.log('res desuyo')
         console.log(res)
         this.$store.commit('auth/setCurrentUser', res.data )
-        // this.handleClose(false)
+        this.handleClose(false)
       }).catch( err => {
         console.log('err')
       })
+    },
+    handleAdd: function (file, fileList) {
+      this.fileList = fileList
+      this.imageFile = fileList[0].raw
+      console.log('handleAdd')
+      console.log(file)
+      console.log(fileList)
+    },
+    handleRemove(file, fileList) {
+        console.log(file, fileList);
+    },
+    handlePreview(file) {
+        console.log('file')
+        console.log(file);
+        this.image = file.raw
     },
   }
 };

@@ -5695,3 +5695,222 @@ Unpermitted parameter: :format
 Completed 200 OK in 56ms (Views: 1.2ms | ActiveRecord: 12.7ms)
 
 
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:22:40 +0900
+  [1m[35m (11.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky3", "email"=>"rocky@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000563586314068 @tempfile=#<Tempfile:/tmp/RackMultipart20200608-1-11huyvm.jpg>, @original_filename="brad-pearson-KoKV26V_XXM-unsplash.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"brad-pearson-KoKV26V_XXM-unsplash.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky3' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE `users` SET `image` = '#<ActionDispatch::Http::UploadedFile:0x0000563586314068>', `updated_at` = '2020-06-08 13:22:41' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 183ms (Views: 0.3ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-08 22:24:14 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (5.4ms)
+Completed 200 OK in 18ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:24:17 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky3", "email"=>"rocky@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000563586b89cc0 @tempfile=#<Tempfile:/tmp/RackMultipart20200608-1-xmf3bf.jpg>, @original_filename="brad-pearson-KoKV26V_XXM-unsplash.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"brad-pearson-KoKV26V_XXM-unsplash.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky3' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE `users` SET `image` = 'brad-pearson-KoKV26V_XXM-unsplash.jpg', `updated_at` = '2020-06-08 13:24:18' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (15.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 1649ms (Views: 0.4ms | ActiveRecord: 20.9ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:26:51 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky3", "email"=>"rocky@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x000056358665d468 @tempfile=#<Tempfile:/tmp/RackMultipart20200608-1-5c8iwl.jpg>, @original_filename="cameraman-profile.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"cameraman-profile.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky3' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE `users` SET `image` = 'cameraman-profile.jpg', `updated_at` = '2020-06-08 13:26:52' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 1731ms (Views: 0.7ms | ActiveRecord: 8.9ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:28:48 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky4", "email"=>"rocky@gmail.com", "image"=>""}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky4' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `name` = 'rocky4', `image` = NULL, `updated_at` = '2020-06-08 13:28:48' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 155ms (Views: 0.4ms | ActiveRecord: 5.8ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:29:02 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky5", "email"=>"rocky@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000563587009bd8 @tempfile=#<Tempfile:/tmp/RackMultipart20200608-1-1ww2476.jpg>, @original_filename="cameraman-profile.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"cameraman-profile.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky5' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `name` = 'rocky5', `image` = 'cameraman-profile.jpg', `updated_at` = '2020-06-08 13:29:03' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 1413ms (Views: 0.4ms | ActiveRecord: 6.2ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:29:57 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky6", "email"=>"rocky@gmail.com", "image"=>""}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky6' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.6ms)[0m  [1m[33mUPDATE `users` SET `name` = 'rocky6', `image` = NULL, `updated_at` = '2020-06-08 13:29:57' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 170ms (Views: 0.5ms | ActiveRecord: 9.5ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:31:03 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky6", "email"=>"rocky@gmail.com", "image"=>""}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky6' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:31:20 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky7", "email"=>"rocky@gmail.com", "image"=>""}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky7' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE `users` SET `name` = 'rocky7', `updated_at` = '2020-06-08 13:31:20' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 8.4ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:31:47 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky7", "email"=>"rocky@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000563582f5d878 @tempfile=#<Tempfile:/tmp/RackMultipart20200608-1-10o0eoi.jpg>, @original_filename="cameraman-profile.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"cameraman-profile.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky7' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE `users` SET `image` = 'cameraman-profile.jpg', `updated_at` = '2020-06-08 13:31:48' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 1500ms (Views: 0.4ms | ActiveRecord: 9.2ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-08 22:31:55 +0900
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"rocky8", "email"=>"rocky@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000563586459950 @tempfile=#<Tempfile:/tmp/RackMultipart20200608-1-jtl6hs.jpg>, @original_filename="cameraman-profile.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"cameraman-profile.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rocky@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rocky8' AND `users`.`id` != 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE `users` SET `name` = 'rocky8', `image` = 'cameraman-profile.jpg', `updated_at` = '2020-06-08 13:31:56' WHERE `users`.`id` = 4[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 1679ms (Views: 0.5ms | ActiveRecord: 6.9ms)
+
+
