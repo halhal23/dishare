@@ -13,13 +13,11 @@
 </template>
 
 <script>
-import TheHeader from '~/components/TheHeader.vue'
 import Header from '~/components/header.vue'
 import sideBar from '~/components/side-bar.vue'
 
 export default {
   components: {
-    TheHeader,
     Header,
     sideBar
   }
