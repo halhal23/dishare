@@ -1,66 +1,96 @@
 <template>
   <el-main class="main_form">
-    <el-row class="form_content">
-      <el-col :xs="24" :span="12" class="left_form both">
-        <h3>Login</h3>
-        <el-form label-width="120px">
-          <el-form-item label="NAME">
-            <el-input v-model="name" placeholder="name"></el-input>
-          </el-form-item>
-          <el-form-item label="NAME">
-            <el-input v-model="name" placeholder="name"></el-input>
-          </el-form-item>
-        </el-form>
-      </el-col>
-      <el-col :xs="0" :span="12" class="right_form both"></el-col>
-    </el-row>
+    <el-card class="sign_up_card">
+      <h2>Sign UP</h2>
+      <el-form>
+        <el-form-item label="名前" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="メールアドレス" :label-width="formLabelWidth">
+          <el-input v-model="form.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="パスワード" :label-width="formLabelWidth">
+          <el-input v-model="form.password" show-password></el-input>
+        </el-form-item>
+        <el-form-item label="パスワード(確認用)" :label-width="formLabelWidth">
+          <el-input v-model="form.password_confirmation" show-password></el-input>
+        </el-form-item>
+        <el-form-item label="icon" :label-width="formLabelWidth">
+          <el-upload
+            class="upload-demo"
+            action="#"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :file-list="fileList"
+            :on-change="handleAdd"
+            list-type="picture">
+            <el-button size="small" type="primary" style="margin-right: 30px;">Click to upload</el-button>
+            <span slot="tip" class="el-upload__tip">jpg/png  </span>
+          </el-upload>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="signUp(form)" size="small" type="primary">SUBMIT</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
   </el-main>
 </template>
 
-<style>
-.el-main.main_form {
-  background: #ccc;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  padding: 80px 50px;
-  background: linear-gradient(200deg, rgb(235, 222, 198), rgb(230, 155, 106)); 
-}
-.el-row.form_content {
-  width: 100%;
-}
-.el-col.both {
-  height: 100%;
-}
-/* 
-.el-col.left_form {
-  background: #eee;
-}
-.el-col.left_form .el-input{
-  padding: 0 30px;
-}
-.el-col.right_form {
-  background: #ddd;
-}
-
-.el-form {
-  background: #fcb;
-}
-
-@media (min-width: 0px) and (max-width: 1000px) {
-  .el-main.main_form {
-    padding: 60px 0;
-  }
-} */
-</style>
-
 <script>
+import { mapActions } from 'vuex'
 export default {
   data(){
     return {
-      name: ''
+      form: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        imageFile: '',
+      },
+      fileList: [{
+          name: 'default icon', 
+          url:  'images/no-image.png'
+        }],
+      formLabelWidth: '150px'
     }
+  },
+  methods: {
+    ...mapActions({
+      signUp: 'auth/signUp',
+    }),
+    handleAdd: function (file, fileList) {
+      if (fileList.length === 2){
+        fileList.shift()
+        console.log('if handle add')
+      }
+      console.log('handleadd')
+      this.fileList = fileList
+      this.form.imageFile = fileList[0].raw
+      console.log(this.form.imageFile)
+    },
+    handleRemove(file, fileList) {
+        console.log(file, fileList);
+    },
+    handlePreview(file) {
+        console.log('file')
+        console.log(file);
+        this.image = file.raw
+    },
   }
 }
 </script>
+
+<style>
+.main_form {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign_up_card {
+  width: 500px;
+  height: 550px;
+  text-align: center;
+}
+</style>

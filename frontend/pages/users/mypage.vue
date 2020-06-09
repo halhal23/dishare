@@ -14,8 +14,8 @@
           <el-avatar :src="currentUser.image.url" :size="100" v-if="currentUser.image"></el-avatar>
           <img src="~/static/images/no-image.png" width="100px" height="100px" v-else>
         </div>
-        <h1>{{ currentUser.email }}</h1>
         <h1>{{ currentUser.name }}</h1>
+        <h1>{{ currentUser.email }}</h1>
       </div>
     </el-card>
     <userEditForm :userEditFormModal="userEditFormModal" :currentUser="currentUser" @onModal="onModal(false)" />

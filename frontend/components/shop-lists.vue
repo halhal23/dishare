@@ -159,7 +159,7 @@ export default {
   margin: 10px 0;
   padding: 0;
 }
-.el-card__body {
+.searched-list .el-card__body {
   padding: 0;
   height: 100%;
   display: flex;

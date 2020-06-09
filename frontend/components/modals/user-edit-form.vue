@@ -89,7 +89,6 @@ export default {
     handlePreview(file) {
         console.log('file')
         console.log(file);
-        this.image = file.raw
     },
   }
 };
