@@ -23,13 +23,6 @@
       <el-button @click="signIn(form)" type="primary">ログイン</el-button>
     </span>
   </el-dialog>
-  <!-- <el-dialog 
-    title="Shipping address" 
-    :visible.sync="$props.testModal"
-    :before-close="onModal"
-    >
-    <h1>成功だ！喜べ！</h1>
-  </el-dialog> -->
 </template>
 
 <script>
