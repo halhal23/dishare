@@ -19,11 +19,20 @@ export const mutations = {
 
 export const actions = {
   async signUp({ commit }, formData) {
-    await this.$axios.$post(process.env.browserBaseUrl + '/api/auth', {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        password_confirmation: formData.password_confirmation
+    let form = new FormData()
+    form.append("name", formData.name)
+    form.append("email", formData.email)
+    form.append("password", formData.password)
+    form.append("password_confirmation", formData.password_confirmation)
+    if (formData.imageFile !== null ){
+      console.log('image not null')
+      form.append("image", formData.imageFile)
+    }
+    console.log(formData)
+    await this.$axios.$post(process.env.browserBaseUrl + '/api/auth', form,{
+      headers: {
+          "Content-Type": "multipart/form-data"
+      }
     })
       .then( res => {
         console.log('新規登録成功' + ' /stores/auth.js')

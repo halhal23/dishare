@@ -25,29 +25,26 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="dialogFormVisible = false">Cancel</el-button>
+      <el-button @click="handleClose(false)">Cancel</el-button>
       <el-button type="primary" @click="updateUser">Submit</el-button>
     </span>
   </el-dialog>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   data(){
     return {
       formLabelWidth: '120px',
       name: this.$props.currentUser.name,
       email: this.$props.currentUser.email,
-      fileList: [],
+      fileList: [{
+          name: 'current icon', 
+          url: this.$props.currentUser.image !== null ? this.$props.currentUser.image.url : "~/static/images/no-image.png"
+        }],
       imageFile: ""
     }
   },
-  // computed: {
-  //   ...mapGetters({
-  //     currentUser: 'auth/currentUser'
-  //   })
-  // },
   props: {
     userEditFormModal: Boolean,
     currentUser: Object
@@ -80,11 +77,11 @@ export default {
       })
     },
     handleAdd: function (file, fileList) {
+      if (fileList.length === 2){
+        fileList.shift()
+      }
       this.fileList = fileList
       this.imageFile = fileList[0].raw
-      console.log('handleAdd')
-      console.log(file)
-      console.log(fileList)
     },
     handleRemove(file, fileList) {
         console.log(file, fileList);
@@ -92,7 +89,6 @@ export default {
     handlePreview(file) {
         console.log('file')
         console.log(file);
-        this.image = file.raw
     },
   }
 };

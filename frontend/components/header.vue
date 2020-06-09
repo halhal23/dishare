@@ -17,7 +17,7 @@
       </el-menu-item>
       <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
         <!-- <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link> -->
-        <a href="#" @click="onModal(true)" v-if="!isLoggedIn">SIGNUP</a>
+        <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link>
         <a href="#" @click="logout" v-else>LOGOUT</a>
       </el-menu-item>
     </el-menu>
