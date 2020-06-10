@@ -1,6 +1,8 @@
 <template>
   <el-main class="post_show_wrapper">
-      <postCard :post="post"/>
+      <div>
+        <postCard :post="post"/>
+      </div>
       <div class="comments_wrapper">
         <el-timeline>
           <el-timeline-item :timestamp="c.created_at" placement="top" v-for="c in post.comments" :key="c.id">
@@ -13,8 +15,8 @@
             </el-card>
           </el-timeline-item>
         </el-timeline>
-        <el-input type="textarea" :rows="2"></el-input>
-        <el-button type="primary" style="margin-top: 10px;">Comment</el-button>
+        <el-input type="textarea" :rows="2" v-model="message"></el-input>
+        <el-button @click="createComment" type="primary" style="margin-top: 10px;">Comment</el-button>
       </div>
   </el-main>
 </template>
@@ -37,6 +39,28 @@ export default {
       post: data
     }
   },
+  data(){
+    return {
+      message: ''
+    }
+  },
+  methods: {
+    test(){
+      console.log(this.$store.state.auth.currentUser.id)
+    },
+    createComment() {
+      const formData = {
+        message: this.message,
+        user_id: this.$store.state.auth.currentUser.id,
+        post_id: this.post.id
+      }
+      this.$axios.$post(process.env.browserBaseUrl + `/api/comments`, formData).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  },
   components: {
     postCard
   }
@@ -48,5 +72,15 @@ export default {
   padding-top: 70px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+.post_show_wrapper ul {
+  padding: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .comments_wrapper {
+    width: 95%;
+    flex-shrink: 0;
+  }
 }
 </style>

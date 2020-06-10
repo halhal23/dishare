@@ -9730,3 +9730,572 @@ Processing by Api::PostsController#show as JSON
 Completed 200 OK in 166ms (Views: 130.2ms | ActiveRecord: 6.2ms)
 
 
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 20:48:01 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (13.03ms)
+Completed 200 OK in 17ms (Views: 12.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:52:45 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (3.7ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (110.63ms)
+Completed 200 OK in 131ms (Views: 106.8ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 20:56:11 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (125.09ms)
+Completed 200 OK in 179ms (Views: 135.9ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:57:24 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (39.61ms)
+Completed 200 OK in 50ms (Views: 39.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:58:05 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (44.0ms)
+Completed 200 OK in 51ms (Views: 44.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 20:58:20 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (57.95ms)
+Completed 200 OK in 65ms (Views: 59.2ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:58:25 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (15.59ms)
+Completed 200 OK in 21ms (Views: 15.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:58:38 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (17.61ms)
+Completed 200 OK in 22ms (Views: 16.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 20:58:55 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (13.69ms)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:59:03 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (1.9ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (19.36ms)
+Completed 200 OK in 25ms (Views: 18.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:59:10 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (20.77ms)
+Completed 200 OK in 26ms (Views: 19.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 20:59:35 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (20.61ms)
+Completed 200 OK in 38ms (Views: 32.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:01:04 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (22.07ms)
+Completed 200 OK in 41ms (Views: 29.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 21:01:15 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (14.44ms)
+Completed 200 OK in 18ms (Views: 13.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:02:02 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (14.84ms)
+Completed 200 OK in 20ms (Views: 13.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:02:41 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (17.0ms)
+Completed 200 OK in 27ms (Views: 17.7ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 21:02:43 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (13.17ms)
+Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:03:28 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (29.33ms)
+Completed 200 OK in 38ms (Views: 27.8ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 21:03:33 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (15.15ms)
+Completed 200 OK in 28ms (Views: 23.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 21:04:09 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.63ms)
+Completed 200 OK in 33ms (Views: 29.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 21:04:22 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.68ms)
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:04:28 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (25.5ms)
+Completed 200 OK in 29ms (Views: 24.2ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/comments" for 192.168.144.1 at 2020-06-10 21:04:35 +0900
+Processing by Api::CommentsController#create as JSON
+  Parameters: {"message"=>"空いてました！", "user_id"=>1, "post_id"=>4, "comment"=>{"message"=>"空いてました！", "user_id"=>1, "post_id"=>4}}
+Unpermitted parameters: :format, :comment
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+  [1m[36mComment Create (1.4ms)[0m  [1m[32mINSERT INTO `comments` (`message`, `user_id`, `post_id`, `created_at`, `updated_at`) VALUES ('空いてました！', 1, 4, '2020-06-10 12:04:35', '2020-06-10 12:04:35')[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+[active_model_serializers] Rendered CommentSerializer with ActiveModelSerializers::Adapter::Attributes (53.4ms)
+Completed 200 OK in 76ms (Views: 55.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 21:04:41 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (22.91ms)
+Completed 200 OK in 32ms (Views: 20.5ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.3 at 2020-06-10 21:08:17 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (19.73ms)
+Completed 200 OK in 29ms (Views: 19.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 21:08:56 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (38.39ms)
+Completed 200 OK in 45ms (Views: 40.3ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:08:58 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (25.81ms)
+Completed 200 OK in 35ms (Views: 24.2ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/posts/4" for 192.168.144.1 at 2020-06-10 21:11:54 +0900
+Processing by Api::PostsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:10
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (23.23ms)
+Completed 200 OK in 39ms (Views: 22.0ms | ActiveRecord: 4.7ms)
+
+
