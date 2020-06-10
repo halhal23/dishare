@@ -23,7 +23,7 @@ module Api
     private
     
     def post_params
-      params.permit(:title, :content, :shop_name, :shop_address, :shop_access, :shop_url, :shop_image, :user_id)
+      params.permit(:title, :content, :shop_name, :shop_category, :shop_address, :shop_access, :shop_url, :shop_image_url, :user_id)
     end
   end
 end

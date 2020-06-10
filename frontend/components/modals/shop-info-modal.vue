@@ -70,16 +70,9 @@
         <el-tab-pane label="シェア" name="third">
           <div @click="test">sfsdfsfsdfsdfsdf</div>
           <el-form>
-            <el-form-item label="title" :label-width="formLabelWidth">
-              <el-input v-model="form.title" autocomplete="off"></el-input>
-            </el-form-item>
             <el-form-item label="content" :label-width="formLabelWidth">
               <el-input type="textarea" v-model="form.content" ></el-input>
             </el-form-item>
-            <el-form-item label="shop_name" :label-width="formLabelWidth">
-              <el-input :value="shop.name" :disabled="true"></el-input>
-            </el-form-item>
-              <input type="hidden" :value="shop.address">
               <el-button @click="postsCreate">create</el-button>
           </el-form>
         </el-tab-pane>
@@ -119,6 +112,7 @@ export default {
         title: this.form.title,
         content: this.form.content,
         shop_name: this.shop.name,
+        shop_category: this.shop.category,
         shop_address: this.shop.address,
         shop_access: `${this.shop.access.line}${this.shop.access.station}から徒歩${this.shop.access.walk}分`,
         shop_url: this.shop.url,
