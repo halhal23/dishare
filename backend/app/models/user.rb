@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   validates :name, presence: true, uniqueness: true
   mount_uploader :image, ImageUploader
+  has_many :posts
 end
