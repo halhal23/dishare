@@ -10,7 +10,8 @@
               <h4 style="margin-bottom: 20px;">{{ c.message }}</h4>
               <p style="display: flex; align-items: center;">
                 <el-avatar style="margin-right: 20px;" :size="30" :src="c.user.image.url"></el-avatar>
-                {{ c.user.name }}
+                <span style="margin-right: 20px;">{{ c.user.name }}</span>
+                <el-button v-if="c.user.id == $store.state.auth.currentUser.id" @click="destroyComment(c.id)" type="danger" size="mini" icon="el-icon-delete" circle></el-button>
               </p>
             </el-card>
           </el-timeline-item>
@@ -55,7 +56,18 @@ export default {
         post_id: this.post.id
       }
       this.$axios.$post(process.env.browserBaseUrl + `/api/comments`, formData).then(res => {
+        console.log('res')
         console.log(res)
+        this.post = res
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    destroyComment(id){
+      this.$axios.$delete(process.env.browserBaseUrl + `/api/comments/${id}`).then(res => {
+        console.log(res)
+        this.post = res
+        this.$router.push(`/posts/${this.post.id}`)
       }).catch(err => {
         console.log(err)
       })
@@ -77,6 +89,9 @@ export default {
 .post_show_wrapper ul {
   padding: 0;
 }
+/* .post_show_wrapper .el-card__body {
+  padding: 10px;
+} */
 @media (min-width: 0px) and (max-width: 768px) {
   .comments_wrapper {
     width: 95%;

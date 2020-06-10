@@ -3,9 +3,20 @@ module Api
     def create
       comment = Comment.new(comment_params)
       if comment.save
-        render json: comment
+        post = Post.find(comment.post.id)
+        render json: post
       else
         render json: comment
+      end
+    end
+
+    def destroy
+      comment = Comment.find(params[:id])
+      if comment.destroy
+        post = Post.find(comment.post.id)
+        render json: post
+      else
+        render json: { status: 200 }
       end
     end
 

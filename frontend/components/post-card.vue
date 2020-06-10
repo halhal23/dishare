@@ -24,8 +24,8 @@
         placement="bottom"
         width="350"
         trigger="click">
-        <el-input type="textarea" :rows="2"></el-input>
-        <el-button type="primary" style="margin-top: 10px;">Comment</el-button>
+        <el-input v-model="message" type="textarea" :rows="2"></el-input>
+        <el-button @click="createComment" type="primary" style="margin-top: 10px;">Comment</el-button>
         <div slot="reference" class="post_icon" style="background: #fca;">
          <i class="el-icon-chat-dot-round" style="font-size: 30px;"></i>
         </div>
@@ -45,6 +45,28 @@
 export default {
   props: {
     post: Object
+  },
+  data(){
+    return {
+      message: ''
+    }
+  },
+  methods: {
+    createComment() {
+      const formData = {
+        message: this.message,
+        user_id: this.$store.state.auth.currentUser.id,
+        post_id: this.post.id
+      }
+      this.$axios.$post(process.env.browserBaseUrl + `/api/comments`, formData).then(res => {
+        console.log('res')
+        console.log(res)
+        this.$router.push(`/posts/${this.post.id}`)
+        this.post = res
+      }).catch(err => {
+        console.log(err)
+      })
+    },
   }
 }
 </script>
