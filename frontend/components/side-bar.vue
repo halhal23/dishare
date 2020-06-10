@@ -1,7 +1,11 @@
 <template>
     <el-aside class="sideBarWrapper">
       <el-menu class="asideMenu" :default-active="activeNumber">
-        <el-menu-item index="1"><i class="icon el-icon-fork-spoon"></i></el-menu-item>
+        <el-menu-item index="1">
+          <nuxt-link to="/posts">
+            <i class="icon el-icon-fork-spoon"></i>
+          </nuxt-link>
+        </el-menu-item>
         <el-menu-item index="2"><i class="icon el-icon-user-solid"></i></el-menu-item>
         <el-menu-item index="3"><i class="icon el-icon-picture-outline"></i></el-menu-item>
         <el-menu-item index="4"><i class="icon el-icon-message-solid"></i></el-menu-item>
@@ -39,6 +43,9 @@ export default {
   font-size: 24px;
   border-bottom: 1px solid #999;
   padding-left: 0;
+}
+.sideBarWrapper a {
+  padding: 0;
 }
 @media (min-width: 0px) and (max-width: 640px) {
   .sideBarWrapper {

@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_054702) do
+ActiveRecord::Schema.define(version: 2020_06_10_025346) do
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "shop_name"
+    t.string "shop_address"
+    t.string "shop_access"
+    t.string "shop_url"
+    t.string "shop_image_url"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "shop_category"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -42,4 +57,5 @@ ActiveRecord::Schema.define(version: 2020_05_30_054702) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "posts", "users"
 end

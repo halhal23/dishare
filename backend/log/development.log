@@ -6377,3 +6377,1140 @@ Unpermitted parameter: :format
 Completed 200 OK in 1102ms (Views: 0.4ms | ActiveRecord: 13.6ms)
 
 
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-09 11:39:38 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'kaidou@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'kaidou' AND `users`.`id` != 13 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-09 02:39:38' WHERE `users`.`id` = 13[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 93ms (Views: 0.1ms | ActiveRecord: 8.1ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-09 11:39:57 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"kaidou", "email"=>"kaidou@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"kaidou", "email"=>"kaidou@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'kaidou' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'kaidou' AND `users`.`id` != 13 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"nts8oy_4LgePH1TwWRwH9w\":{\"token\":\"$2a$10$q8kwMGKVu03jQJ/S0KYM6.1ZPaiaEvsCDOs.YfYH5EjYVv7DDNPrG\",\"expiry\":1592879997}}', `updated_at` = '2020-06-09 02:39:58' WHERE `users`.`id` = 13[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-06-09 02:39:58', `last_sign_in_at` = '2020-06-09 02:39:58', `current_sign_in_ip` = '192.168.144.1', `last_sign_in_ip` = '192.168.144.1' WHERE `users`.`id` = 13[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 1272ms (Views: 0.2ms | ActiveRecord: 10.9ms)
+
+
+  [1m[35m (1.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` LIMIT 11[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`name` = 'ricky8' LIMIT 1[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'ricky@gmail.com' LIMIT 1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'ricky@exam.com' LIMIT 1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'ricky@example.com' LIMIT 1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` LIMIT 11[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'rocky@example.com' LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'rocky@gmail.com' LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:4
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT GET_LOCK('5277929974492897470', 0)[0m
+  ↳ bin/rails:4
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+Migrating to CreatePosts (20200609033733)
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE TABLE `posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `content` text, `shop_name` varchar(255), `shop_address` varchar(255), `shop_access` varchar(255), `shop_url` varchar(255), `shop_image_url` varchar(255), `user_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_posts_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_5b5ddfd518`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  ↳ db/migrate/20200609033733_create_posts.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (2.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200609033733')[0m
+  ↳ bin/rails:4
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('5277929974492897470')[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+Started GET "/rails/info/routes" for 192.168.144.1 at 2020-06-09 12:44:28 +0900
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [29 times] (6.9ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (18.6ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 37ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:28:35 +0900
+  [1m[35m (1.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:28:56 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:29:29 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:29:59 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:30:11 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:30:35 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:32:30 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:49:07 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-09 23:57:00 +0900
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (4.7ms)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 192.168.144.1 at 2020-06-09 23:57:04 +0900
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [29 times] (6.3ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (21.5ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 37ms (Views: 36.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-09 23:59:17 +0900
+Processing by Api::PostsController#create as JSON
+  Parameters: {"title"=>"誰か行きましょう", "content"=>"この店凄い美味しかったです！誰か一緒に行きましょう！", "shop_name"=>"旬魚鮮肉×産地直営 北海道幾蔵 上野本店", "shop_address"=>"〒110-0005 東京都台東区上野2-8-4 B1", "shop_access"=>"ＪＲ上野駅から徒歩3分", "shop_url"=>"https://r.gnavi.co.jp/pt78t4rs0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/pt78t4rs0000/t_0n68.jpg", "user_id"=>13, "post"=>{"title"=>"誰か行きましょう", "content"=>"この店凄い美味しかったです！誰か一緒に行きましょう！", "shop_name"=>"旬魚鮮肉×産地直営 北海道幾蔵 上野本店", "shop_address"=>"〒110-0005 東京都台東区上野2-8-4 B1", "shop_access"=>"ＪＲ上野駅から徒歩3分", "shop_url"=>"https://r.gnavi.co.jp/pt78t4rs0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/pt78t4rs0000/t_0n68.jpg", "user_id"=>13}}
+Unpermitted parameters: :shop_image_url, :format, :post
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:11
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:11
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `shop_name`, `shop_address`, `shop_access`, `shop_url`, `user_id`, `created_at`, `updated_at`) VALUES ('誰か行きましょう', 'この店凄い美味しかったです！誰か一緒に行きましょう！', '旬魚鮮肉×産地直営 北海道幾蔵 上野本店', '〒110-0005 東京都台東区上野2-8-4 B1', 'ＪＲ上野駅から徒歩3分', 'https://r.gnavi.co.jp/pt78t4rs0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D', 13, '2020-06-09 14:59:17', '2020-06-09 14:59:17')[0m
+  ↳ app/controllers/api/posts_controller.rb:11
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:11
+Completed 200 OK in 102ms (Views: 0.8ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-09 23:59:24 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 00:00:03 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 00:00:10 +0900
+Processing by Api::PostsController#index as JSON
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 00:01:10 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 28ms (Views: 10.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 09:53:22 +0900
+  [1m[35m (2.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (6.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 12ms (Views: 4.7ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 09:54:28 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:15:56 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:19:17 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:24:16 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:25:03 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 30ms (Views: 12.8ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-10 10:25:15 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-10 10:25:17 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:25:19 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:26:02 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:26:22 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:27:45 +0900
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 48ms (Views: 16.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:27:46 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:28:20 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+  [1m[35m (1.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` ORDER BY `posts`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:30:07 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:30:11 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:31:43 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 10:33:21 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:33:34 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:33:58 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:34:40 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 10:35:02 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 10:35:02 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 10:35:02 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 10:36:22 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 10:40:16 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 10:41:07 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 11:00:35 +0900
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 11:01:29 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 11:01:29 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 11:03:18 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.2 at 2020-06-10 11:28:19 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 11:28:23 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:29:09 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (96.86ms)
+Completed 200 OK in 206ms (Views: 181.3ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:35:12 +0900
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.83ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 11:35:52 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.32ms)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 11:42:20 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.61ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:43:03 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (94.99ms)
+Completed 200 OK in 145ms (Views: 127.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:52:29 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (74.81ms)
+Completed 200 OK in 114ms (Views: 98.2ms | ActiveRecord: 4.1ms)
+
+
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT GET_LOCK('5277929974492897470', 0)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+Migrating to AddShopCategoryToPosts (20200610025346)
+  [1m[35m (76.3ms)[0m  [1m[35mALTER TABLE `posts` ADD `shop_category` varchar(255)[0m
+  ↳ db/migrate/20200610025346_add_shop_category_to_posts.rb:3
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200610025346')[0m
+  ↳ bin/rails:4
+  [1m[35m (9.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('5277929974492897470')[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:56:40 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (97.03ms)
+Completed 200 OK in 144ms (Views: 124.1ms | ActiveRecord: 4.3ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` ORDER BY `posts`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Destroy (2.0ms)[0m  [1m[31mDELETE FROM `posts` WHERE `posts`.`id` = 1[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:57:32 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-10 11:59:39 +0900
+Processing by Api::PostsController#create as JSON
+  Parameters: {"title"=>"", "content"=>"美味しそうです！誰か一緒に行きましょう！", "shop_name"=>"お魚ときどきお肉 梅田店", "shop_category"=>"鮮魚と地酒セルフ飲放題", "shop_address"=>"〒530-0018 大阪府大阪市北区小松原町4-6 3F", "shop_access"=>"阪急線大阪梅田駅から徒歩4分", "shop_url"=>"https://r.gnavi.co.jp/egc7ez2f0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/egc7ez2f0000/t_0n62.jpg", "user_id"=>13, "post"=>{"title"=>"", "content"=>"美味しそうです！誰か一緒に行きましょう！", "shop_name"=>"お魚ときどきお肉 梅田店", "shop_address"=>"〒530-0018 大阪府大阪市北区小松原町4-6 3F", "shop_access"=>"阪急線大阪梅田駅から徒歩4分", "shop_url"=>"https://r.gnavi.co.jp/egc7ez2f0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/egc7ez2f0000/t_0n62.jpg", "user_id"=>13, "shop_category"=>"鮮魚と地酒セルフ飲放題"}}
+Unpermitted parameters: :shop_category, :shop_image_url, :format, :post
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.95ms)
+Completed 200 OK in 94ms (Views: 1.9ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:59:46 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 11:59:50 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 11:59:59 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-10 12:01:25 +0900
+Processing by Api::PostsController#create as JSON
+  Parameters: {"title"=>"", "content"=>"美味しそうです！誰か一緒に行きましょう！", "shop_name"=>"お魚ときどきお肉 梅田店", "shop_category"=>"鮮魚と地酒セルフ飲放題", "shop_address"=>"〒530-0018 大阪府大阪市北区小松原町4-6 3F", "shop_access"=>"阪急線大阪梅田駅から徒歩4分", "shop_url"=>"https://r.gnavi.co.jp/egc7ez2f0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/egc7ez2f0000/t_0n62.jpg", "user_id"=>13, "post"=>{"title"=>"", "content"=>"美味しそうです！誰か一緒に行きましょう！", "shop_name"=>"お魚ときどきお肉 梅田店", "shop_address"=>"〒530-0018 大阪府大阪市北区小松原町4-6 3F", "shop_access"=>"阪急線大阪梅田駅から徒歩4分", "shop_url"=>"https://r.gnavi.co.jp/egc7ez2f0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/egc7ez2f0000/t_0n62.jpg", "user_id"=>13, "shop_category"=>"鮮魚と地酒セルフ飲放題"}}
+Unpermitted parameters: :shop_category, :shop_image_url, :format, :post
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `shop_name`, `shop_address`, `shop_access`, `shop_url`, `user_id`, `created_at`, `updated_at`) VALUES ('', '美味しそうです！誰か一緒に行きましょう！', 'お魚ときどきお肉 梅田店', '〒530-0018 大阪府大阪市北区小松原町4-6 3F', '阪急線大阪梅田駅から徒歩4分', 'https://r.gnavi.co.jp/egc7ez2f0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D', 13, '2020-06-10 03:01:26', '2020-06-10 03:01:26')[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (38.96ms)
+Completed 200 OK in 93ms (Views: 46.9ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:01:34 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.59ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.2ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` ORDER BY `posts`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Destroy (0.8ms)[0m  [1m[31mDELETE FROM `posts` WHERE `posts`.`id` = 2[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-10 12:06:32 +0900
+  
+SyntaxError (/app/app/controllers/api/posts_controller.rb:26: syntax error, unexpected ',', expecting =>
+...　:shop_category, :shop_address, :shop_access, :shop_url, :sh...
+...                                ^):
+  
+app/controllers/api/posts_controller.rb:26: syntax error, unexpected ',', expecting =>
+Started GET "/" for 192.168.144.1 at 2020-06-10 12:06:43 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-10 12:06:44 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-10 12:06:44 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.144.1 at 2020-06-10 12:06:44 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-5.2.4.3/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-10 12:06:59 +0900
+Processing by Api::PostsController#create as JSON
+  Parameters: {"title"=>"", "content"=>"美味しそうです!誰か一緒に行きましょう!", "shop_name"=>"旬魚鮮肉×産地直営 北海道幾蔵 上野本店", "shop_category"=>"旬魚鮮肉×産地直営", "shop_address"=>"〒110-0005 東京都台東区上野2-8-4 B1", "shop_access"=>"ＪＲ上野駅から徒歩3分", "shop_url"=>"https://r.gnavi.co.jp/pt78t4rs0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/pt78t4rs0000/t_0n68.jpg", "user_id"=>13, "post"=>{"title"=>"", "content"=>"美味しそうです!誰か一緒に行きましょう!", "shop_name"=>"旬魚鮮肉×産地直営 北海道幾蔵 上野本店", "shop_address"=>"〒110-0005 東京都台東区上野2-8-4 B1", "shop_access"=>"ＪＲ上野駅から徒歩3分", "shop_url"=>"https://r.gnavi.co.jp/pt78t4rs0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/pt78t4rs0000/t_0n68.jpg", "user_id"=>13, "shop_category"=>"旬魚鮮肉×産地直営"}}
+Unpermitted parameters: :shop_image_url, :format, :post
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `shop_name`, `shop_address`, `shop_access`, `shop_url`, `user_id`, `created_at`, `updated_at`, `shop_category`) VALUES ('', '美味しそうです!誰か一緒に行きましょう!', '旬魚鮮肉×産地直営 北海道幾蔵 上野本店', '〒110-0005 東京都台東区上野2-8-4 B1', 'ＪＲ上野駅から徒歩3分', 'https://r.gnavi.co.jp/pt78t4rs0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D', 13, '2020-06-10 03:06:59', '2020-06-10 03:06:59', '旬魚鮮肉×産地直営')[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (54.42ms)
+Completed 200 OK in 112ms (Views: 62.3ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:07:07 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.04ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:08:16 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.7ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:08:38 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.12ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.4ms)
+
+
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 11[0m
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` ORDER BY `posts`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Destroy (0.9ms)[0m  [1m[31mDELETE FROM `posts` WHERE `posts`.`id` = 3[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:09:37 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 24ms (Views: 6.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-10 12:10:02 +0900
+Processing by Api::PostsController#create as JSON
+  Parameters: {"title"=>"", "content"=>"美味しそうです！誰か一緒に行きましょう！", "shop_name"=>"全席個室×旬鮮魚×新潟地酒 佐渡ヶ島へ渡れ 名駅店", "shop_category"=>"名駅 個室 海鮮居酒屋", "shop_address"=>"〒450-0002 愛知県名古屋市中村区名駅3-22-8 大東海ビルB1", "shop_access"=>"ＪＲ名古屋駅から徒歩5分", "shop_url"=>"https://r.gnavi.co.jp/brtzbzx40000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/brtzbzx40000/t_0000.jpg", "user_id"=>13, "post"=>{"title"=>"", "content"=>"美味しそうです！誰か一緒に行きましょう！", "shop_name"=>"全席個室×旬鮮魚×新潟地酒 佐渡ヶ島へ渡れ 名駅店", "shop_address"=>"〒450-0002 愛知県名古屋市中村区名駅3-22-8 大東海ビルB1", "shop_access"=>"ＪＲ名古屋駅から徒歩5分", "shop_url"=>"https://r.gnavi.co.jp/brtzbzx40000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/brtzbzx40000/t_0000.jpg", "user_id"=>13, "shop_category"=>"名駅 個室 海鮮居酒屋"}}
+Unpermitted parameters: :format, :post
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `shop_name`, `shop_address`, `shop_access`, `shop_url`, `shop_image_url`, `user_id`, `created_at`, `updated_at`, `shop_category`) VALUES ('', '美味しそうです！誰か一緒に行きましょう！', '全席個室×旬鮮魚×新潟地酒 佐渡ヶ島へ渡れ 名駅店', '〒450-0002 愛知県名古屋市中村区名駅3-22-8 大東海ビルB1', 'ＪＲ名古屋駅から徒歩5分', 'https://r.gnavi.co.jp/brtzbzx40000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D', 'https://rimage.gnst.jp/rest/img/brtzbzx40000/t_0000.jpg', 13, '2020-06-10 03:10:02', '2020-06-10 03:10:02', '名駅 個室 海鮮居酒屋')[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (55.75ms)
+Completed 200 OK in 166ms (Views: 82.1ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:10:07 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.54ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:15:48 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.17ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:16:48 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.96ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:18:10 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.68ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:20:03 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.72ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:20:53 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.05ms)
+Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:22:05 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.56ms)
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:23:46 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.31ms)
+Completed 200 OK in 16ms (Views: 13.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:23:58 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.8ms)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 12:27:58 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.9ms)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:28:17 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.8ms)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:28:20 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.27ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:32:18 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.84ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:40:56 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.03ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:51:28 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.22ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:52:18 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.42ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 12:55:46 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.82ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:23:48 +0900
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.82ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:29:59 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.51ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:30:30 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (2.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.44ms)
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:31:14 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.06ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:31:35 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.37ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:34:28 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.6ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:35:03 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.76ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:36:06 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.4ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:37:22 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.63ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:37:45 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.54ms)
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:40:53 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.03ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:41:14 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.42ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-10 13:46:24 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.31ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:58:39 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.69ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:58:40 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.74ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:58:48 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.25ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/api/posts" for 192.168.144.1 at 2020-06-10 13:59:39 +0900
+Processing by Api::PostsController#create as JSON
+  Parameters: {"title"=>"", "content"=>"この店のウニは絶品みたいですね！", "shop_name"=>"【全席個室】隠れ海鮮居酒屋 魚京助 新橋駅前店", "shop_category"=>"完全個室 海鮮居酒屋", "shop_address"=>"〒105-0004 東京都港区新橋2-15-18 プラザT2ビル", "shop_access"=>"ＪＲ新橋駅から徒歩3分", "shop_url"=>"https://r.gnavi.co.jp/392mhjwv0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/392mhjwv0000/t_0n7c.jpg", "user_id"=>13, "post"=>{"title"=>"", "content"=>"この店のウニは絶品みたいですね！", "shop_name"=>"【全席個室】隠れ海鮮居酒屋 魚京助 新橋駅前店", "shop_address"=>"〒105-0004 東京都港区新橋2-15-18 プラザT2ビル", "shop_access"=>"ＪＲ新橋駅から徒歩3分", "shop_url"=>"https://r.gnavi.co.jp/392mhjwv0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D", "shop_image_url"=>"https://rimage.gnst.jp/rest/img/392mhjwv0000/t_0n7c.jpg", "user_id"=>13, "shop_category"=>"完全個室 海鮮居酒屋"}}
+Unpermitted parameters: :format, :post
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `shop_name`, `shop_address`, `shop_access`, `shop_url`, `shop_image_url`, `user_id`, `created_at`, `updated_at`, `shop_category`) VALUES ('', 'この店のウニは絶品みたいですね！', '【全席個室】隠れ海鮮居酒屋 魚京助 新橋駅前店', '〒105-0004 東京都港区新橋2-15-18 プラザT2ビル', 'ＪＲ新橋駅から徒歩3分', 'https://r.gnavi.co.jp/392mhjwv0000/?ak=3J8m0cDqHhvcifLZFnFt5zb%2FNAHSG8kDePr8c7yIB58%3D', 'https://rimage.gnst.jp/rest/img/392mhjwv0000/t_0n7c.jpg', 13, '2020-06-10 04:59:39', '2020-06-10 04:59:39', '完全個室 海鮮居酒屋')[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+  [1m[35m (15.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:13
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (1.32ms)
+Completed 200 OK in 31ms (Views: 2.5ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 13:59:47 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.71ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 14:03:10 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.58ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.3 at 2020-06-10 14:04:33 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.9ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 1.1ms)
+
+

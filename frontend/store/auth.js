@@ -59,7 +59,7 @@ export const actions = {
         console.log(res)
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push("/posts")
+        this.$router.push("/users/mypage")
         return res
       }, err => {
         console.log('ログイン失敗しちゃった。' + ' /stores/auth.js')
