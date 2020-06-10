@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   mount_uploader :image, ImageUploader
   has_many :posts
+  has_many :comments
 end

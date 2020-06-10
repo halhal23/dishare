@@ -40,6 +40,7 @@ const config = {
     { src: '~/plugins/axios.js', ssr: false },
     { src: "~plugins/vue2-google-maps.js" },
     { src: '@/plugins/localStorage', ssr: false },
+    { src: '~/plugins/cookie-storage.js' },
   ],
   /*
   ** Nuxt.js dev-modules
