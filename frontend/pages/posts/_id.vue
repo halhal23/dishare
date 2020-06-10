@@ -1,8 +1,6 @@
 <template>
-  <el-main style="padding-top: 70px;">
-    <div style="display: flex;justify-content: center; flex-wrap: wrap;">
+  <el-main class="" style="padding-top: 70px;">
       <postCard :post="post"/>
-    </div>
   </el-main>
 </template>
 
