@@ -1,6 +1,21 @@
 <template>
-  <el-main class="" style="padding-top: 70px;">
+  <el-main class="post_show_wrapper">
       <postCard :post="post"/>
+      <div class="comments_wrapper">
+        <el-timeline>
+          <el-timeline-item :timestamp="c.created_at" placement="top" v-for="c in post.comments" :key="c.id">
+            <el-card>
+              <h4 style="margin-bottom: 20px;">{{ c.message }}</h4>
+              <p style="display: flex; align-items: center;">
+                <el-avatar style="margin-right: 20px;" :size="30" :src="c.user.image.url"></el-avatar>
+                {{ c.user.name }}
+              </p>
+            </el-card>
+          </el-timeline-item>
+        </el-timeline>
+        <el-input type="textarea" :rows="2"></el-input>
+        <el-button type="primary" style="margin-top: 10px;">Comment</el-button>
+      </div>
   </el-main>
 </template>
 
@@ -27,3 +42,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.post_show_wrapper {
+  padding-top: 70px;
+  display: flex;
+  justify-content: space-around;
+}
+</style>
