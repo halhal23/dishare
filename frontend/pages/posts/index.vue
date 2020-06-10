@@ -2,7 +2,7 @@
   <el-main>
     <h2 @click="getPost" style="padding-top: 70px;"></h2>
     <div class="posts_wrapper">
-      <div v-for="(post, index) in posts" :key="post.id" class="post_card">
+      <div v-for="post in posts" :key="post.id" class="post_card">
         <el-row class="author" style="padding: 10px; border-bottom: 1px solid #aaa;">
           <el-col :span="12" :xs="24" style="display: flex; align-items: center;">
             <el-avatar :src="post.user.image.url" :size="40" style="margin-right: 30px;"></el-avatar>
@@ -16,16 +16,24 @@
           <p>{{ post.content }}</p>
         </div>
         <div style="padding: 20px;">
-          <div class="shop" style="display: flex; cursor: pointer;border: 1px solid #ccc;" v-popover:popover>
+          <div class="shop" style="display: flex;border: 1px solid #ccc;" v-popover:post.name>
             <el-image style="width: 100px; height: 100px" :src="post.shop_image_url"></el-image>
             <div style="width: 100%;">
               <p style="font-size: 14px;border-bottom: 1px solid #aaa; width: 100%;">{{ post.shop_name }}</p>
               <p>{{ post.shop_access }}</p>
               <el-tag type="warning" size="mini">{{ post.shop_category }}</el-tag>
+              <el-popover
+                placement="bottom"
+                width="350"
+                trigger="click">
+                  <p>{{ post.shop_address }}</p>
+                  <a :href="post.shop_url" style="padding: 0;" target="_blank">詳しくはこちら</a>
+                  <el-button slot="reference">その他の情報</el-button>
+              </el-popover>
             </div>
           </div>
           <el-popover
-            ref="popover"
+            :ref="post.shop_name"
             placement="bottom"
             width="350"
             trigger="click">
@@ -41,9 +49,16 @@
 <script>
 export default {
   async asyncData( app ){
-    const data =  await app.$axios.$get(process.env.apiBaseUrl + '/api/posts')
-    console.log('asyncData')
-    console.log(data)
+    let data;
+    if (process.client){
+      data =  await app.$axios.$get(process.env.browserBaseUrl + '/api/posts')
+      console.log('asyncData client side')
+      console.log(data)
+    } else {
+      data =  await app.$axios.$get(process.env.apiBaseUrl + '/api/posts')
+      console.log('asyncData server side')
+      console.log(data)
+    }
     return {
       posts: data,
       visible: false
@@ -52,7 +67,7 @@ export default {
   methods: {
     getPost(){
       console.log('getPost')
-      this.$axios.$get(process.env.browserBaseUrl + '/api/posts').then(res => {
+      this.$axios.$get(process.env.apiBaseUrl + '/api/posts').then(res => {
         console.log(res)
       }).catch(err => {
         console.log(err)
