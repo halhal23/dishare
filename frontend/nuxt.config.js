@@ -60,9 +60,7 @@ const config = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    proxy: true,
-    host: 'localhost',
-    port: 3000
+    proxy: true
   },
   proxy: {
     '/api': {
