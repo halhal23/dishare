@@ -12973,3 +12973,47 @@ Processing by Rails::InfoController#routes as HTML
 Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mRelationship Create (1.5ms)[0m  [1m[32mINSERT INTO `relationships` (`user_id`, `follow_id`, `created_at`, `updated_at`) VALUES (1, 13, '2020-06-11 05:31:46', '2020-06-11 05:31:46')[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mRelationship Create (3.9ms)[0m  [1m[32mINSERT INTO `relationships` (`user_id`, `follow_id`, `created_at`, `updated_at`) VALUES (13, 1, '2020-06-11 05:31:46', '2020-06-11 05:31:46')[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mRelationship Create (1.0ms)[0m  [1m[32mINSERT INTO `relationships` (`user_id`, `follow_id`, `created_at`, `updated_at`) VALUES (1, 2, '2020-06-11 05:31:46', '2020-06-11 05:31:46')[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ db/seeds.rb:26
+  [1m[36mRelationship Create (0.9ms)[0m  [1m[32mINSERT INTO `relationships` (`user_id`, `follow_id`, `created_at`, `updated_at`) VALUES (2, 1, '2020-06-11 05:31:46', '2020-06-11 05:31:46')[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26

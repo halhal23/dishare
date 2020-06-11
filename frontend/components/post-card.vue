@@ -33,7 +33,7 @@
       <nuxt-link :to="{path: `/posts/${post.id}`}" style="background: #acf;" class="post_icon">
         <i class="el-icon-info" style="font-size: 30px;"></i>
       </nuxt-link>
-      <nuxt-link to="#" style="background: #fac;" class="post_icon">
+      <nuxt-link :to="{path: `/users/${post.user.id}`}" style="background: #fac;" class="post_icon">
         <i class="el-icon-user" style="font-size: 30px;"></i>
       </nuxt-link>
       <!-- <p style="margin-left: auto;">コメントを書く</p> -->

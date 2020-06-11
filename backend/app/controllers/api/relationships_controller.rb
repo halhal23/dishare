@@ -1,9 +1,9 @@
 module Api
   class RelationshipsController < ApplicationController
-    before_action :set_user
+    before_action :set_user, except: [:test]
 
     def create
-      following = current_user.follow(@user)
+      following = @current_user.follow(@user)
       if following.save
         render json: @user
       else
@@ -12,7 +12,7 @@ module Api
     end
   
     def destroy
-      following = current_user.unfollow(@user)
+      following = @current_user.unfollow(@user)
       if following.destroy
         render json: @user
       else
@@ -21,11 +21,13 @@ module Api
     end
 
     def test
-      render json: { msg: "ok test pass"}
+      current_user = User.find(params[:user_id])
+      render json: { msg: "ok test pass", current_user: current_user}
     end
   
     private
-    def
+    def set_user
+      @current_user = User.find(params[:user_id])
       @user = User.find(params[:follow_id])
     end
   end
