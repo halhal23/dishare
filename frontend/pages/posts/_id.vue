@@ -25,17 +25,9 @@
 <script>
 import postCard from '~/components/post-card.vue'
 export default {
-  async asyncData(app){
-    let data;
-    if (process.client){
-      data =  await app.$axios.$get(process.env.browserBaseUrl + `/api/posts/${app.params.id}`)
-      console.log('asyncData client side')
-      console.log(data)
-    } else {
-      data =  await app.$axios.$get(process.env.apiBaseUrl + `/api/posts/${app.params.id}`)
-      console.log('asyncData server side')
-      console.log(data)
-    }
+  async asyncData({ $axios, params }){
+    const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
+    const data = await $axios.$get(baseUrl + `/api/posts/${params.id}`)
     return {
       post: data
     }
