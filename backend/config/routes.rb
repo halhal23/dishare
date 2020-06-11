@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :posts
     resources :comments, only: [:create, :destroy]
+
+    get 'test', to: 'relationships#test'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
