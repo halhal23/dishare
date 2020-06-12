@@ -10,3 +10,5 @@ module Api
     end
   end
 end
+
+# render json: [@posts.to_json(:include => [:comments, :images]), [user: @user.to_json]]

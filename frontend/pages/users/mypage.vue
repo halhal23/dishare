@@ -4,10 +4,10 @@
       <div slot="header" class="clearfix">
         <span>My Profile</span>
         <el-button 
-          style="float: right; padding: 3px 0" 
+          style="float: right; padding: 3px 0;font-size: 15px;color: #E6A23C;" 
           type="text" 
           @click="onModal(true)"
-        >EDIT</el-button>
+        ><i class="el-icon-edit"></i> EDIT</el-button>
       </div>
       <div class="text item">
         <div>

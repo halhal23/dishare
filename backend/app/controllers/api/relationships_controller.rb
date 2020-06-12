@@ -24,6 +24,12 @@ module Api
       current_user = User.find(params[:user_id])
       render json: { msg: "ok test pass", current_user: current_user}
     end
+
+    # ログインユーザーが指定したユーザーをフォローしているかの真偽値を返す。
+    def isFollowed
+      isFollowed = @current_user.following?(@user)
+      render json: isFollowed
+    end
   
     private
     def set_user

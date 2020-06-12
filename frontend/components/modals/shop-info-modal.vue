@@ -1,7 +1,7 @@
 <template>
     <el-dialog class="showInfoDialog" :title="shop.name" :visible.sync="$props.shopInfoModalVisible" :before-close="handleClose">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="詳細情報" name="first">
+        <el-tab-pane label="Info" name="first">
 
           <p class="infoTitle">
             <i class="el-icon-s-help"></i>
@@ -64,16 +64,21 @@
           <p class="infoContent" v-else>記載なし</p>
           
         </el-tab-pane>
-        <el-tab-pane label="マップ" name="second">
+        <el-tab-pane label="Map" name="second">
           <shopMap />
         </el-tab-pane>
-        <el-tab-pane label="シェア" name="third">
-          <div @click="test">sfsdfsfsdfsdfsdf</div>
+        <el-tab-pane label="Share" name="third">
+          <!-- <div @click="test">sfsdfsfsdfsdfsdf</div> -->
           <el-form>
-            <el-form-item label="content" :label-width="formLabelWidth">
+            <!-- <el-form-item label="content" :label-width="formLabelWidth">
               <el-input type="textarea" v-model="form.content" ></el-input>
-            </el-form-item>
-              <el-button @click="postsCreate">create</el-button>
+            </el-form-item> -->
+            <el-divider content-position="left">
+              <h3 style="margin: 20px 0;letter-spacing: 4px;font-family: cursive;">Write a message</h3>
+            </el-divider>
+            <el-input type="textarea" v-model="form.content" ></el-input>
+            <el-button @click="postsCreate" style="margin: 20px 0;">Submit</el-button>
+           
           </el-form>
         </el-tab-pane>
       </el-tabs>
