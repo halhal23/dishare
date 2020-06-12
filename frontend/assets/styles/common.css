@@ -36,8 +36,14 @@ a {
   flex-direction: column;
 }
 
+h1 {
+  font-family: cursive;
+  letter-spacing: 2px;
+}
+
 header .el-menu-item {
   padding: 0;
+  letter-spacing: 3px;
 }
 
 .el-message-box {

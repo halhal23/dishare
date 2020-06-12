@@ -87,13 +87,6 @@ export default {
       })
     },
     success(position){
-      const loading = this.$loading({
-        lock: true,
-        text: 'Loading',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)'
-      });
-
       this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
         params: {
@@ -104,7 +97,6 @@ export default {
           range: 5
         }
       }).then( res => {
-        loading.close();
         this.setShops(res.rest)
         
         this.$notify({

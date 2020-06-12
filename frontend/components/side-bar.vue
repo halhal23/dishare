@@ -6,8 +6,14 @@
             <i class="icon el-icon-fork-spoon"></i>
           </nuxt-link>
         </el-menu-item>
-        <el-menu-item index="2"><i class="icon el-icon-user-solid"></i></el-menu-item>
-        <el-menu-item index="3"><i class="icon el-icon-picture-outline"></i></el-menu-item>
+        <el-menu-item index="2">
+          <i class="icon el-icon-user-solid"></i>
+        </el-menu-item>
+        <el-menu-item index="3">
+          <nuxt-link to="/posts/new">
+            <i class="icon el-icon-search"></i>
+          </nuxt-link>
+        </el-menu-item>
         <el-menu-item index="4"><i class="icon el-icon-message-solid"></i></el-menu-item>
         <el-menu-item index="5"><i class="icon el-icon-info"></i></el-menu-item>
       </el-menu>

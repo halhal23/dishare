@@ -16,9 +16,9 @@
 
         <shopSearchForm /> <!-- レストラン検索フォームのコンポーネント -->
 
-        <p style="font-family: dnp-shuei-gothic-gin-std;">
-          まずはキーワードを入力して、<br>
-          レストランを検索してみましょう。
+        <p style="font-family: cursive;font-size: 30px;">
+          First, enter the keyword, <br>
+          Let's search for a restaurant.
         </p>
       </el-col>
     </el-row>
