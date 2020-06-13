@@ -68,18 +68,20 @@
           <shopMap />
         </el-tab-pane>
         <el-tab-pane label="Share" name="third">
-          <!-- <div @click="test">sfsdfsfsdfsdfsdf</div> -->
-          <el-form>
-            <!-- <el-form-item label="content" :label-width="formLabelWidth">
-              <el-input type="textarea" v-model="form.content" ></el-input>
-            </el-form-item> -->
+          <el-form v-if="$store.state.auth.isLoggedIn">
             <el-divider content-position="left">
               <h3 style="margin: 20px 0;letter-spacing: 4px;font-family: cursive;">Write a message</h3>
             </el-divider>
-            <el-input type="textarea" v-model="form.content" ></el-input>
+            <el-input type="textarea" :rows="5" v-model="form.content" ></el-input>
             <el-button @click="postsCreate" style="margin: 20px 0;">Submit</el-button>
-           
           </el-form>
+          <div v-else>
+            <p>Login to share your restaurant!</p>
+            <p>You can search with more detailed conditions！</p>
+            <el-divider content-position="left"><i class="el-icon-goblet-square-full"></i></el-divider>
+            <p>レストランをシェアするには、ログインしてください！</p>
+            <p>その他より詳しい条件での検索が可能です！</p>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </el-dialog>

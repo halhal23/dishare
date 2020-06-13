@@ -8,6 +8,7 @@
         <el-option label="近くの店を探す" value="1"></el-option>
         <el-option label="人気店を探す" value="2"></el-option>
         <el-option label="指定せず検索" value="3"></el-option>
+        <el-option label="検索結果をクリア" value="4"></el-option>
       </el-select>
     </el-col>
     <el-col :span="8" :lg="4">
@@ -66,6 +67,8 @@ export default {
           console.log(3)
           this.getFirst()
           break
+        case '4':
+          this.clearShops()
       }
     },
     getShops(){
@@ -110,6 +113,10 @@ export default {
         console.log(err)
       })
       console.log('success!! geolocation');
+    },
+    clearShops(){
+      console.log('clear')
+      this.setShops(null)
     },
     ...mapMutations({ 
       setShops: 'shops/setShops',

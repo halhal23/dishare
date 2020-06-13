@@ -17311,3 +17311,321 @@ Processing by Api::PostsController#index as JSON
 Completed 200 OK in 44ms (Views: 38.0ms | ActiveRecord: 5.1ms)
 
 
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-13 01:01:01 +0900
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'rinrin@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'rinrin' AND `users`.`id` != 10 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-12 16:01:01' WHERE `users`.`id` = 10[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 152ms (Views: 23.9ms | ActiveRecord: 12.9ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-13 10:37:55 +0900
+  [1m[35m (1.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260},\"ekqcTjzyAUPIM3C4rGYA6Q\":{\"token\":\"$2a$10$CKmDf0tzqm1wu5uwTOg/OuYIo6XEaTKKZtXPLEQEkuuPM91syIF.G\",\"expiry\":1593221875}}', `updated_at` = '2020-06-13 01:37:55' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 40, `current_sign_in_at` = '2020-06-13 01:37:55', `last_sign_in_at` = '2020-06-10 14:11:44', `updated_at` = '2020-06-13 01:37:56' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 283ms (Views: 2.4ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-13 10:38:04 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (145.22ms)
+Completed 200 OK in 292ms (Views: 255.8ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/api/users/13" for 192.168.144.1 at 2020-06-13 10:38:07 +0900
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/users_controller.rb:8
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 13[0m
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 13[0m
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 13[0m
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:9
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (65.97ms)
+Completed 200 OK in 73ms (Views: 63.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/isFollowed?user_id=1&follow_id=13" for 192.168.144.1 at 2020-06-13 10:38:07 +0900
+Processing by Api::RelationshipsController#isFollowed as JSON
+  Parameters: {"user_id"=>"1", "follow_id"=>"13"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/relationships_controller.rb:36
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/relationships_controller.rb:37
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 1 AND `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/models/user.rb:34
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with TrueClass (0.07ms)
+Completed 200 OK in 92ms (Views: 52.7ms | ActiveRecord: 10.4ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-13 11:22:04 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260}}', `updated_at` = '2020-06-13 02:22:04' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 80ms (Views: 0.9ms | ActiveRecord: 7.3ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-13 11:36:12 +0900
+  [1m[35m (1.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260},\"m8Sm5CxqGZLRnJmKxZjqIg\":{\"token\":\"$2a$10$VA6LuijpBMIBXBg2UkWO8OyINSCwUtWurEnwQDVtd27HEAfdDuvDa\",\"expiry\":1593225372}}', `updated_at` = '2020-06-13 02:36:12' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 41, `current_sign_in_at` = '2020-06-13 02:36:12', `last_sign_in_at` = '2020-06-13 01:37:55' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 203ms (Views: 0.8ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-13 11:36:56 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (34.35ms)
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/users/13" for 192.168.144.1 at 2020-06-13 11:37:02 +0900
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/users_controller.rb:8
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 13[0m
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 13[0m
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 13[0m
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:9
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (13.95ms)
+Completed 200 OK in 19ms (Views: 12.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/isFollowed?user_id=1&follow_id=13" for 192.168.144.1 at 2020-06-13 11:37:02 +0900
+Processing by Api::RelationshipsController#isFollowed as JSON
+  Parameters: {"user_id"=>"1", "follow_id"=>"13"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/relationships_controller.rb:36
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/api/relationships_controller.rb:37
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 1 AND `users`.`id` = 13 LIMIT 1[0m
+  ↳ app/models/user.rb:34
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with TrueClass (0.04ms)
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-13 11:37:08 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (41.73ms)
+Completed 200 OK in 48ms (Views: 41.9ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-13 12:07:57 +0900
+  [1m[35m (3.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (34.58ms)
+Completed 200 OK in 38ms (Views: 32.9ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-13 12:10:28 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (36.97ms)
+Completed 200 OK in 42ms (Views: 37.1ms | ActiveRecord: 4.0ms)
+
+
