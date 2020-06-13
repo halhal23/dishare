@@ -1,0 +1,44 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecs: circleci/aws-ecs@1.1.0
+  aws-cli: circleci/aws-cli@0.1.16
+jobs:
+  test:
+    machine:
+      image: circleci/classic:edge
+    environment:
+      RAILS_ENV: test
+      NODE_ENV: test
+    steps:
+      - checkout
+      - run:
+          name: update docker-compose
+          command: pip install docker-compose==1.22.0
+      - run:
+          name: check docker-compose version
+          command: docker-compose --version
+      - run:
+          name: docker-compose build
+          command: docker-compose -p nuxt_on_rails_on_docker build
+      - run:
+          name: docker-compose -p nuxt_on_rails_on_docker run --rm backend bundle install --jobs=4
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm backend bundle install --jobs=4
+      - run:
+          name: docker-compose -p nuxt_on_rails_on_docker run --rm frontend yarn install
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm frontend yarn install
+      - run:
+          name: docker-compose up
+          command: docker-compose -p nuxt_on_rails_on_docker up -d
+      - run:
+          name: frontend test 
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm frontend yarn test
+      - run:
+          name: docker-compose down
+          command: docker-compose down
+workflows:
+  version: 2.1
+  front-back-test:
+    jobs:
+      - test
+
