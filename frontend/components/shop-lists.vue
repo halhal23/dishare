@@ -1,5 +1,5 @@
 <template>
-  <el-main class="list-container">
+  <el-main class="list-container" v-if="shops">
     <div class="searched-list" > 
       <!-- <shopLists v-for="shop in shops" :key="shop.name" class="shop-card" :shopInfo="shop"/> -->
       <el-card v-for="shop in shops" :key="shop.name" class="shop-card">
@@ -59,11 +59,13 @@ export default {
 <style>
 .list-container {
   width: 100%;
-  background: rgb(153, 81, 13);
-  background-image: url(~@/static/images/dishare-main-logo.png);
+  /* background: rgb(88, 55, 5); */
+  background: linear-gradient(to right,#ffa90a,#ffe9c1);
+  /* background-image: url(~@/static/images/dishare-main-logo.png);
   background-size: 70%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
+  padding-top: 60px;
 }
 .searched-list {
   width: 100%;
