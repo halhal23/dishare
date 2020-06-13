@@ -17629,3 +17629,101 @@ Processing by Api::PostsController#index as JSON
 Completed 200 OK in 42ms (Views: 37.1ms | ActiveRecord: 4.0ms)
 
 
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-13 12:17:01 +0900
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"xgVcARl1bPnRvqUHaH9U1A\":{\"token\":\"$2a$10$xpdBcxFH.icZwTF0LIK.qOPHSff1jc4Ae2yD2hOdAKm/dzCIWCPOO\",\"expiry\":1592056172},\"psuPZuGGCBdoGtD_hnFoGg\":{\"token\":\"$2a$10$QiMwNpVVqxU8zV1B3aeKJuPQWzNdPbTeuWK0OC4LSBfzbzqNxE8Wm\",\"expiry\":1592056976},\"H258YZ9a9RYyAorVwcKAEQ\":{\"token\":\"$2a$10$0lcArtNAPDj29/kxLbnineAVoByEpuXL2/z7mbuuJSuTVqmzuWqky\",\"expiry\":1592060774},\"sBmeSIylAH5FSDTy1YZLeQ\":{\"token\":\"$2a$10$08xjk3ylUHmkL1WV.Rvfu.JHtPhC9wczrOhfvfeuj7A.MavkYLd7u\",\"expiry\":1592060871},\"uDYj5NUJbGPsJpbEPM9bBg\":{\"token\":\"$2a$10$YQnkm.dj.G7ZMbUBrlphWe03RkKjxMpjo/qVPVpsQnvDxqeNg7pjO\",\"expiry\":1592103584},\"CTfXLCTjwIdPFcUr1wIQ9A\":{\"token\":\"$2a$10$8YUixjtBd4SNTtfSt3P.oOzCFZpz4JYAZFgrxkgb/YOYYltc9t6o2\",\"expiry\":1592103630},\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260}}', `updated_at` = '2020-06-13 03:17:01' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 79ms (Views: 1.9ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-13 12:18:08 +0900
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"reopon", "email"=>"reopon@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000559e1d5bdd88 @tempfile=#<Tempfile:/tmp/RackMultipart20200613-1-1w3iaq8.jpeg>, @original_filename="icon2.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"icon2.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reopon@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'reopon' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `image`, `email`, `created_at`, `updated_at`) VALUES ('reopon@gmail.com', '$2a$11$aLGx7fFwO2x16Ktsogc4geJCl6dyBXoT1Nm73XUyipKNtMgL7ZeuG', 'reopon', 'icon2.jpeg', 'reopon@gmail.com', '2020-06-13 03:18:09', '2020-06-13 03:18:09')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'reopon' AND `users`.`id` != 14 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"BEXm9fF9IS3LWrcbbyU0gw\":{\"token\":\"$2a$10$miWrH2E3P.WoVClWx3mIf.FKvrIPKHsiahwTKpjy7Ce0rhBGHE1yG\",\"expiry\":1593227889}}' WHERE `users`.`id` = 14[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 14 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 200 OK in 1230ms (Views: 46.4ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/api/posts" for 192.168.144.1 at 2020-06-13 12:18:18 +0900
+Processing by Api::PostsController#index as JSON
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/posts_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (36.39ms)
+Completed 200 OK in 41ms (Views: 35.5ms | ActiveRecord: 5.5ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-13 13:10:40 +0900
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'reopon@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'reopon' AND `users`.`id` != 14 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-13 04:10:40' WHERE `users`.`id` = 14[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 91ms (Views: 1.4ms | ActiveRecord: 6.3ms)
+
+
