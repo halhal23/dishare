@@ -25,25 +25,19 @@ export const actions = {
     form.append("password", formData.password)
     form.append("password_confirmation", formData.password_confirmation)
     if (formData.imageFile !== null ){
-      console.log('image not null')
       form.append("image", formData.imageFile)
     }
-    console.log(formData)
     await this.$axios.$post(process.env.browserBaseUrl + '/api/auth', form,{
       headers: {
           "Content-Type": "multipart/form-data"
       }
     })
       .then( res => {
-        console.log('新規登録成功' + ' /stores/auth.js')
-        console.log('ログイン成功' + ' /stores/auth.js')
-        console.log(res)
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
         this.$router.push("/users/mypage")
         return res
       }, err => {
-        console.log('ログイン失敗' + ' /stores/auth.js')
         console.log(err)
         return err
       })
@@ -55,8 +49,6 @@ export const actions = {
       password: formData.password,
       password_confirmation: formData.password
     }).then( res => {
-        console.log('ログインできたよ' + ' /stores/auth.js')
-        console.log(res)
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
         this.$router.push("/users/mypage")
@@ -69,14 +61,11 @@ export const actions = {
   },
   async logout({ commit, store }){
     await this.$axios.$delete(process.env.browserBaseUrl + '/api/auth/sign_out').then( res => {
-      console.log('ログアウト成功')
       commit('setCurrentUser', null)
       commit('setIsLoggedIn', false)
       this.$router.push("/")
-      console.log(res)
       return res
     }).catch( err => {
-      console.log('ログアウト失敗')
       console.log(err)
       return err
     })

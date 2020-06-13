@@ -72,7 +72,6 @@ export default {
       }
     },
     getShops(){
-      console.log(this)
       if (!navigator.geolocation) {
         alert('Geolocation not supported');
         return;
@@ -100,7 +99,7 @@ export default {
           range: 5
         }
       }).then( res => {
-        this.setShops(res.rest)
+        // this.setShops(res.rest)
         
         this.$notify({
           type: 'success',

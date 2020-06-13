@@ -8,7 +8,11 @@
     "dev": "nuxt",
     "test": "jest",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "build:stg": "cross-env NODE_ENV=\"staging\" nuxt build",
+    "build:prod": "cross-env NODE_ENV=\"production\" nuxt build",
+    "start": "nuxt build && nuxt start",
+    "start:stg": "cross-env NODE_ENV=\"staging\" nuxt build && nuxt start",
+    "start:prod": "cross-env NODE_ENV=\"production\" nuxt build && nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {
