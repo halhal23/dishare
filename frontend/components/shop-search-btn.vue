@@ -22,7 +22,6 @@ export default {
           duration: 3000
         })
         console.log('searched !!')
-        console.log(res)
       }).catch( err => {
         console.log(err)
       })

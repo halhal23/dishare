@@ -50,9 +50,6 @@ export default {
     },
     ...mapMutations({ setShopInfo: 'shops/setShopInfo'})
   },
-  mounted(){
-    console.log(this.shops)
-  }
 }
 </script>
 

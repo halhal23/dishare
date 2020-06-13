@@ -38,7 +38,38 @@ jobs:
           command: docker-compose down
 workflows:
   version: 2.1
-  front-back-test:
+  nuxt-ecr-push:
     jobs:
       - test
-
+      - aws-ecr/build-and-push-image:
+          requires:
+            - test
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          path: './frontend/'
+          dockerfile: Dockerfile.prd
+          repo: dishare-nuxt
+          tag: "latest"
+          filters:
+            branches:
+              only: master
+  rails-ecr-push:
+    jobs:
+      - test
+      - aws-ecr/build-and-push-image:
+          requires:
+            - test
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          path: './backend/'
+          repo: dishare-rails
+          tag: "latest"
+          filters:
+            branches:
+              only: master

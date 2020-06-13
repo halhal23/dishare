@@ -90,4 +90,4 @@ sw.*
 *.swp
 
 # cross-env file
-env.*.js
+env.development.js

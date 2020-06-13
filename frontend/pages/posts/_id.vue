@@ -49,7 +49,6 @@ export default {
       }
       this.$axios.$post(process.env.browserBaseUrl + `/api/comments`, formData).then(res => {
         console.log('res')
-        console.log(res)
         this.post = res
       }).catch(err => {
         console.log(err)
@@ -57,7 +56,6 @@ export default {
     },
     destroyComment(id){
       this.$axios.$delete(process.env.browserBaseUrl + `/api/comments/${id}`).then(res => {
-        console.log(res)
         this.post = res
         this.$router.push(`/posts/${this.post.id}`)
       }).catch(err => {

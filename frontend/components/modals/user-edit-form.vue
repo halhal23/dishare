@@ -55,7 +55,6 @@ export default {
     },
     async updateUser(){
       console.log('update desu')
-      console.log(this)
       // formData
       let formData = new FormData()
       formData.append("name", this.name)
