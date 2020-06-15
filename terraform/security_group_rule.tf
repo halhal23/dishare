@@ -124,10 +124,10 @@ resource "aws_security_group_rule" "dishare-ecs-service-sg-rule4" {
 resource "aws_security_group_rule" "dishare-ecs-service-sg-rule5" {
   description       = "dishare-ecs-service-sg-rule5"
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 0
+  to_port           = 0
   protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
+  source_security_group_id = aws_security_group.dishare-alb-sg.id
   security_group_id = aws_security_group.dishare-ecs-service-sg.id
 }
 resource "aws_security_group_rule" "dishare-ecs-service-sg-rule6" {
@@ -135,6 +135,15 @@ resource "aws_security_group_rule" "dishare-ecs-service-sg-rule6" {
   type              = "ingress"
   from_port         = 3000
   to_port           = 3000
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.dishare-ecs-service-sg.id
+}
+resource "aws_security_group_rule" "dishare-ecs-service-sg-rule7" {
+  description       = "dishare-ecs-service-sg-rule5"
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.dishare-ecs-service-sg.id

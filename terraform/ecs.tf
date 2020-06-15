@@ -43,8 +43,61 @@ data "template_file" "dishare_rails_container" {
     db_username      = "${var.db_username}"
     db_password      = "${var.db_password}"
     rails_master_key = "${var.rails_master_key}"
+    aws_access_key_id = "${var.aws_access_key_id}"
+    aws_secret_access_key = "${var.aws_secret_access_key}"
     log_group       = "${aws_cloudwatch_log_group.dishare-cloudwatch.name}"
   }
+}
+/* the task definition for the db creation */
+data "template_file" "db_create_task" {
+  template = file("${path.module}/tasks/dishare_db_create_task.json")
+
+  vars = {
+    image           = "${var.rails_image}"
+    db_database      = "${var.db_database}"
+    db_host      = "${var.db_host}"
+    db_username      = "${var.db_username}"
+    db_password      = "${var.db_password}"
+    rails_master_key = "${var.rails_master_key}"
+    aws_access_key_id = "${var.aws_access_key_id}"
+    aws_secret_access_key = "${var.aws_secret_access_key}"
+    log_group       = "${aws_cloudwatch_log_group.dishare-cloudwatch.name}"
+  }
+}
+data "template_file" "db_migrate_task" {
+  template = file("${path.module}/tasks/dishare_db_migrate_task.json")
+
+  vars = {
+    image           = "${var.rails_image}"
+    db_database      = "${var.db_database}"
+    db_host      = "${var.db_host}"
+    db_username      = "${var.db_username}"
+    db_password      = "${var.db_password}"
+    rails_master_key = "${var.rails_master_key}"
+    aws_access_key_id = "${var.aws_access_key_id}"
+    aws_secret_access_key = "${var.aws_secret_access_key}"
+    log_group       = "${aws_cloudwatch_log_group.dishare-cloudwatch.name}"
+  }
+}
+resource "aws_ecs_task_definition" "db_create" {
+  family                   = "dishare_db_create"
+  container_definitions    = data.template_file.db_create_task.rendered
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = "256"
+  memory                   = "512"
+  execution_role_arn       = aws_iam_role.ecs_execution_role.arn
+  task_role_arn            = aws_iam_role.ecs_execution_role.arn
+}
+resource "aws_ecs_task_definition" "db_migrate" {
+  family                   = "dishare_db_migrate"
+  container_definitions    = data.template_file.db_migrate_task.rendered
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = "256"
+  memory                   = "512"
+  execution_role_arn       = aws_iam_role.ecs_execution_role.arn
+  task_role_arn            = aws_iam_role.ecs_execution_role.arn
 }
 
 resource "aws_ecs_task_definition" "dishare-nuxt-task" {
@@ -52,8 +105,8 @@ resource "aws_ecs_task_definition" "dishare-nuxt-task" {
   container_definitions    = data.template_file.dishare_nuxt_container.rendered
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = "256"
-  memory                   = "512"
+  cpu                      = "512"
+  memory                   = "1024"
   execution_role_arn       = aws_iam_role.ecs_execution_role.arn
   task_role_arn            = aws_iam_role.ecs_execution_role.arn
 }
@@ -102,7 +155,7 @@ resource "aws_ecs_service" "dishare-nuxt-ecs-service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.dishare_alb_nuxt_tg.arn
     container_name   = "nuxt-container"
-    container_port   = "8080"
+    container_port   = "80"
   }
 }
 resource "aws_ecs_service" "dishare-rails-ecs-service" {
@@ -143,4 +196,6 @@ variable "db_host" {}
 variable "db_username" {}
 variable "db_password" {}
 variable "rails_master_key" {}
+variable "aws_access_key_id" {}
+variable "aws_secret_access_key" {}
 

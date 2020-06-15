@@ -4,11 +4,11 @@
     "image": "${nuxt_image}",
     "portMappings": [
       {
-        "containerPort": 8080,
-        "hostPort": 8080
+        "containerPort": 80
       }
     ],
-    "memory": 300,
+    "memory": 1024,
+    "networkMode": "awsvpc",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -32,7 +32,7 @@
       },
       {
         "name": "PORT",
-        "value": "8080"
+        "value": "80"
       },
       {
         "name": "gnavi_api_key",

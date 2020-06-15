@@ -30,14 +30,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.prd
     ports:
-      - ${FRONTEND_PORT}:8080
+      - 80:80
     command: /bin/sh -c "yarn start"
     volumes:
       - ./frontend:/app
       - frontend-node_modules:/app/node_modules
     environment:
       - HOST=${FRONTEND_HOST}
-      - PORT=${FRONTEND_PORT}
+      - PORT=80
       - NODE_ENV=production
       - gnavi_api_key=${GNAVI_API_KEY}
       - gmap_api_key=${GMAP_API_KEY}
