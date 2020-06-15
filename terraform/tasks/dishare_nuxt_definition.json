@@ -1,0 +1,47 @@
+[
+  {
+    "name": "nuxt-container",
+    "image": "${nuxt_image}",
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 8080
+      }
+    ],
+    "memory": 300,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "nuxt"
+      }
+    },
+    "command": [
+      "yarn", "start"
+    ],
+    "workingDirectory": "/app",
+    "environment": [
+      {
+        "name": "NODE_ENV",
+        "value": "production"
+      },
+      {
+        "name": "HOST",
+        "value": "0.0.0.0"
+      },
+      {
+        "name": "PORT",
+        "value": "8080"
+      },
+      {
+        "name": "gnavi_api_key",
+        "value": "${gnavi_api_key}"
+      },
+      {
+        "name": "gmap_api_key",
+        "value": "${gmap_api_key}"
+      }
+    ]
+  }
+]

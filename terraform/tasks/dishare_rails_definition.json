@@ -1,0 +1,63 @@
+[
+  {
+    "name": "rails-container",
+    "image": "${rails_image}",
+    "portMappings": [
+      {
+        "containerPort": 3000,
+        "hostPort": 3000
+      }
+    ],
+    "memory": 300,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "rails"
+      }
+    },
+    "command": [
+      "rm", "-f", "/app/tmp/pids/server.pid", "&&", "bundle", "exec", "rails", "s", "-b", "0.0.0.0"
+    ],
+    "workingDirectory": "/app",
+    "environment": [
+      {
+        "name": "RAILS_ENV",
+        "value": "production"
+      },
+      {
+        "name": "DB_DATABASE",
+        "value": "${db_database}"
+      },
+      {
+        "name": "DB_HOST",
+        "value": "${db_host}"
+      },
+      {
+        "name": "DB_USERNAME",
+        "value": "${db_username}"
+      },
+      {
+        "name": "DB_PASSWORD",
+        "value": "${db_password}"
+      },
+      {
+        "name": "RAILS_MASTER_KEY",
+        "value": "${rails_master_key}"
+      },
+      {
+        "name": "HOST",
+        "value": "0.0.0.0"
+      },
+      {
+        "name": "PORT",
+        "value": "3000"
+      },
+      {
+        "name": "RAILS_LOG_TO_STDOUT",
+        "value": "ENABLED"
+      }
+    ]
+  }
+]
