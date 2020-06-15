@@ -1,27 +1,17 @@
 [
   {
-    "name": "rails-container",
-    "image": "${rails_image}",
-    "portMappings": [
-      {
-        "containerPort": 3000,
-        "hostPort": 3000
-      }
-    ],
+    "name": "dishare-db-migrate",
+    "image": "${image}",
+    "command": ["bundle", "exec", "rails", "db:migrate"],
     "memory": 300,
-    "networkMode": "awsvpc",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
         "awslogs-group": "${log_group}",
         "awslogs-region": "ap-northeast-1",
-        "awslogs-stream-prefix": "rails"
+        "awslogs-stream-prefix": "db_migrate"
       }
     },
-    "command": [
-      "bundle", "exec", "rails", "s", "-b", "0.0.0.0"
-    ],
-    "workingDirectory": "/app",
     "environment": [
       {
         "name": "RAILS_ENV",

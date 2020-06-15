@@ -4,7 +4,7 @@ ENV APP_HOME /app
 ENV PATH ${APP_HOME}/node_modules/.bin:$PATH
 ENV TZ Asia/Tokyo
 ENV HOST 0.0.0.0
-ENV PORT 8080
+ENV PORT 80
 
 WORKDIR ${APP_HOME}
 
