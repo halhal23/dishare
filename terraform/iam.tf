@@ -53,29 +53,29 @@ resource "aws_iam_role_policy" "task-rds-policy" {
 }
 
 /* ECSインスタンスへのポリシー */
-resource "aws_iam_role" "ecs_instance_role" {
-    name = "ecs_instance_role"
-    assume_role_policy = "${file("policies/ec2-assume-role.json")}"
-}
+# resource "aws_iam_role" "ecs_instance_role" {
+#     name = "ecs_instance_role"
+#     assume_role_policy = "${file("policies/ec2-assume-role.json")}"
+# }
 
 # resource "aws_iam_role" "ecs_service_role" {
 #     name = "ecs_service_role"
 #     assume_role_policy = "${file("policies/ecs-assume-role.json")}"
 # }
 
-resource "aws_iam_role_policy" "ecs_instance_role_policy" {
-    name = "instance_role_policy"
-    role = aws_iam_role.ecs_instance_role.id
-    policy = file("./policies/ecs-instance-role-policy.json")
-}
+# resource "aws_iam_role_policy" "ecs_instance_role_policy" {
+#     name = "instance_role_policy"
+#     role = aws_iam_role.ecs_instance_role.id
+#     policy = file("./policies/ecs-instance-role-policy.json")
+# }
 # resource "aws_iam_role_policy" "ecs_service_role_policy2" {
 #     name = "ecs_service_role_policy"
 #     role = aws_iam_role.ecs_service_role.id
 #     policy = file("./policies/ecs-service-role-policy.json")
 # }
 
-resource "aws_iam_instance_profile" "ecs" {
-    name = "ecs-instance-profile"
-    path = "/"
-    roles = ["${aws_iam_role.ecs_instance_role.name}"]
-}
+# resource "aws_iam_instance_profile" "ecs" {
+#     name = "ecs-instance-profile"
+#     path = "/"
+#     roles = ["${aws_iam_role.ecs_instance_role.name}"]
+# }

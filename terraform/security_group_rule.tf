@@ -65,6 +65,24 @@ resource "aws_security_group_rule" "dishare-alb-sg-rule4" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.dishare-alb-sg.id
 }
+resource "aws_security_group_rule" "dishare-alb-sg-rule5" {
+  description       = "dishare-alb-sg-rule5"
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.dishare-alb-sg.id
+}
+resource "aws_security_group_rule" "dishare-alb-sg-rule6" {
+  description       = "dishare-alb-sg-rule6"
+  type              = "ingress"
+  from_port         = 3000
+  to_port           = 3000
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.dishare-alb-sg.id
+}
 
 /* Security Group rule for ECS service */
 resource "aws_security_group_rule" "dishare-ecs-service-sg-rule1" {
@@ -103,23 +121,41 @@ resource "aws_security_group_rule" "dishare-ecs-service-sg-rule4" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.dishare-ecs-service-sg.id
 }
-
-/* Security Group rule for ECS instance */
-resource "aws_security_group_rule" "dishare-ecs-instance-sg-rule1" {
-  description       = "dishare-ecs-instance-sg-rule1"
+resource "aws_security_group_rule" "dishare-ecs-service-sg-rule5" {
+  description       = "dishare-ecs-service-sg-rule5"
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = 8080
+  to_port           = 8080
   protocol          = "tcp"
-  source_security_group_id  = aws_security_group.dishare-alb-sg.id
-  security_group_id = aws_security_group.dishare-ecs-instance-sg.id
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.dishare-ecs-service-sg.id
 }
-resource "aws_security_group_rule" "dishare-ecs-instance-sg-rule2" {
-  description       = "dishare-ecs-instance-sg-rule2"
+resource "aws_security_group_rule" "dishare-ecs-service-sg-rule6" {
+  description       = "dishare-ecs-service-sg-rule6"
   type              = "ingress"
   from_port         = 3000
   to_port           = 3000
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.dishare-ecs-instance-sg.id
+  security_group_id = aws_security_group.dishare-ecs-service-sg.id
 }
+
+/* Security Group rule for ECS instance */
+# resource "aws_security_group_rule" "dishare-ecs-instance-sg-rule1" {
+#   description       = "dishare-ecs-instance-sg-rule1"
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   source_security_group_id  = aws_security_group.dishare-alb-sg.id
+#   security_group_id = aws_security_group.dishare-ecs-instance-sg.id
+# }
+# resource "aws_security_group_rule" "dishare-ecs-instance-sg-rule2" {
+#   description       = "dishare-ecs-instance-sg-rule2"
+#   type              = "ingress"
+#   from_port         = 3000
+#   to_port           = 3000
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.dishare-ecs-instance-sg.id
+# }
