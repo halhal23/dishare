@@ -47,6 +47,12 @@ resource "aws_subnet" "dishare-private-sb-1c" {
   }
 }
 
+resource "aws_db_subnet_group" "dishare-rds-subnet-group" {
+  name        = "dishare_rds_subnet_group"
+  description = "rds subnet group for dishare"
+  subnet_ids  = [aws_subnet.dishare-private-sb-1a.id, aws_subnet.dishare-private-sb-1c.id]
+}
+
 resource "aws_internet_gateway" "dishare-ig" {
   vpc_id = aws_vpc.dishare-vpc.id
   tags = {
