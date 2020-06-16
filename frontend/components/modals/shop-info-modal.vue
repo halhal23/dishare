@@ -177,5 +177,9 @@ export default {
   .el-dialog {
     width: 100%;
   }
+  .showInfoDialog .el-dialog__body{
+    height: 450px;
+    overflow-y: scroll;
+  }
 }
 </style>
