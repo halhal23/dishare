@@ -57,18 +57,23 @@ export default {
         case '1':
           console.log(1)
           this.getShops()
+          this.showPromptForLogin();
           break
         case '2':
           console.log(2)
           this.getFirst()
+          this.showPromptForLogin();
           break
         case '3':
         case '':
           console.log(3)
           this.getFirst()
+          this.showPromptForLogin();
           break
         case '4':
           this.clearShops()
+          // this.$store.commit('auth/setCurrentUser', null)
+          // this.$store.commit('auth/setIsLoggedIn', false)
       }
     },
     getShops(){
@@ -81,12 +86,6 @@ export default {
         alert('Geolocation failed!');
         return;
       });
-      
-      this.$msgbox({
-        title: 'ご検索ありがとうございます!',
-        message: 'ログインしていただければ、より詳細な検索と友人との共有が可能です！',
-        confirmButtonText: 'OK'
-      })
     },
     success(position){
       this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
@@ -117,6 +116,18 @@ export default {
       console.log('clear')
       this.setShops(null)
     },
+    showPromptForLogin(){
+      this.$msgbox({
+        title: 'Thank you for your search!!',
+        message: 'Once you log in, you can search for more details and share them with your friends!',
+        confirmButtonText: 'OK'
+      }).then(()=>{}).catch(()=>{})
+      // this.$confirm('Once you log in, you can search for more details and share them with your friends!', 'Thank you!!', {
+      //     confirmButtonText: 'OK',
+      //     type: 'success',
+      //     center: true
+      // })
+    },
     ...mapMutations({ 
       setShops: 'shops/setShops',
       setCurrentPosition: 'shops/setCurrentPosition',
@@ -142,6 +153,9 @@ button.el-button.search-icon,
 @media (min-width: 0px) and (max-width: 768px) {
   .el-row.searchInput {
     width: 100%;
+  }
+  .el-message-box {
+    width: 90%;
   }
 }
 </style>

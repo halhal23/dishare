@@ -46,13 +46,6 @@ header .el-menu-item {
   letter-spacing: 3px;
 }
 
-.el-message-box {
-  width: 90%;
-}
-.el-message-box button.el-button {
-  color: rgb(67, 110, 228)
-}
-
 .v-modal {
   z-index: 9 !important;
 }
