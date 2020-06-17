@@ -1,6 +1,6 @@
 <template>
   <el-main class="top_main" style="padding: 0;">
-    <shopLists />
+    
     <el-row class="top_contents" style="height: 100vh;">
       <el-col :span="11" class="left main"></el-col>
       <el-col :span="13" class="right main">
@@ -23,7 +23,7 @@
         </p>
       </el-col>
     </el-row>
-    <!-- <shopLists /> 検索結果一覧を表示するコンポーネント -->
+    <shopLists />  <!-- 検索結果一覧を表示するコンポーネント -->
   </el-main>
 </template>
 

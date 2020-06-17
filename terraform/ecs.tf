@@ -1,14 +1,9 @@
-/*====
-ECS cluster
-======*/
+# ECS cluster 
 resource "aws_ecs_cluster" "dishare-ecs-cluster" {
   name = "dishare-ecs-cluster"
 }
 
-/*====
-Cloudwatch Log Group
-======*/
-
+# CloudWatch log gloup
 resource "aws_cloudwatch_log_group" "dishare-cloudwatch" {
   name = "dishare-cloudwatch"
 
@@ -18,11 +13,7 @@ resource "aws_cloudwatch_log_group" "dishare-cloudwatch" {
   }
 }
 
-/*====
-ECS task definitions
-======*/
-
-/* the task definition for the web service */
+# task definition 
 data "template_file" "dishare_nuxt_container" {
   template = file("./tasks/dishare_nuxt_definition.json")
 
@@ -48,7 +39,7 @@ data "template_file" "dishare_rails_container" {
     log_group       = "${aws_cloudwatch_log_group.dishare-cloudwatch.name}"
   }
 }
-/* the task definition for the db creation */
+# task definition for the db create 
 data "template_file" "db_create_task" {
   template = file("${path.module}/tasks/dishare_db_create_task.json")
 
@@ -64,6 +55,7 @@ data "template_file" "db_create_task" {
     log_group       = "${aws_cloudwatch_log_group.dishare-cloudwatch.name}"
   }
 }
+# task definition for the db migrate
 data "template_file" "db_migrate_task" {
   template = file("${path.module}/tasks/dishare_db_migrate_task.json")
 

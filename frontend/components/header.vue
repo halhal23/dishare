@@ -11,13 +11,13 @@
         <nuxt-link to="/" >ABOUT</nuxt-link>
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
-        <a href="#" @click="onModal(true)" v-if="!isLoggedIn">LOGIN</a>
+        <a href="#" @click="onModal(true, true)" v-if="!isLoggedIn">LOGIN</a>
         <nuxt-link to="/users/mypage" v-else>{{ $store.state.auth.currentUser.name }}</nuxt-link>
         <!-- <nuxt-link to="/sign_in_up" >LOGIN</nuxt-link> -->
       </el-menu-item>
       <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
         <!-- <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link> -->
-        <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link>
+        <a href="#" @click="onModal(true, false)" v-if="!isLoggedIn">SIGNUP</a>
         <a href="#" @click="logout" v-else>LOGOUT</a>
       </el-menu-item>
     </el-menu>
@@ -31,7 +31,7 @@
         <i class="el-icon-s-operation" style="font-size: 30px; margin: 0 20px;"></i>
       </el-menu-item>
     </el-menu>
-    <authFormModal :testModal="testModal" @onModal="onModal(false)" />
+    <authFormModal :testModal="testModal" :isLogin="isLogin" @onModal="onModal(false)" />
   </el-header>
 </template>
 
@@ -44,7 +44,8 @@ export default {
       activeIndex: '',
       activeIndex2: '1',
       isHidden: true,
-      testModal: false
+      testModal: false,
+      isLogin: false
     };
   },
   computed: {
@@ -60,8 +61,9 @@ export default {
     toggleHidden(){
       this.isHidden = !this.isHidden
     },
-    onModal(testModal){
+    onModal(testModal, isLogin){
       this.testModal = testModal
+      this.isLogin = isLogin
     },
     ...mapActions({
       logout: 'auth/logout'
@@ -111,7 +113,7 @@ export default {
     top: 60px;
     left: 0;
     transition: .5s;
-    background: rgb(229, 226, 221);
+    background: rgb(226, 211, 188);
   }
   .header_menu.hidden {
     left: -100%;
@@ -119,10 +121,12 @@ export default {
   .header_menu_respon{
     display: flex;
     background: transparent;
+    border-bottom: none !important;
   }
   .header_item_md {
     width: 100%;
     flex-shrink: 0;
+    border-bottom: 1px solid #999 !important;
   }
   .header_item_md.logo {
     display: none;

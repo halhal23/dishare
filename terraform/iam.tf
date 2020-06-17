@@ -27,14 +27,14 @@ data "aws_iam_policy_document" "ecs_service_policy" {
     ]
   }
 }
-/* ecs service scheduler role */
+
 resource "aws_iam_role_policy" "ecs_service_role_policy" {
   name   = "dishare_ecs_service_role_policy"
   policy = data.aws_iam_policy_document.ecs_service_policy.json
   role   = aws_iam_role.ecs_role.id
 }
 
-/* role that the Amazon ECS container agent and the Docker daemon can assume */
+
 resource "aws_iam_role" "ecs_execution_role" {
   name               = "dishare_ecs_task_execution_role"
   assume_role_policy = file("./policies/ecs-task-execution-role.json")
@@ -51,31 +51,3 @@ resource "aws_iam_role_policy" "task-rds-policy" {
   policy = file("./policies/ecs-task-execution-rds-policy.json")
   role   = aws_iam_role.ecs_execution_role.id
 }
-
-/* ECSインスタンスへのポリシー */
-# resource "aws_iam_role" "ecs_instance_role" {
-#     name = "ecs_instance_role"
-#     assume_role_policy = "${file("policies/ec2-assume-role.json")}"
-# }
-
-# resource "aws_iam_role" "ecs_service_role" {
-#     name = "ecs_service_role"
-#     assume_role_policy = "${file("policies/ecs-assume-role.json")}"
-# }
-
-# resource "aws_iam_role_policy" "ecs_instance_role_policy" {
-#     name = "instance_role_policy"
-#     role = aws_iam_role.ecs_instance_role.id
-#     policy = file("./policies/ecs-instance-role-policy.json")
-# }
-# resource "aws_iam_role_policy" "ecs_service_role_policy2" {
-#     name = "ecs_service_role_policy"
-#     role = aws_iam_role.ecs_service_role.id
-#     policy = file("./policies/ecs-service-role-policy.json")
-# }
-
-# resource "aws_iam_instance_profile" "ecs" {
-#     name = "ecs-instance-profile"
-#     path = "/"
-#     roles = ["${aws_iam_role.ecs_instance_role.name}"]
-# }

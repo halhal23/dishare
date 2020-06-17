@@ -18,10 +18,3 @@ resource "aws_security_group" "dishare-ecs-service-sg" {
   name        = "dishare-ecs-service-sg"
   description = "ECS service security group for Dishare"
 }
-
-/* Security Group for ECS instance */
-# resource "aws_security_group" "dishare-ecs-instance-sg" {
-#   vpc_id      = aws_vpc.dishare-vpc.id
-#   name        = "dishare-ecs-instance-sg"
-#   description = "ECS service security group for Dishare"
-# }

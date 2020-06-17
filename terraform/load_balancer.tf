@@ -56,10 +56,14 @@ resource "aws_lb_listener" "dishare_http_listener" {
   load_balancer_arn = aws_lb.dishare_alb.arn
   port              = "80"
   protocol          = "HTTP"
-
   default_action {
-    target_group_arn = aws_lb_target_group.dishare_alb_nuxt_tg.arn
-    type             = "forward"
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
 }
 resource "aws_lb_listener" "dishare_api_listener" {
@@ -82,7 +86,6 @@ resource "aws_lb_listener" "dishare_https_listener" {
   default_action {
     target_group_arn = aws_lb_target_group.dishare_alb_nuxt_tg.arn
     type             = "forward"
-
   }
 }
 
