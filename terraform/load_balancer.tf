@@ -66,16 +66,16 @@ resource "aws_lb_listener" "dishare_http_listener" {
     }
   }
 }
-resource "aws_lb_listener" "dishare_api_listener" {
-  load_balancer_arn = aws_lb.dishare_alb.arn
-  port              = "3000"
-  protocol          = "HTTP"
+# resource "aws_lb_listener" "dishare_api_listener" {
+#   load_balancer_arn = aws_lb.dishare_alb.arn
+#   port              = "3000"
+#   protocol          = "HTTP"
 
-  default_action {
-    target_group_arn = aws_lb_target_group.dishare_alb_rails_tg.arn
-    type             = "forward"
-  }
-}
+#   default_action {
+#     target_group_arn = aws_lb_target_group.dishare_alb_rails_tg.arn
+#     type             = "forward"
+#   }
+# }
 
 resource "aws_lb_listener" "dishare_https_listener" {
   load_balancer_arn = aws_lb.dishare_alb.arn
@@ -85,6 +85,17 @@ resource "aws_lb_listener" "dishare_https_listener" {
 
   default_action {
     target_group_arn = aws_lb_target_group.dishare_alb_nuxt_tg.arn
+    type             = "forward"
+  }
+}
+resource "aws_lb_listener" "dishare_api_listener" {
+  load_balancer_arn = aws_lb.dishare_alb.arn
+  port              = 3000
+  protocol          = "HTTPS"
+  certificate_arn   = data.aws_acm_certificate.dishare-acm.arn
+
+  default_action {
+    target_group_arn = aws_lb_target_group.dishare_alb_rails_tg.arn
     type             = "forward"
   }
 }
