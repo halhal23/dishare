@@ -1,42 +1,56 @@
 <template>
   <el-card class="post-card">
-    <div class="author">
-      <el-avatar :src="post.user.image.url" :size="40" style="margin-right: 30px;"></el-avatar>
-      <p style="font-size: 20px; font-weight: bold;">{{ post.user.name }}</p>
-      <!-- <small style="color: #aaa;font-size: 5px;">{{ post.created_at }}</small> -->
+    <div class="images">
+      <el-carousel indicator-position="outside" :autoplay="false">
+        <el-carousel-item v-for="item in 1" :key="item">
+          <el-image
+          :src="post.shop_image_url"
+          style="width: 100%;height: 100%;"
+          fit="fill"></el-image>
+        </el-carousel-item>
+      </el-carousel>
     </div>
-    <div class="content" style="padding: 5px; background: #ddc;">
-      <p style="font-size: 14px; font-weight: bold;">{{ post.content }}</p>
-    </div>
-    <el-image
-      :src="post.shop_image_url"
-      style="width: 100%;"
-      fit="fill"></el-image>
-    <div class="shop_detail" style="padding: 20px;">
-      <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_name }}</p>
-      <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_category }}</p>
-      <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_access }}</p>
-      <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_address }}</p>
-      <a class="shop_detail_item" :href="post.shop_url" style="padding: 0;" target="_blank">詳しくはこちら</a>
-    </div>
-    <div class="menu">      
+    <div class="contents"> 
+      <div class="author">
+        <el-avatar :src="post.user.image.url" :size="40"></el-avatar>
+        <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ post.user.name }}</p>
+        <el-tag type="warning">お店紹介</el-tag>
+      </div>
+      <div class="message" style="margin: 20px 0;">
+        <p style="font-size: 14px; font-weight: bold;">{{ post.content }}</p>
+      </div>
       <el-popover
         placement="bottom"
         width="350"
         trigger="click">
-        <el-input v-model="message" type="textarea" :rows="2"></el-input>
-        <el-button @click="createComment" type="primary" style="margin-top: 10px;">Comment</el-button>
-        <div slot="reference" class="post_icon" style="background: #fca;">
-         <i class="el-icon-chat-dot-round" style="font-size: 30px;"></i>
+        <div class="shop_detail" style="padding: 20px;">
+          <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_name }}</p>
+          <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_category }}</p>
+          <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_access }}</p>
+          <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_address }}</p>
+          <a class="shop_detail_item" :href="post.shop_url" style="padding: 0;" target="_blank">詳しくはこちら</a>
         </div>
+        <el-button type="warning" size="mini" slot="reference" style="box-shadow: 0 0 8px #aaa;" round>お店の情報表示</el-button>
       </el-popover>
-      <nuxt-link :to="{path: `/posts/${post.id}`}" style="background: #acf;" class="post_icon">
-        <i class="el-icon-info" style="font-size: 30px;"></i>
-      </nuxt-link>
-      <nuxt-link :to="{path: `/users/${post.user.id}`}" style="background: #fac;" class="post_icon">
-        <i class="el-icon-user" style="font-size: 30px;"></i>
-      </nuxt-link>
-      <!-- <p style="margin-left: auto;">コメントを書く</p> -->
+
+      <div class="menu">      
+        <el-popover
+          placement="bottom"
+          width="350"
+          trigger="click">
+          <el-input v-model="message" type="textarea" :rows="2"></el-input>
+          <el-button @click="createComment" type="primary" style="margin-top: 10px;">Comment</el-button>
+          <div slot="reference" class="post_icon comment_icon" style="background: #d2ff08;">
+          <i class="el-icon-chat-dot-round" style="font-size: 25px;"></i>
+          </div>
+        </el-popover>
+        <nuxt-link :to="{path: `/posts/${post.id}`}" style="background: #00f7f7;" class="post_icon">
+          <i class="el-icon-info" style="font-size: 25px;"></i>
+        </nuxt-link>
+        <nuxt-link :to="{path: `/users/${post.user.id}`}" style="background: #ff0077;" class="post_icon">
+          <i class="el-icon-user" style="font-size: 25px;"></i>
+        </nuxt-link>
+      </div>
     </div>
   </el-card>
 </template>
@@ -73,37 +87,76 @@ export default {
 
 <style>
 .post-card {
-  width: 300px;
+  width: 500px;
   flex-shrink: 0;
   margin-bottom: 20px;
+  /* height: 250px; */
 }
 .post-card .el-card__body{
-  padding: 0;
-}
-.post-card .author{
-  padding: 5px 10px;
-  border-bottom: 1px solid #ccc;
+  padding: 15px 15px 0 15px;
   display: flex;
+}
+.post-card .images {
+  width: 40%;
+}
+.post-card .el-carousel__container {
+  height: 200px;
+}
+.post-card .contents {
+  width: 60%;
+  background: #ffffff;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post-card .author {
+  display: flex;
+  /* justify-content: center; */
   align-items: center;
+}
+.post-card .menu {
+  display: flex;
+}
+.post-card .menu .post_icon {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px 15px 0;
+  box-shadow: 0 0 8px #aaa;
 }
 .shop_detail_item {
   border-bottom: 1px solid #bba;
-}
-.post-card .menu{
-  display: flex;
-  align-items: center;
-}
-.post-card .menu span{
-  width: 100%;
-  height: 100%;
-}
-.post_icon {
-  text-align: center;
-  padding: 15px 0;
+  margin: 10px 0;
 }
 @media (min-width: 0px) and (max-width: 450px) {
   .post-card {
     width: 95%;
+  }
+  .post-card .el-card__body{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .post-card .images {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .post-card .contents {
+    width: 100%;
+    align-items: center;
+    padding-right: 15px;
+  }
+  .post-card .menu {
+    justify-content: space-around;
+    width: 100%;
+  }
+  .post-card .menu .post_icon {
+    margin: 15px 0;
   }
 }
 </style>

@@ -1,8 +1,14 @@
 <template>
-  <el-main>
-    <h2 @click="getPost" style="padding-top: 70px;"></h2>
-    <div class="posts_wrapper">
-      <postCard v-for="p in posts" :key="p.id" :post="p" />
+  <el-main class="main-posts-index">
+    <div style="height: 100%;">
+      <el-tabs @tab-click="doClick" tab-position="top" :stretch="true" style="height: 100%;">
+        <el-tab-pane label="All Users">User</el-tab-pane>
+        <el-tab-pane label="Your friends" style="height: 100%;">
+          <div class="posts_wrapper">
+            <postCard v-for="p in posts" :key="p.id" :post="p" />
+          </div>
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </el-main>
 </template>
@@ -29,6 +35,9 @@ export default {
     },
     redirectPost(id){
       this.$router.push(`/posts/${id}`)
+    },
+    doClick(tab){
+      console.log(tab.label);
     }
   },
   components: {
@@ -38,13 +47,23 @@ export default {
 </script>
 
 <style>
-.posts_wrapper {
+.main-posts-index {
+  padding: 70px 60px 60px;
+  height: 100vh;
+}
+.main-posts-index .el-tabs__item {
+  font-family: cursive;
+  font-size: 30px;
+}
+.main-posts-index .el-tabs__content {
+  height: 90%;
+}
+.main-posts-index .posts_wrapper {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
 }
-
 .post_card {
   box-shadow: 0 0 20px gray;
   width: 500px;
@@ -57,6 +76,9 @@ export default {
 @media (min-width: 0px) and (max-width: 768px) {
   .post_card {
     width: 95%;
+  }
+  .main-posts-index {
+    padding: 70px 10px;
   }
 }
 </style>
