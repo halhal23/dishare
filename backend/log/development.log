@@ -18606,3 +18606,514 @@ Unpermitted parameter: :format
 Completed 200 OK in 337ms (Views: 42.7ms | ActiveRecord: 50.9ms)
 
 
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 12:50:55 +0900
+  [1m[35m (2.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'kennta@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'kennta' AND `users`.`id` != 15 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 03:50:55' WHERE `users`.`id` = 15[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 80ms (Views: 1.0ms | ActiveRecord: 8.6ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 13:00:43 +0900
+  [1m[35m (1.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x00005583215f80f8 @tempfile=#<Tempfile:/tmp/RackMultipart20200617-1-q1a772.png>, @original_filename="test-user.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"test-user.png\"\r\nContent-Type: image/png\r\n">}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'test@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'test' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `image`, `email`, `created_at`, `updated_at`) VALUES ('test@gmail.com', '$2a$11$fl1GGkk77z8isIE8PVmqMOzwhP/G87/9fw8McW4WKD6hc0CEurgjO', 'test', 'test-user.png', 'test@gmail.com', '2020-06-17 04:00:44', '2020-06-17 04:00:44')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (9.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'test' AND `users`.`id` != 16 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"scpsjFRkN_QBf_mbU8J-3w\":{\"token\":\"$2a$10$bRcAxzw.MABeX/lFvjs3BO1JwQmjQqnMFfry2MXVHg1QwN.swYH0O\",\"expiry\":1593576044}}' WHERE `users`.`id` = 16[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+Completed 200 OK in 1423ms (Views: 1.3ms | ActiveRecord: 18.2ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 13:02:13 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'test' AND `users`.`id` != 16 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 04:02:13' WHERE `users`.`id` = 16[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 76ms (Views: 1.3ms | ActiveRecord: 5.9ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 13:04:34 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = '' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 10ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 13:05:16 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = '' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 9ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 13:06:19 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"test", "email"=>"test@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'test' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'test' AND `users`.`id` != 16 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.9ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"wmoxCuq9FmoHElaC1LfBRw\":{\"token\":\"$2a$10$a5.iLD6m.EMr7b.RU1G5uep7YMQlsX6G/iK/tzoTgjo8ldMZkGAL2\",\"expiry\":1593576379}}', `updated_at` = '2020-06-17 04:06:19' WHERE `users`.`id` = 16[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-06-17 04:06:19', `last_sign_in_at` = '2020-06-17 04:06:19', `current_sign_in_ip` = '192.168.144.1', `last_sign_in_ip` = '192.168.144.1' WHERE `users`.`id` = 16[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 16 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 205ms (Views: 0.9ms | ActiveRecord: 12.7ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 13:07:52 +0900
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>""}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'test@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'test' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 422 Unprocessable Entity in 138ms (Views: 1.1ms | ActiveRecord: 3.3ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 13:18:05 +0900
+  [1m[35m (2.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'test' AND `users`.`id` != 16 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 04:18:05' WHERE `users`.`id` = 16[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 75ms (Views: 1.5ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 13:19:51 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.9ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260},\"VARlaXktKuKwcpSrBAhdQw\":{\"token\":\"$2a$10$WEyHl2g4I1XaM5yfMTWJhO8U2mz/sKmkGjTqLNum3FpOwKVTy1eGq\",\"expiry\":1593577191}}', `updated_at` = '2020-06-17 04:19:51' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 44, `current_sign_in_at` = '2020-06-17 04:19:51', `last_sign_in_at` = '2020-06-16 06:11:45' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.02ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 236ms (Views: 2.2ms | ActiveRecord: 23.1ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 14:49:37 +0900
+  [1m[35m (5.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"bonbap", "email"=>"bonbap@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000558320ef1ea8 @tempfile=#<Tempfile:/tmp/RackMultipart20200617-1-8pqrwi.png>, @original_filename="sample1.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample1.png\"\r\nContent-Type: image/png\r\n">}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (4.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'bonbap@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'bonbap' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.67ms)
+Completed 422 Unprocessable Entity in 417ms (Views: 3.5ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 14:55:11 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"bonbap", "email"=>"bonbap@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"bonbap", "email"=>"bonbap@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'bonbap' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.58ms)
+Completed 401 Unauthorized in 34ms (Views: 5.8ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 14:55:30 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"halhal", "email"=>"halhal@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'halhal' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (3.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260},\"VARlaXktKuKwcpSrBAhdQw\":{\"token\":\"$2a$10$WEyHl2g4I1XaM5yfMTWJhO8U2mz/sKmkGjTqLNum3FpOwKVTy1eGq\",\"expiry\":1593577191},\"0Ji85AG9ZMakaisuzQEcPA\":{\"token\":\"$2a$10$tNFxQ3s1l4yPvCOvtTmaG.W/qvAWxkR8.FDtmpaA/BZuuYAg4Oq7a\",\"expiry\":1593582931}}', `updated_at` = '2020-06-17 05:55:31' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 45, `current_sign_in_at` = '2020-06-17 05:55:31', `last_sign_in_at` = '2020-06-17 04:19:51' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 236ms (Views: 1.4ms | ActiveRecord: 17.1ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 14:55:42 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'halhal@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'halhal' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.7ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"fjCKZ0bBIo2NPqgyix0_pA\":{\"token\":\"$2a$10$R1d/S9vvD3Wts8RkJMRPIuAP6dGjrPUYn3IHIJjdfn1n8z1usBXtq\",\"expiry\":1592997260},\"VARlaXktKuKwcpSrBAhdQw\":{\"token\":\"$2a$10$WEyHl2g4I1XaM5yfMTWJhO8U2mz/sKmkGjTqLNum3FpOwKVTy1eGq\",\"expiry\":1593577191}}', `updated_at` = '2020-06-17 05:55:42' WHERE `users`.`id` = 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 84ms (Views: 1.5ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 14:56:57 +0900
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"bonbap", "email"=>"bonbap@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000558321331d88 @tempfile=#<Tempfile:/tmp/RackMultipart20200617-1-s1rscp.png>, @original_filename="sample1.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample1.png\"\r\nContent-Type: image/png\r\n">}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'bonbap@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'bonbap' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (6.4ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `image`, `email`, `created_at`, `updated_at`) VALUES ('bonbap@gmail.com', '$2a$11$febWgQ0/95vLerW4mRAv4.bZNTHpMAuJSkgLdHraWd0Oh/2pPFi5u', 'bonbap', 'sample1.png', 'bonbap@gmail.com', '2020-06-17 05:56:57', '2020-06-17 05:56:57')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'bonbap' AND `users`.`id` != 17 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"S5JfPchNVO1lhdqRYwypng\":{\"token\":\"$2a$10$wSw15CqJmYUJs33KnfcYXeiTVSFdyTqOrYKfRDKoHH4MDHJmemfEq\",\"expiry\":1593583018}}', `updated_at` = '2020-06-17 05:56:58' WHERE `users`.`id` = 17[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 17 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.28ms)
+Completed 200 OK in 698ms (Views: 2.7ms | ActiveRecord: 20.5ms)
+
+
+Started PUT "/api/auth" for 192.168.144.1 at 2020-06-17 15:04:53 +0900
+  [1m[35m (3.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::Auth::RegistrationsController#update as JSON
+  Parameters: {"name"=>"bonbap", "email"=>"bonbap@gmail.com", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000558321547b68 @tempfile=#<Tempfile:/tmp/RackMultipart20200617-1-p0sx49.png>, @original_filename="test-user.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"test-user.png\"\r\nContent-Type: image/png\r\n">}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'bonbap@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'bonbap' AND `users`.`id` != 17 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE `users` SET `image` = 'test-user.png', `updated_at` = '2020-06-17 06:04:54' WHERE `users`.`id` = 17[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 17 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 963ms (Views: 2.7ms | ActiveRecord: 7.4ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 15:05:32 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'bonbap@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'bonbap' AND `users`.`id` != 17 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 06:05:32' WHERE `users`.`id` = 17[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 28ms (Views: 3.7ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 15:06:14 +0900
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"houyou", "email"=>"houyou@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>""}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'houyou@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'houyou' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('houyou@gmail.com', '$2a$11$0UtMLEHXXTzFFzMU03JL8.7T9Nx.zI77WJq6uAZ6yUAgntUpEW3xS', 'houyou', 'houyou@gmail.com', '2020-06-17 06:06:14', '2020-06-17 06:06:14')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'houyou' AND `users`.`id` != 18 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"OQnDrHfI5CC_CZLdeo8MxQ\":{\"token\":\"$2a$10$hW7VmYyh5HvmrWuZ12j9cujfpBOUNKuLJOXnVw7RQKEaNO1dC3d8u\",\"expiry\":1593583574}}' WHERE `users`.`id` = 18[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 18 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 236ms (Views: 2.2ms | ActiveRecord: 15.5ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 15:07:03 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'houyou@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'houyou' AND `users`.`id` != 18 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 06:07:03' WHERE `users`.`id` = 18[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 86ms (Views: 1.5ms | ActiveRecord: 8.0ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 15:08:46 +0900
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"king", "email"=>"king@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>#<ActionDispatch::Http::UploadedFile:0x000055831f60c398 @tempfile=#<Tempfile:/tmp/RackMultipart20200617-1-o8iyub.png>, @original_filename="sample1.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample1.png\"\r\nContent-Type: image/png\r\n">}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'king@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'king' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `image`, `email`, `created_at`, `updated_at`) VALUES ('king@gmail.com', '$2a$11$mnPnFI4jBgfqyhK92o7BAu1FDf3.bz3hGEEuNd0VJLskFAoAYBPAi', 'king', 'sample1.png', 'king@gmail.com', '2020-06-17 06:08:47', '2020-06-17 06:08:47')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'king' AND `users`.`id` != 19 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"oScjO14bt5E7XKwpGNW-nA\":{\"token\":\"$2a$10$kvxuUZG3IUTkBa3irRjZuu8hCPlt6HDHsL7yheLtymWRBsjjTtex.\",\"expiry\":1593583727}}' WHERE `users`.`id` = 19[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 19 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 200 OK in 674ms (Views: 1.2ms | ActiveRecord: 8.3ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 15:09:49 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'king@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'king' AND `users`.`id` != 19 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 06:09:49' WHERE `users`.`id` = 19[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 86ms (Views: 1.2ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/api/auth" for 192.168.144.1 at 2020-06-17 15:10:27 +0900
+Processing by Api::Auth::RegistrationsController#create as JSON
+  Parameters: {"name"=>"nene", "email"=>"nene@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>""}
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+Unpermitted parameter: :format
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'nene@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'nene' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('nene@gmail.com', '$2a$11$a1K2TCxsYqo7zH5H0GpeLePdIawK77vNYWVolS5kkex.Y6CPnAABG', 'nene', 'nene@gmail.com', '2020-06-17 06:10:27', '2020-06-17 06:10:27')[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'nene' AND `users`.`id` != 20 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"7mPbxWYkyVFmHBagDoopzw\":{\"token\":\"$2a$10$NU9ZwdF/Y71t91Q84Ip19eBsmQL8ZxM.DHUUMsGjy3HMvcAe9.yY.\",\"expiry\":1593583827}}' WHERE `users`.`id` = 20[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 20 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 213ms (Views: 1.4ms | ActiveRecord: 9.4ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 15:11:12 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'nene@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'nene' AND `users`.`id` != 20 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 06:11:12' WHERE `users`.`id` = 20[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 88ms (Views: 0.9ms | ActiveRecord: 8.4ms)
+
+
+Started POST "/api/auth/sign_in" for 192.168.144.1 at 2020-06-17 15:11:24 +0900
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"name"=>"nene", "email"=>"nene@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "session"=>{"name"=>"nene", "email"=>"nene@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY name = 'nene' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+Unpermitted parameters: :email, :password_confirmation, :format, :session
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (14.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'nene' AND `users`.`id` != 20 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"lcMf3aVQtZMj6j-EqPO9uA\":{\"token\":\"$2a$10$bavOcVW/tiAGAaaZTMt4neHWe70RZ4Fy1XZyPPBiGOyU2LPNZ7Pje\",\"expiry\":1593583885}}', `updated_at` = '2020-06-17 06:11:25' WHERE `users`.`id` = 20[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-06-17 06:11:25', `last_sign_in_at` = '2020-06-17 06:11:25', `current_sign_in_ip` = '192.168.144.1', `last_sign_in_ip` = '192.168.144.1' WHERE `users`.`id` = 20[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 20 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 297ms (Views: 1.0ms | ActiveRecord: 25.6ms)
+
+
+Started DELETE "/api/auth/sign_out" for 192.168.144.1 at 2020-06-17 15:11:34 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'nene@gmail.com' LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'nene' AND `users`.`id` != 20 LIMIT 1[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `tokens` = NULL, `updated_at` = '2020-06-17 06:11:34' WHERE `users`.`id` = 20[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 89ms (Views: 1.0ms | ActiveRecord: 6.4ms)
+
+

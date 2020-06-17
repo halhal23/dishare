@@ -2,7 +2,7 @@ export const state = () => ({
   shops: [],
   shop: {},
   currentPosition: {},
-  name: 'vuex shop'
+  isSearched: false //　検索したかどうか
 })
 
 export const getters = {
@@ -15,6 +15,7 @@ export const getters = {
 export const mutations = {
   setShops: (state, shops) => {
     state.shops = shops
+    state.isSearched = shops == null ? false : true // shopsがnullでクリアされる場合は、falseにする。
   },
   setShopInfo: (state, shop) => {
     state.shop = shop

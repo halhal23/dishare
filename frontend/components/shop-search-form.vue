@@ -72,8 +72,8 @@ export default {
           break
         case '4':
           this.clearShops()
-          // this.$store.commit('auth/setCurrentUser', null)
-          // this.$store.commit('auth/setIsLoggedIn', false)
+          this.$store.commit('auth/setCurrentUser', null)
+          this.$store.commit('auth/setIsLoggedIn', false)
       }
     },
     getShops(){

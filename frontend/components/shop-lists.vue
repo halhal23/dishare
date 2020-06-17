@@ -1,5 +1,5 @@
 <template>
-  <el-main class="list-container" v-if="shops">
+  <el-main class="list-container" v-if="$store.state.shops.isSearched">
     <div class="searched-list" > 
       <!-- <shopLists v-for="shop in shops" :key="shop.name" class="shop-card" :shopInfo="shop"/> -->
       <el-card v-for="shop in shops" :key="shop.name" class="shop-card">
