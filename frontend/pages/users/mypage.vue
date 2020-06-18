@@ -1,4 +1,4 @@
-<template>
+<template> 
   <el-main class="mypage_wrapper" v-if="currentUser">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
@@ -18,23 +18,38 @@
         <h1>{{ currentUser.email }}</h1>
       </div>
     </el-card>
+
+    <userInfoCard :user="user" />
+
     <userEditForm :userEditFormModal="userEditFormModal" :currentUser="currentUser" @onModal="onModal(false)" />
+
   </el-main>
+
 </template>
 
 <script>
+import userInfoCard from '~/components/user-info-card.vue'
 import userEditForm from '~/components/modals/user-edit-form.vue'
 import { mapGetters } from 'vuex'
 export default {
   data(){
     return {
-      userEditFormModal: false
+      userEditFormModal: false,
     }
   },
   computed: {
     ...mapGetters({
       currentUser: 'auth/currentUser'
-    })
+    }),
+    async user(){
+      let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
+      let data = await this.$axios.$get(baseUrl + `/api/users/${this.currentUser.id}`)
+      console.log('asyncData')
+      console.log(data)
+      return {
+        user: data
+      }
+    }
   },
   methods: {
     onModal(bool){
@@ -42,7 +57,8 @@ export default {
     }
   },
   components: {
-    userEditForm
+    userEditForm,
+    userInfoCard
   }
 }
 </script>

@@ -71,7 +71,7 @@ export default {
 
 <style>
 .post_show_wrapper {
-  padding-top: 70px;
+  padding: 70px 0;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

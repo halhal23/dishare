@@ -70,6 +70,8 @@ export default {
         console.log('res desuyo')
         console.log(res)
         this.$store.commit('auth/setCurrentUser', res.data )
+        console.log(res.data)
+        this.$store.commit('setUser', res.data )
         this.handleClose(false)
       }).catch( err => {
         console.log('err')
