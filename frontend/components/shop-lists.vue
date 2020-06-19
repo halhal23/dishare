@@ -56,13 +56,8 @@ export default {
 <style>
 .list-container {
   width: 100%;
-  /* background: rgb(88, 55, 5); */
   background: linear-gradient(to right,#ffa90a,#ffe9c1);
-  /* background-image: url(~@/static/images/dishare-main-logo.png);
-  background-size: 70%;
-  background-repeat: no-repeat;
-  background-position: center; */
-  padding-top: 60px;
+  padding: 60px 15px;
 }
 .searched-list {
   width: 100%;
@@ -118,7 +113,7 @@ export default {
     width: 100%;
     height: 450px;
   }
-  .el-card__body {
+  .shop-card .el-card__body {
     flex-direction: column;
   }
   .shop-card .shop_image {

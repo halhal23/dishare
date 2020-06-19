@@ -1,5 +1,9 @@
 export const state = () => ({
-  currentUser:  null,
+  currentUser:  {
+    id: 1,
+    email: '',
+    name: '',
+  },
   isLoggedIn: false,
 })
 
@@ -9,8 +13,8 @@ export const getters = {
 }
 
 export const mutations = {
-  setCurrentUser(state, user){
-    state.currentUser = user
+  setCurrentUser(state, userData){
+    state.currentUser = userData
   },
   setIsLoggedIn(state, bool){
     state.isLoggedIn = bool
@@ -35,7 +39,7 @@ export const actions = {
       .then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push("/users/mypage")
+        this.$router.push(`/users/${res.data.id}`)
         return res
       }, err => {
         console.log(err)
@@ -51,7 +55,9 @@ export const actions = {
     }).then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push("/users/mypage")
+        console.log('ログインしたよｘ')
+        console.log(res)
+        this.$router.push(`/users/${res.data.id}`)
         return res
       }, err => {
         console.log('ログイン失敗しちゃった。' + ' /stores/auth.js')

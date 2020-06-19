@@ -1,125 +1,94 @@
 <template>
-  <el-main>
-    <el-divider class="title" style="margin: 60px;">
-      <h1 @click="test">You can do a detailed search</h1>
-    </el-divider>
-    
-    <el-form label-width="120px">
-
-      <el-form-item label="keyword">
-        <el-input v-model="params.keyword"></el-input>
-      </el-form-item>
-
-      <el-form-item label="Category">
-        <el-select v-model="params.category" placeholder="Category">
-          <el-option value="肉"></el-option>
-          <el-option value="魚"></el-option>
-          <el-option value="ラーメン"></el-option>
-          <el-option value="カフェ"></el-option>
-          <el-option value="スイーツ"></el-option>
-          <el-option value="韓国料理"></el-option>
-          <el-option value="">指定なし</el-option>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="Current location">
-        <el-switch v-model="params.current_positon"></el-switch>
-      </el-form-item>
-
-      <el-form-item label="Options">
-          <el-checkbox label="No smoking" v-model="params.options.smoking" border></el-checkbox>
-          <el-checkbox label="Lunch" v-model="params.options.lunch" border></el-checkbox>
-          <el-checkbox label="Cards" v-model="params.options.cards" border></el-checkbox>
-          <el-checkbox label="bottomless cup(食べ放題)" v-model="params.options.bottomless_cup" border></el-checkbox>
-          <el-checkbox label="Delivery" v-model="params.options.delivery" border></el-checkbox>
-          <el-checkbox label="wifi" v-model="params.options.wifi" border></el-checkbox>
-      </el-form-item>
-
-      <div style="width: 300px; margin: 30px auto;">
-        <!-- <shopSearchBtn /> -->
-        <el-button @click="getShops" icon="el-icon-search" style="width: 100%;" class="search-icon"></el-button>
-      </div>
-
+  <el-main class="new_post_wrapper">
+    <el-form>
+      <h2>New Post</h2>
+      <h4>message</h4>
+      <el-input v-model="form.content" type="textarea"></el-input>
+      <el-upload
+        class="upload-demo"
+        drag
+        action="#"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :file-list="fileList"
+      
+        :on-success="handleAdd"
+        list-type="picture"
+        :limit="4"
+        multiple>
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+        <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 500kb</div>
+      </el-upload>
+      <el-button type="success" @click="postsCreate" plain round>Submit</el-button>
     </el-form>
-    <shopLists />
   </el-main>
 </template>
 
 <script>
-import shopLists from '~/components/shop-lists.vue'
-import shopSearchBtn from '~/components/shop-search-btn.vue'
-import { mapGetters, mapMutations } from 'vuex'
+import uploadForm from '~/components/upload-form.vue'
 export default {
   data(){
     return {
-      width: "150px",
-      params: {
-        keyword: '',
-        current_positon: false,
-        category: '',
-        options: {
-          smoking: false,
-          lunch: false,
-          cards: false,
-          delivery: false,
-          bottomless_cup: false,
-          wifi: false,
-        },
-      }
+      form: {
+        content: '',
+        imageFiles: []
+      },
+      fileList: []
     }
   },
   methods: {
-    test(){
-      console.log('test')
-      console.log(this.params)
-    },
-
-    // ぐるなびapiでレストラン検索
-    getShops(){
-      this.$axios.$get('/api/', {
-        params: {
-          keyid: process.env.gnavi_api_key,
-          name: this.params.keyword,
-          no_smoking: this.params.options.smoking ? 1 : 0,
-          lunch: this.params.options.lunch ? 1 : 0,
-          card: this.params.options.cards ? 1 : 0,
-          bottomless_cup: this.params.options.bottomless_cup ? 1 : 0,
-          deliverly: this.params.options.delivery ? 1 : 0,
-          wifi: this.params.options.wifi ? 1 : 0,
-        }
-      }).then( res => {
-        this.setShops(res.rest)
-        this.$notify({
-          type: 'success',
-          title: `${res.rest.length}店ヒットしました！`,
-          message: `ラーメンの検索結果`,
-          position: 'bottom-left',
-          duration: 3000
+    postsCreate(){
+      // let formData = {
+      //   content: this.form.content,
+      //   user_id: this.$store.state.auth.currentUser.id,
+      //   picture: this.form.imageFiles
+      // }
+      let formData = new FormData()
+      formData.append("content", this.form.content)
+      formData.append("user_id", this.$store.state.auth.currentUser.id)
+      if (this.form.imageFiles.length > 0){
+        this.form.imageFiles.forEach( f => {
+          formData.append("picture" + '[]', f)
         })
-        console.log('searched !!')
+      }
+      this.$axios.$post(process.env.browserBaseUrl + '/api/posts', formData, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+      }).then(res => {
+        console.log('create post 成功')
         console.log(res)
-      }).catch( err => {
+        this.$router.push('/posts')
+      }).catch(err => {
         console.log(err)
       })
     },
-
-    // storeにレストラン情報をセット
-    ...mapMutations({ 
-      setShops: 'shops/setShops',
-      setCurrentPosition: 'shops/setCurrentPosition',
-    })
-  },
-  components: {
-    shopLists,shopSearchBtn
+    handleAdd(status, file, fileList){
+      // fileList.forEach( f => {
+      //   this.form.imageFiles.push(f.raw)
+      // })
+      this.form.imageFiles.push(file.raw)
+      console.log(file)
+      console.log('handleAdd')
+      console.log(this.form.imageFiles)
+      console.log(typeof this.form.imageFiles)
+    },
+    handlePreview(){
+      console.log('preview')
+    },
+    handleRemove(){
+      console.log('remove')
+    },
   }
 }
 </script>
 
 <style>
-.el-checkbox {
-  margin-left: 0 !important;
-}
-.el-divider--horizontal.title {
-  margin: 60px 0;
+.new_post_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>

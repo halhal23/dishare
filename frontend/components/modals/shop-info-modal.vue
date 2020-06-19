@@ -130,6 +130,7 @@ export default {
       this.$axios.$post(process.env.browserBaseUrl + '/api/posts', formData).then(res => {
         console.log('create post 成功')
         console.log(res)
+        this.$router.push('/posts')
       }).catch(err => {
         console.log(err)
       })

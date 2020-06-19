@@ -11,5 +11,6 @@ class PostSerializer < ActiveModel::Serializer
              :created_at
   
   belongs_to :user
+  has_many :photos
   has_many :comments, serializer: CommentSerializer
 end
