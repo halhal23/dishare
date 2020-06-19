@@ -62,17 +62,28 @@ export default {
       })
     },
     handleAdd(status, file, fileList){
-      this.form.imageFiles.push(file.raw)
-      console.log(file)
+      this.form.imageFiles = []
+      fileList.forEach(f => {
+        this.form.imageFiles.push(f.raw)
+      })
       console.log('handleAdd')
       console.log(this.form.imageFiles)
-      console.log(typeof this.form.imageFiles)
+      console.log(file)
+      console.log(fileList)
     },
-    handlePreview(){
+    handlePreview(file, fileList){
       console.log('preview')
+      console.log(file)
+      console.log(fileList)
     },
-    handleRemove(){
+    handleRemove(file, fileList){
+      this.form.imageFiles = []
+      fileList.forEach(f => {
+        this.form.imageFiles.push(f.raw)
+      })
       console.log('remove')
+      console.log(file)
+      console.log(fileList)
     },
   }
 }
@@ -87,7 +98,7 @@ export default {
   flex-direction: column;
   padding: 70px 0
 }
-.el-form {
+.new_post_wrapper .el-form {
   box-shadow: 0 0 18px #ccc;
   padding: 20px 10px;
 }

@@ -62,15 +62,23 @@
 
 <script>
 import userEditForm from '~/components/modals/user-edit-form.vue'
+import { mapState } from 'vuex'
 export default {
-  async asyncData({ params, $axios }){
-      console.log('async users_id')
+  // async asyncData({ params, $axios }){
+  //     console.log('async users_id')
+  //     let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
+  //     let data = await $axios.$get(baseUrl + `/api/users/${params.id}`)
+  //     console.log(data)
+  //     return {
+  //       user: data
+  //     }
+  // },
+  async fetch({ params, $axios, store }){
+      console.log('fetch users_id')
       let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
       let data = await $axios.$get(baseUrl + `/api/users/${params.id}`)
       console.log(data)
-      return {
-        user: data
-      }
+      store.commit('setUser', data )
   },
   data(){
     return {
@@ -80,14 +88,17 @@ export default {
   },
   computed: {
     isMe(){
-      return this.$store.state.auth.currentUser.id == this.user.id ? true : false
-    }
+      return this.$store.state.auth.currentUser.id == this.$store.state.user.id ? true : false
+    },
+    ...mapState({
+      user: state => state.user
+    })
   },
   async mounted(){
     let res = await this.$axios.$get(process.env.browserBaseUrl + '/api/isFollowed', {
       params: {
         user_id: this.$store.state.auth.currentUser.id,
-        follow_id: this.user.id
+        follow_id: this.$store.state.user.id
     }})
     this.isFollewed = Boolean(res)
   },
@@ -95,7 +106,7 @@ export default {
     follow(){
       this.$axios.$post(process.env.browserBaseUrl + '/api/relationships', {
           user_id: this.$store.state.auth.currentUser.id,
-          follow_id: this.user.id
+          follow_id: this.$store.state.user.id
       }).then(res => {
         this.user = res
         console.log('follow 成功')
@@ -115,7 +126,7 @@ export default {
       this.$axios.$delete(process.env.browserBaseUrl + '/api/relationships/delete', {
         params: {
           user_id: this.$store.state.auth.currentUser.id,
-          follow_id: this.user.id
+          follow_id: this.$store.state.user.id
         }
       }).then(res => {
         this.user = res

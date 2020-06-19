@@ -93,12 +93,12 @@ export default {
         params: {
           keyid: process.env.gnavi_api_key,
           name: this.keyword,
-          latitude: this.currentPosition.position.lat,
-          longitude: this.currentPosition.position.lng,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
           range: 5
         }
       }).then( res => {
-        // this.setShops(res.rest)
+        this.setShops(res.rest)
         
         this.$notify({
           type: 'success',
