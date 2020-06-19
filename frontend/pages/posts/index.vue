@@ -5,7 +5,7 @@
         <el-tab-pane label="All Users">User</el-tab-pane>
         <el-tab-pane label="Your friends" style="height: 100%;">
           <div class="posts_wrapper">
-            <postCard v-for="p in posts" :key="p.id" :post="p" />
+            <postCard v-for="p in posts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -19,6 +19,7 @@ export default {
   async asyncData({ $axios, params}){
     const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
     const data = await $axios.$get(baseUrl + '/api/posts')
+    console.log(data)
     return {
       posts: data,
       visible: false
@@ -38,6 +39,10 @@ export default {
     },
     doClick(tab){
       console.log(tab.label);
+    },
+    async getUpdatePosts(){
+      const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts')
+      this.posts = data
     }
   },
   components: {

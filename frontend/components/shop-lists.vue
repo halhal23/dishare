@@ -113,7 +113,7 @@ export default {
     width: 100%;
     height: 450px;
   }
-  .el-card__body {
+  .shop-card .el-card__body {
     flex-direction: column;
   }
   .shop-card .shop_image {

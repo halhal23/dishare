@@ -2,9 +2,26 @@
   <el-card class="post-card">
     <div class="images">
       <el-carousel indicator-position="outside" :autoplay="false">
-        <el-carousel-item v-for="item in 1" :key="item">
+        <el-carousel-item v-if="post.shop_image_url">
           <el-image
           :src="post.shop_image_url"
+          style="width: 100%;height: 100%;"
+          fit="fill"></el-image>
+        </el-carousel-item>
+        <el-carousel-item v-for="photo in post.photos" :key="photo.id">
+          <!-- <el-image
+          v-if="post.shop_image_url"
+          :src="post.shop_image_url"
+          style="width: 100%;height: 100%;"
+          fit="fill"></el-image> -->
+          <el-image
+          v-if="photo"
+          :src="photo.picture.url"
+          style="width: 100%;height: 100%;"
+          fit="fill"></el-image>
+          <el-image
+          v-else
+          src="images/noimage.png"
           style="width: 100%;height: 100%;"
           fit="fill"></el-image>
         </el-carousel-item>
@@ -14,7 +31,8 @@
       <div class="author">
         <el-avatar :src="post.user.image.url" :size="40"></el-avatar>
         <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ post.user.name }}</p>
-        <el-tag type="warning">お店紹介</el-tag>
+        <el-tag type="warning" v-if="post.shop_name">お店紹介</el-tag>
+        <el-button @click="deletePost(post.id)" type="danger" size="mini" icon="el-icon-delete" circle></el-button>
       </div>
       <div class="message" style="margin: 20px 0;">
         <p style="font-size: 14px; font-weight: bold;">{{ post.content }}</p>
@@ -30,7 +48,7 @@
           <p class="shop_detail_item" style="font-size: 14px; font-weight: bold;">{{ post.shop_address }}</p>
           <a class="shop_detail_item" :href="post.shop_url" style="padding: 0;" target="_blank">詳しくはこちら</a>
         </div>
-        <el-button type="warning" size="mini" slot="reference" style="box-shadow: 0 0 8px #aaa;" round>お店の情報表示</el-button>
+        <el-button v-if="post.shop_name" type="warning" size="mini" slot="reference" style="box-shadow: 0 0 8px #aaa;" round>お店の情報表示</el-button>
       </el-popover>
 
       <div class="menu">      
@@ -50,6 +68,7 @@
         <nuxt-link :to="{path: `/users/${post.user.id}`}" style="background: #ff0077;" class="post_icon">
           <i class="el-icon-user" style="font-size: 25px;"></i>
         </nuxt-link>
+        
       </div>
     </div>
   </el-card>
@@ -81,6 +100,13 @@ export default {
         console.log(err)
       })
     },
+    deletePost(id){
+      this.$axios.$delete(process.env.browserBaseUrl + `/api/posts/${id}`).then(res => {
+        console.log('delete')
+        console.log(res)
+        this.$emit('getUpdatePosts')
+      })
+    }
   }
 }
 </script>
