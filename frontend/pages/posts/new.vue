@@ -1,9 +1,10 @@
 <template>
   <el-main class="new_post_wrapper">
+    <h2 style="margin: 30px 0;font-size: 34px;">New Post</h2>
     <el-form>
-      <h2>New Post</h2>
-      <h4>message</h4>
+      <el-divider>content</el-divider>
       <el-input v-model="form.content" type="textarea"></el-input>
+      <el-divider>Photograshs</el-divider>
       <el-upload
         class="upload-demo"
         drag
@@ -18,9 +19,10 @@
         multiple>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
-        <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 500kb</div>
+        <div class="el-upload__tip" style="text-align: center;" slot="tip">You can post up to 4 images.</div>
       </el-upload>
-      <el-button type="success" @click="postsCreate" plain round>Submit</el-button>
+      <el-divider><i class="el-icon-star-on"></i></el-divider>
+      <el-button type="success" @click="postsCreate" style="margin: 10px auto;display: block;" plain round>Submit</el-button>
     </el-form>
   </el-main>
 </template>
@@ -39,11 +41,6 @@ export default {
   },
   methods: {
     postsCreate(){
-      // let formData = {
-      //   content: this.form.content,
-      //   user_id: this.$store.state.auth.currentUser.id,
-      //   picture: this.form.imageFiles
-      // }
       let formData = new FormData()
       formData.append("content", this.form.content)
       formData.append("user_id", this.$store.state.auth.currentUser.id)
@@ -65,9 +62,6 @@ export default {
       })
     },
     handleAdd(status, file, fileList){
-      // fileList.forEach( f => {
-      //   this.form.imageFiles.push(f.raw)
-      // })
       this.form.imageFiles.push(file.raw)
       console.log(file)
       console.log('handleAdd')
@@ -90,5 +84,11 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: column;
+  padding: 70px 0
+}
+.el-form {
+  box-shadow: 0 0 18px #ccc;
+  padding: 20px 10px;
 }
 </style>
