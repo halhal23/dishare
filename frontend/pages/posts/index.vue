@@ -1,15 +1,15 @@
 <template>
   <el-main class="main-posts-index">
-    <div style="height: 100%;">
+    <!-- <div style="height: 100%;">
       <el-tabs @tab-click="doClick" tab-position="top" :stretch="true" style="height: 100%;">
         <el-tab-pane label="All Users">User</el-tab-pane>
-        <el-tab-pane label="Your friends" style="height: 100%;">
+        <el-tab-pane label="Your friends" style="height: 100%;"> -->
           <div class="posts_wrapper">
             <postCard v-for="p in posts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
           </div>
-        </el-tab-pane>
+        <!-- </el-tab-pane>
       </el-tabs>
-    </div>
+    </div> -->
   </el-main>
 </template>
 
