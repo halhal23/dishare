@@ -13,7 +13,7 @@
       <el-form-item label="icon" :label-width="formLabelWidth">
         <el-upload
           class="upload-demo"
-          action="#"
+          action="https://jsonplaceholder.typicode.com/posts/"
           :on-preview="handlePreview"
           :on-remove="handleRemove"
           :file-list="fileList"
@@ -40,7 +40,7 @@ export default {
       email: this.$props.currentUser.email,
       fileList: [{
           name: 'current icon', 
-          url: this.$props.currentUser.image !== null ? this.$props.currentUser.image.url : "~/static/images/no-image.png"
+          url: this.$props.currentUser.image != null ? this.$props.currentUser.image.url : "~/static/images/noimage.png"
         }],
       imageFile: ""
     }
@@ -54,12 +54,12 @@ export default {
       this.$emit('onModal')
     },
     async updateUser(){
-      console.log('update desu')
+      // console.log('update desu')
       // formData
       let formData = new FormData()
       formData.append("name", this.name)
       formData.append("email", this.email)
-      if (this.imageFile !== null ){
+      if (this.imageFile != ""){
         formData.append("image", this.imageFile)
       }
       await this.$axios.$put( process.env.browserBaseUrl + '/api/auth', formData,{
@@ -67,29 +67,33 @@ export default {
             "Content-Type": "multipart/form-data"
         }
       }).then( res => {
-        console.log('res desuyo')
-        console.log(res)
+        // console.log('res desuyo')
+        // console.log(res)
         this.$store.commit('auth/setCurrentUser', res.data )
-        console.log(res.data)
-        this.$store.commit('setUser', res.data )
+        this.$axios.$get( process.env.browserBaseUrl + `/api/users/${res.data.id}`).then(res => {
+          this.$store.commit('setUser', res )
+        })
         this.handleClose(false)
       }).catch( err => {
         console.log('err')
       })
     },
     handleAdd: function (file, fileList) {
-      if (fileList.length === 2){
+      if (fileList.length >= 2){
         fileList.shift()
+        console.log('shift')
       }
+      // console.log(fileList)
       this.fileList = fileList
       this.imageFile = fileList[0].raw
     },
     handleRemove(file, fileList) {
-        console.log(file, fileList);
+        // console.log(file, fileList);
     },
     handlePreview(file) {
         console.log('file')
-        console.log(file);
+        // console.log(file);
+        // console.log(this.fileList)
     },
   }
 };

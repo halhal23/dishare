@@ -36,8 +36,8 @@
     <span slot="footer" class="dialog-footer">
       <el-button @click="onModal" class="authButton" round>Cancel</el-button>
       <el-button @click="testSignIn" type="primary" class="authButton" plain round>Login by test user</el-button>
-      <el-button v-if="$props.isLogin" @click="doLogin(form)" type="primary" class="authButton" round>Login</el-button>
-      <el-button v-else @click="doSignUp(form)" type="primary" class="authButton" round>SignUp</el-button>
+      <el-button v-if="$props.isLogin" @click="doLogin" type="primary" class="authButton" round>Login</el-button>
+      <el-button v-else @click="doSignUp" type="primary" class="authButton" round>SignUp</el-button>
     </span>
   </el-dialog>
 </template>
@@ -71,12 +71,12 @@ export default {
     onModal(){
       this.$emit('onModal')
     },
-    doLogin(formData){
-      this.login(formData)
+    doLogin(){
+      this.login(this.form)
       this.onModal() // Modalを閉じる
     },
-    doSignUp(formData){
-      this.signUp(formData)
+    doSignUp(){
+      this.signUp(this.form)
       this.onModal() // Modalを閉じる
     },
     testSignIn(){

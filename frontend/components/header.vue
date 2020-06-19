@@ -12,7 +12,7 @@
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
         <a href="#" @click="onModal(true, true)" v-if="!isLoggedIn">LOGIN</a>
-        <nuxt-link to="/users/mypage" v-else>{{ $store.state.auth.currentUser.name }}</nuxt-link>
+        <nuxt-link :to="{ path: `/users/${$store.state.auth.currentUser.id}` }" v-else>{{ $store.state.auth.currentUser.name }}</nuxt-link>
         <!-- <nuxt-link to="/sign_in_up" >LOGIN</nuxt-link> -->
       </el-menu-item>
       <el-menu-item index="5" class="header_item_md" @click="toggleHidden">

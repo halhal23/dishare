@@ -3,6 +3,7 @@
       <el-row>
         <el-col :span="9" :xs="24" class="card_col left">
           <el-image
+            v-if="user.image.url"
             style="width: 140px; height: 160px;border-radius: 20px;"
             :src="user.image.url"
             fit="fill"></el-image>
@@ -43,8 +44,8 @@
               <p><span style="font-weight: bold;font-size: 22px;">{{ user.posts.length }}</span> posts</p>
             </div>
             <div class="follows">
-              <span style="font-family: 'arial black';font-size: 24px;border-bottom: 1px solid #ccc;">Comments</span>
-              <p><span style="font-weight: bold;font-size: 22px;">{{ user.posts.length }}</span> commens</p>
+              <span style="font-family: 'arial black';font-size: 24px;border-bottom: 1px solid #ccc;">Since</span>
+              <p><span style="font-weight: bold;font-size: 18px;color: #aaa;">{{ user.created_at.substr(0, 10) }}</span></p>
             </div>
           </div>
         </el-col>

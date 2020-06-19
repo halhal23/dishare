@@ -9,11 +9,12 @@ import userInfoCard from '~/components/user-info-card.vue'
 import userEditForm from '~/components/modals/user-edit-form.vue'
 export default {
   async fetch({ params, $axios, store }){
-    let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
-    let data = await $axios.$get(baseUrl + `/api/users/${params.id}`)
-    console.log('fetch')
-    console.log(data)
-    store.commit('setUser', data)
+      console.log('fetch')
+      let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
+      let data = await $axios.$get(baseUrl + `/api/users/${params.id}`)
+      console.log('fetch')
+      console.log(data)
+      store.commit('setUser', data)
   },
   components: {
     userInfoCard

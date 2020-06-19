@@ -5,7 +5,7 @@
       </div>
       <div class="comments_wrapper">
         <el-timeline>
-          <el-timeline-item :timestamp="c.created_at" placement="top" v-for="c in post.comments" :key="c.id">
+          <el-timeline-item :timestamp="sliceCreatedAt(c.created_at)" placement="top" v-for="c in post.comments" :key="c.id">
             <el-card>
               <h4 style="margin-bottom: 20px;">{{ c.message }}</h4>
               <p style="display: flex; align-items: center;">
@@ -40,6 +40,9 @@ export default {
   methods: {
     test(){
       console.log(this.$store.state.auth.currentUser.id)
+    },
+    sliceCreatedAt(str){
+      return str.substr(0, 10) + "  " + str.substr(11, 8)
     },
     createComment() {
       const formData = {

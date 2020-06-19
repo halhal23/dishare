@@ -1,5 +1,9 @@
 export const state = () => ({
-  currentUser:  null,
+  currentUser:  {
+    id: 1,
+    email: '',
+    name: '',
+  },
   isLoggedIn: false,
 })
 
@@ -9,8 +13,8 @@ export const getters = {
 }
 
 export const mutations = {
-  setCurrentUser(state, user){
-    state.currentUser = user
+  setCurrentUser(state, userData){
+    state.currentUser = userData
   },
   setIsLoggedIn(state, bool){
     state.isLoggedIn = bool
