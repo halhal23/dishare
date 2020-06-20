@@ -53,9 +53,9 @@ workflows:
           dockerfile: Dockerfile.prd
           repo: dishare-nuxt
           tag: "latest"
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
   rails-ecr-push:
     jobs:
       - test
@@ -70,6 +70,6 @@ workflows:
           path: './backend/'
           repo: dishare-rails
           tag: "latest"
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
