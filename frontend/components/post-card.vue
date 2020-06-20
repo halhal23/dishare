@@ -32,7 +32,6 @@
         <el-avatar :src="post.user.image.url" :size="40"></el-avatar>
         <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ post.user.name }}</p>
         <el-tag type="warning" v-if="post.shop_name">お店紹介</el-tag>
-        <el-button @click="deletePost(post.id)" type="danger" size="mini" icon="el-icon-delete" circle></el-button>
       </div>
       <div class="message" style="margin: 20px 0;">
         <p style="font-size: 14px; font-weight: bold;">{{ post.content }}</p>
@@ -68,7 +67,7 @@
         <nuxt-link :to="{path: `/users/${post.user.id}`}" style="background: #ff0077;" class="post_icon">
           <i class="el-icon-user" style="font-size: 25px;"></i>
         </nuxt-link>
-        
+        <el-button @click="deletePost(post.id)" v-if="$store.state.auth.currentUser.id == post.user.id" type="danger" size="mini" icon="el-icon-delete" circle></el-button>
       </div>
     </div>
   </el-card>
@@ -101,11 +100,18 @@ export default {
       })
     },
     deletePost(id){
-      this.$axios.$delete(process.env.browserBaseUrl + `/api/posts/${id}`).then(res => {
-        console.log('delete')
-        console.log(res)
-        this.$emit('getUpdatePosts')
-      })
+      this.$confirm('Are you sure you want to delete it?', 'DELETE', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+        center: true
+      }).then(() => { 
+        this.$axios.$delete(process.env.browserBaseUrl + `/api/posts/${id}`).then(res => {
+          console.log('delete')
+          console.log(res)
+          this.$emit('getUpdatePosts')
+        })
+       }).catch(() => {})
     }
   }
 }
@@ -143,6 +149,7 @@ export default {
 }
 .post-card .menu {
   display: flex;
+  align-items: center;
 }
 .post-card .menu .post_icon {
   width: 50px;
@@ -155,6 +162,7 @@ export default {
   align-items: center;
   margin: 0 30px 15px 0;
   box-shadow: 0 0 8px #aaa;
+  flex-shrink: 0;
 }
 .shop_detail_item {
   border-bottom: 1px solid #bba;
