@@ -70,6 +70,46 @@ export default {
 
     // ぐるなびapiでレストラン検索
     getShops(){
+      if (this.params.current_positon){
+        if (!navigator.geolocation) {
+          alert('Geolocation not supported');
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(this.success, function() {
+          alert('Geolocation failed!');
+          return;
+        });
+      } else {
+        this.$axios.$get('/api/', {
+          params: {
+            keyid: process.env.gnavi_api_key,
+            name: this.params.keyword,
+            no_smoking: this.params.options.smoking ? 1 : 0,
+            lunch: this.params.options.lunch ? 1 : 0,
+            card: this.params.options.cards ? 1 : 0,
+            bottomless_cup: this.params.options.bottomless_cup ? 1 : 0,
+            deliverly: this.params.options.delivery ? 1 : 0,
+            wifi: this.params.options.wifi ? 1 : 0,
+          }
+        }).then( res => {
+          this.setShops(res.rest)
+          this.$notify({
+            type: 'success',
+            title: `${res.rest.length}店ヒットしました！`,
+            message: `ラーメンの検索結果`,
+            position: 'bottom-left',
+            duration: 3000
+          })
+          console.log('searched !!')
+          console.log(res)
+        }).catch( err => {
+          console.log(err)
+        })
+      }
+    },
+    success(position){
+      this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
@@ -80,23 +120,23 @@ export default {
           bottomless_cup: this.params.options.bottomless_cup ? 1 : 0,
           deliverly: this.params.options.delivery ? 1 : 0,
           wifi: this.params.options.wifi ? 1 : 0,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          range: 5
         }
       }).then( res => {
         this.setShops(res.rest)
         this.$notify({
           type: 'success',
           title: `${res.rest.length}店ヒットしました！`,
-          message: `ラーメンの検索結果`,
+          message: `${this.keyword}の検索結果`,
           position: 'bottom-left',
-          duration: 3000
+          duration: 2000
         })
-        console.log('searched !!')
-        console.log(res)
       }).catch( err => {
         console.log(err)
       })
     },
-
     // storeにレストラン情報をセット
     ...mapMutations({ 
       setShops: 'shops/setShops',
@@ -115,5 +155,10 @@ export default {
 }
 .el-divider--horizontal.title {
   margin: 60px 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .el-divider--horizontal.title h1{
+    font-size: 12px;
+  }
 }
 </style>

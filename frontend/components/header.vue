@@ -12,13 +12,14 @@
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
         <a href="#" @click="onModal(true, true)" v-if="!isLoggedIn">LOGIN</a>
-        <nuxt-link :to="{ path: `/users/${$store.state.auth.currentUser.id}` }" v-else>{{ $store.state.auth.currentUser.name }}</nuxt-link>
-        <!-- <nuxt-link to="/sign_in_up" >LOGIN</nuxt-link> -->
+        <nuxt-link :to="{ path: `/users/${$store.state.auth.currentUser.id}` }" v-else>
+          <el-avatar :src="currentUser.image.url" :size="40"></el-avatar>
+        </nuxt-link>
       </el-menu-item>
       <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
         <!-- <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link> -->
         <a href="#" @click="onModal(true, false)" v-if="!isLoggedIn">SIGNUP</a>
-        <a href="#" @click="logout" v-else>LOGOUT</a>
+        <span @click="clickLogout" class="item_span" v-else>LOGOUT</span>
       </el-menu-item>
     </el-menu>
 
@@ -65,6 +66,14 @@ export default {
       this.testModal = testModal
       this.isLogin = isLogin
     },
+    clickLogout(){
+      this.$confirm('Are you sure you want to logout?', 'LOGOUT', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+        center: true
+      }).then(() => { this.logout() }).catch(() => {})
+    },
     ...mapActions({
       logout: 'auth/logout'
     })
@@ -93,6 +102,11 @@ export default {
 
 .header_menu_respon{
   display: none;
+}
+
+.item_span {
+  padding: 0 20px;
+  display: block;
 }
 
 
@@ -130,6 +144,9 @@ export default {
   }
   .header_item_md.logo {
     display: none;
+  }
+  .item_span {
+    width: 100%;
   }
 }
 </style>

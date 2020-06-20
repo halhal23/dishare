@@ -71,7 +71,7 @@ export default {
         // console.log(res)
         this.$store.commit('auth/setCurrentUser', res.data )
         this.$axios.$get( process.env.browserBaseUrl + `/api/users/${res.data.id}`).then(res => {
-          this.$store.commit('setUser', res )
+        this.$store.commit('setUser', res )
         })
         this.handleClose(false)
       }).catch( err => {

@@ -53,7 +53,7 @@ export default {
 }
 .users_index_wrapper .el-tabs__item {
   font-family: cursive;
-  font-size: 30px;
+  font-size: 24px;
 }
 .users_index_wrapper .el-tabs__content {
   height: 0;
