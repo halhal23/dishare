@@ -53,9 +53,19 @@ workflows:
           dockerfile: Dockerfile.prd
           repo: dishare-nuxt
           tag: "latest"
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'dishare-nuxt-task' # ECSのタスク定義名
+          cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
+          service-name: 'dishare-nuxt-ecs-service'  #サービス名
+          container-image-name-updates: "container=nuxt-container,tag=latest"
+          filters:
+            branches:
+              only: master
   rails-ecr-push:
     jobs:
       - test
@@ -70,6 +80,16 @@ workflows:
           path: './backend/'
           repo: dishare-rails
           tag: "latest"
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'dishare-rails-task' # ECSのタスク定義名
+          cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
+          service-name: 'dishare-rails-ecs-service'  #サービス名
+          container-image-name-updates: "container=rails-container,tag=latest"
+          filters:
+            branches:
+              only: master
