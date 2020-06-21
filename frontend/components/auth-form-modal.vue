@@ -74,10 +74,20 @@ export default {
     doLogin(){
       this.login(this.form)
       this.onModal() // Modalを閉じる
+      this.$notify({
+        title: 'Login successfully',
+        message: 'Welcome to dishare!!',
+        type: 'success'
+      });
     },
     doSignUp(){
       this.signUp(this.form)
       this.onModal() // Modalを閉じる
+      this.$notify({
+        title: 'SignUp successfully',
+        message: 'Welcome to dishare!!',
+        type: 'success'
+      });
     },
     testSignIn(){
       this.formData = {
@@ -88,6 +98,11 @@ export default {
       }
       this.login(this.formData)
       this.onModal()
+      this.$notify({
+        title: 'Login successfully',
+        message: 'Welcome to dishare!!',
+        type: 'success'
+      });
     },
     ...mapActions({
       login: 'auth/login',
