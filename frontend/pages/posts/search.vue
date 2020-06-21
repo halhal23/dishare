@@ -1,5 +1,5 @@
 <template>
-  <el-main>
+  <el-main class="search_wrapper">
     <el-divider class="title" style="margin: 60px;">
       <h1 @click="test">You can do a detailed search</h1>
     </el-divider>
@@ -156,9 +156,16 @@ export default {
 .el-divider--horizontal.title {
   margin: 60px 0;
 }
+
+.search_wrapper .el-form {
+  padding: 0 200px;
+}
 @media (min-width: 0px) and (max-width: 768px) {
   .el-divider--horizontal.title h1{
     font-size: 12px;
+  }
+  .search_wrapper .el-form {
+    padding: 0;
   }
 }
 </style>

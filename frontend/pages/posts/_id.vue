@@ -1,8 +1,6 @@
 <template>
   <el-main class="post_show_wrapper">
-      <div>
-        <postCard :post="post"/>
-      </div>
+      <postCard :post="post"/>
       <div class="comments_wrapper">
         <el-timeline>
           <el-timeline-item :timestamp="sliceCreatedAt(c.created_at)" placement="top" v-for="c in post.comments" :key="c.id">
@@ -38,9 +36,7 @@ export default {
     }
   },
   methods: {
-    test(){
-      console.log(this.$store.state.auth.currentUser.id)
-    },
+    // コメントの日付のフォーマットを整形。
     sliceCreatedAt(str){
       return str.substr(0, 10) + "  " + str.substr(11, 8)
     },

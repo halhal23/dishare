@@ -13,8 +13,9 @@
       <el-form-item label="icon" :label-width="formLabelWidth">
         <el-upload
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action=""
           :on-preview="handlePreview"
+          :auto-upload="false"
           :on-remove="handleRemove"
           :file-list="fileList"
           :on-change="handleAdd"

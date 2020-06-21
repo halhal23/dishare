@@ -16,9 +16,12 @@
 <script>
 import postCard from '~/components/post-card.vue'
 export default {
-  async asyncData({ $axios, params}){
+  // フォローしているユーザの記事のみを取得
+  async asyncData({ $axios, params, store}){
     const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
-    const data = await $axios.$get(baseUrl + '/api/posts')
+    const data = await $axios.$get(baseUrl + '/api/posts', {
+      params: { user_id: store.state.auth.currentUser.id }
+    })
     console.log(data)
     return {
       posts: data,

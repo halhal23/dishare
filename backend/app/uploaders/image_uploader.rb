@@ -1,9 +1,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # developmentとtest以外はS3を使用
   if Rails.env.development?
-    storage :file
+    storage :fog
   elsif Rails.env.test?
-    storage :file
+    storage :fog
   else
     storage :fog
   end

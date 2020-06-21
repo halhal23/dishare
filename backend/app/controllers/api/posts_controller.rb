@@ -1,7 +1,8 @@
 module Api
   class PostsController < ApplicationController
+    # フォローしているユーザの post のみを返す
     def index
-      posts = Post.all
+      posts = Post.all.order(created_at: "DESC")
       render json: posts
     end
   
@@ -13,15 +14,12 @@ module Api
     def create
       post = Post.new(post_params)
       if post.save
-        logger.debug "今から保存処理は入ります。"
         photo_params[:picture]&.each do |p|
-          logger.debug "保存処理1回目です"
           Photo.create(
             picture: p,
             post_id: post.id
           )
         end 
-        logger.debug "保存処理終わりました。"
         render json: post
       else
         render json: post
@@ -50,6 +48,10 @@ module Api
 
     def photo_params
       params.permit( picture: [])
+    end
+
+    def set_user
+      @user = User.find(id: params[:id])
     end
   end
 end
