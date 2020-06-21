@@ -6,13 +6,12 @@
     <el-col :span="16" :lg="8">
       <el-select v-model="select" placeholder="指定せず検索" class="select" style="width: 100%;background: #F5F7FA;">
         <el-option label="近くの店を探す" value="1"></el-option>
-        <el-option label="人気店を探す" value="2"></el-option>
-        <el-option label="指定せず検索" value="3"></el-option>
-        <el-option label="検索結果をクリア" value="4"></el-option>
+        <el-option label="指定せず検索" value="2"></el-option>
+        <el-option label="検索結果をクリア" value="3"></el-option>
       </el-select>
     </el-col>
     <el-col :span="8" :lg="4">
-      <el-button @click="do_either_search" icon="el-icon-search" style="width: 100%;" class="search-icon"></el-button>
+      <el-button @click="doEitherSearch" icon="el-icon-search" style="width: 100%;" class="search-icon"></el-button>
     </el-col>
   </el-row>
 </template>
@@ -30,10 +29,29 @@ export default {
     ...mapGetters({
       shops: 'shops/shops',
       currentPosition: 'shops/currentPosition'
-      })
+    })
   },
   methods: {
-    getFirst(){
+    // セレクトボックスの値によって、検索の仕方を条件分岐する。
+    doEitherSearch(){
+      switch (this.select) {
+        case '1':
+          this.findNearShop()
+          this.showPromptForLogin();
+          break
+        case '2':
+        case '':
+          this.findShopNoDetail()
+          this.showPromptForLogin();
+          break
+        case '3':
+          this.clearShops()
+          this.$store.commit('auth/setCurrentUser', null)
+          this.$store.commit('auth/setIsLoggedIn', false)
+      }
+    },
+    // 詳細条件なしの検索。
+    findShopNoDetail(){
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
@@ -52,31 +70,8 @@ export default {
         console.log(err)
       })
     },
-    do_either_search(){
-      switch (this.select) {
-        case '1':
-          console.log(1)
-          this.getShops()
-          this.showPromptForLogin();
-          break
-        case '2':
-          console.log(2)
-          this.getFirst()
-          this.showPromptForLogin();
-          break
-        case '3':
-        case '':
-          console.log(3)
-          this.getFirst()
-          this.showPromptForLogin();
-          break
-        case '4':
-          this.clearShops()
-          this.$store.commit('auth/setCurrentUser', null)
-          this.$store.commit('auth/setIsLoggedIn', false)
-      }
-    },
-    getShops(){
+    // 現在位置から近くのお店を探す。
+    findNearShop(){
       if (!navigator.geolocation) {
         alert('Geolocation not supported');
         return;
@@ -87,6 +82,7 @@ export default {
         return;
       });
     },
+    // 現在位置を正常に取得できた際に走るメソッド。
     success(position){
       this.setCurrentPosition({ position: { lat: position.coords.latitude, lng: position.coords.longitude }})
       this.$axios.$get('/api/', {
@@ -116,22 +112,20 @@ export default {
       console.log('clear')
       this.setShops(null)
     },
+    // 検索後にログインを促す。(未ログインの場合のみ)
     showPromptForLogin(){
-      this.$msgbox({
-        title: 'Thank you for your search!!',
-        message: 'Once you log in, you can search for more details and share them with your friends!',
-        confirmButtonText: 'OK'
-      }).then(()=>{}).catch(()=>{})
-      // this.$confirm('Once you log in, you can search for more details and share them with your friends!', 'Thank you!!', {
-      //     confirmButtonText: 'OK',
-      //     type: 'success',
-      //     center: true
-      // })
+      if (this.$store.state.auth.currentUser == null){
+        this.$msgbox({
+          title: 'Thank you for your search!!',
+          message: 'Once you log in, you can search for more details and share them with your friends!',
+          confirmButtonText: 'OK'
+        }).then(()=>{}).catch(()=>{})
+      }
     },
     ...mapMutations({ 
       setShops: 'shops/setShops',
       setCurrentPosition: 'shops/setCurrentPosition',
-      })
+    })
   },
 }
 </script>

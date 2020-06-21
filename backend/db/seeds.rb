@@ -1,9 +1,11 @@
-# User.create({
-#   name: 'halhal',
-#   email: 'halhal@gmail.com',
-#   password: 'password',
-#   password_confirmation: 'password'
-# })
+10.times do |i|
+  User.create({
+    name: "test#{i}",
+    email: "test#{i}@gmail.com",
+    password: 'password',
+    password_confirmation: 'password'
+  })
+end
 
 # Comment.create([
 #   {
@@ -26,18 +28,18 @@
 Relationship.create([
   {
     user_id: 1,
-    follow_id: 13
-  },
-  {
-    user_id: 13,
-    follow_id: 1
-  },
-  {
-    user_id: 1,
     follow_id: 2
   },
   {
-    user_id: 2,
-    follow_id: 1
+    user_id: 1,
+    follow_id: 3
+  },
+  {
+    user_id: 1,
+    follow_id: 4
+  },
+  {
+    user_id: 1,
+    follow_id: 5
   },
 ])

@@ -3,8 +3,8 @@
     <h2 style="margin: 30px 0;font-size: 34px;">New Post</h2>
     <el-form>
       <el-divider>content</el-divider>
-      <el-input v-model="form.content" type="textarea"></el-input>
-      <el-divider>Photograshs</el-divider>
+      <el-input v-model="form.content" type="textarea" :rows="4"></el-input>
+      <el-divider>Photos</el-divider>
       <el-upload
         class="upload-demo"
         drag
@@ -44,6 +44,7 @@ export default {
       let formData = new FormData()
       formData.append("content", this.form.content)
       formData.append("user_id", this.$store.state.auth.currentUser.id)
+      // 複数枚の画像データをformDataに格納するための処理
       if (this.form.imageFiles.length > 0){
         this.form.imageFiles.forEach( f => {
           formData.append("picture" + '[]', f)
@@ -54,36 +55,27 @@ export default {
             "Content-Type": "multipart/form-data"
         }
       }).then(res => {
-        console.log('create post 成功')
-        console.log(res)
         this.$router.push('/posts')
       }).catch(err => {
         console.log(err)
       })
     },
+    // 画像の選択が成功した場合の処理。複数枚の画像データを　this.form.imageFiles　に格納。
     handleAdd(status, file, fileList){
       this.form.imageFiles = []
       fileList.forEach(f => {
         this.form.imageFiles.push(f.raw)
       })
-      console.log('handleAdd')
-      console.log(this.form.imageFiles)
-      console.log(file)
-      console.log(fileList)
     },
     handlePreview(file, fileList){
-      console.log('preview')
       console.log(file)
-      console.log(fileList)
     },
+     // 画像の選択が解除された場合の処理。現在選択されている画像一覧を this.form.imageFiles に格納し直す。
     handleRemove(file, fileList){
       this.form.imageFiles = []
       fileList.forEach(f => {
         this.form.imageFiles.push(f.raw)
       })
-      console.log('remove')
-      console.log(file)
-      console.log(fileList)
     },
   }
 }
@@ -96,10 +88,11 @@ export default {
   align-items: center;
   height: 100vh;
   flex-direction: column;
-  padding: 70px 0
+  padding: 70px 0;
 }
 .new_post_wrapper .el-form {
-  box-shadow: 0 0 18px #ccc;
+  /* box-shadow: 0 0 18px #ccc; */
   padding: 20px 10px;
+  margin: 0 15px;
 }
 </style>

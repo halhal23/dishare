@@ -17,7 +17,7 @@
 
         <shopSearchForm /> <!-- レストラン検索フォームのコンポーネント -->
 
-        <p style="font-family: cursive;font-size: 24px;">
+        <p class="promptMsg">
           First, enter the keyword, <br>
           Let's search for a restaurant.
         </p>
@@ -56,7 +56,7 @@ export default {
 .el-row.top_contents .el-col.right {
   background: rgb(229, 226, 221);
   display: flex;
-  padding: 70px 30px 10px ;
+  padding: 60px 30px 10px ;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -65,6 +65,10 @@ export default {
   font-size: 7.6vw;
   font-weight: 400;
   font-family: "Maison Cacao", serif;
+}
+.promptMsg {
+  font-family: Times, 'Times New Roman', serif;
+  font-size: 24px;
 }
 
 @media (min-width: 0px) and (max-width: 768px) {
@@ -75,6 +79,9 @@ export default {
   .el-row.top_contents .el-col.main {
     width: 100%;
     text-align: center;
+  }
+  .promptMsg {
+    font-size: 14px;
   }
 }
 </style>

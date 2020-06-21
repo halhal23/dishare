@@ -1,9 +1,5 @@
 export const state = () => ({
-  currentUser:  {
-    id: 1,
-    email: '',
-    name: '',
-  },
+  currentUser:  {},
   isLoggedIn: false,
 })
 
@@ -18,7 +14,7 @@ export const mutations = {
   },
   setIsLoggedIn(state, bool){
     state.isLoggedIn = bool
-  },
+  }
 }
 
 export const actions = {
@@ -56,7 +52,6 @@ export const actions = {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
         console.log('ログインしたよｘ')
-        console.log(res)
         this.$router.push(`/users/${res.data.id}`)
         return res
       }, err => {
@@ -65,7 +60,7 @@ export const actions = {
         return err
       })
   },
-  async logout({ commit, store }){
+  async logout({ commit }){
     await this.$axios.$delete(process.env.browserBaseUrl + '/api/auth/sign_out').then( res => {
       commit('setCurrentUser', null)
       commit('setIsLoggedIn', false)

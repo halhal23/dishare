@@ -6,6 +6,14 @@
         <el-tab-pane label="Your friends" style="height: 100%;"> -->
           <div class="posts_wrapper">
             <postCard v-for="p in posts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+            <div v-if="posts.length == 0" style="text-align: center;">
+              <h2 style="font-family:  Times, 'Times New Roman', serif;">Lets follow other users and see what they post!</h2>
+              <nuxt-link to="/users">
+                <el-button style="margin: 30px auto;">
+                  See users
+                </el-button>
+              </nuxt-link>
+            </div>
           </div>
         <!-- </el-tab-pane>
       </el-tabs>
@@ -16,9 +24,12 @@
 <script>
 import postCard from '~/components/post-card.vue'
 export default {
-  async asyncData({ $axios, params}){
+  // フォローしているユーザの記事のみを取得
+  async asyncData({ $axios, params, store}){
     const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
-    const data = await $axios.$get(baseUrl + '/api/posts')
+    const data = await $axios.$get(baseUrl + '/api/posts', {
+      params: { user_id: store.state.auth.currentUser.id }
+    })
     console.log(data)
     return {
       posts: data,

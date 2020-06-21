@@ -34,10 +34,10 @@ a {
 
 .el-container {
   flex-direction: column;
+  background: #fff;
+  position: relative;
 }
-
 h1 {
-  font-family: cursive;
   letter-spacing: 2px;
 }
 
@@ -62,3 +62,9 @@ header .el-menu-item {
 .page-enter-active {
   transition: 2s;
 }
+/* }
+@media (min-width: 0px) and (max-width: 640px) {
+  .el-container:before {
+    font-size: 50px;
+  }
+} */
