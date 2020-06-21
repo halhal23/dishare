@@ -1,8 +1,9 @@
 module Api
   class PostsController < ApplicationController
-    # フォローしているユーザの post のみを返す
+    before_action :set_user, only: [:index]
+    # フォローしているユーザと自分の post のみを返す
     def index
-      posts = Post.all.order(created_at: "DESC")
+      posts = Post.where(user_id: @user.followings.ids.push(@user.id)).order(created_at: "DESC")
       render json: posts
     end
   
@@ -51,7 +52,7 @@ module Api
     end
 
     def set_user
-      @user = User.find(id: params[:id])
+      @user = User.find(params[:user_id])
     end
   end
 end
