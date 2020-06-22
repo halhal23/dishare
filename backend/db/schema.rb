@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_033938) do
+ActiveRecord::Schema.define(version: 2020_06_22_025818) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 2020_06_19_033938) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "invitations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "inviter_id"
+    t.bigint "invited_id"
+    t.string "shop_name"
+    t.string "shop_site_url"
+    t.string "shop_image_url"
+    t.string "shop_address"
+    t.string "something_to_eat"
+    t.date "invite_date", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invited_id"], name: "index_invitations_on_invited_id"
+    t.index ["inviter_id", "invited_id"], name: "index_invitations_on_inviter_id_and_invited_id", unique: true
+    t.index ["inviter_id"], name: "index_invitations_on_inviter_id"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -87,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_033938) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "invitations", "users", column: "invited_id"
+  add_foreign_key "invitations", "users", column: "inviter_id"
   add_foreign_key "photos", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users"

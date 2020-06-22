@@ -63,7 +63,11 @@
             <el-button @click="selectDate" type="success" style="margin: 40px auto;display: block;" plain round>Decide</el-button>   
           </el-carousel-item>
           <el-carousel-item>
-            <h3 class="medium">sdfsdfs</h3>
+            <h3 class="medium">Finally! Enter a comment and let's invite you in!</h3>
+            <div style="padding: 40px;">
+              <el-input v-model="comment" placeholder="Comment" type="textarea" :rows="4"></el-input>
+              <el-button type="success" style="margin: 40px auto;display: block;" plain round>Invite the user</el-button>
+            </div>
           </el-carousel-item>
         </el-carousel>
       </el-col>
@@ -108,11 +112,18 @@
         </div>
         <div class="invite_content_card">
           <div style="padding: 5px 20px; background: #eec;">
-            <el-checkbox :disabled="!isSelectedDate" v-model="isSelectedDate">
+            <el-checkbox :disabled="!isSelectedDate" v-model="isSelectedDate" @change="deselectDate">
               <span style="font-size: 20px;">
                 The date you invite.
               </span>
             </el-checkbox>
+          </div>
+          <div style="padding: 20px;">
+            <el-card v-if="isSelectedDate">
+              <div class="user_card">
+                <p style="font-size: 12px; font-weight: bold;margin: 0 30px;">You invite　in {{ selectedDate }}.</p>
+              </div>
+            </el-card>
           </div>
         </div>
       </el-col>
@@ -146,6 +157,7 @@ export default {
       eachStatus: ['process', 'wait', 'wait'],
       shopInfoModalVisible: false,
       formDate: '',
+      comment: ''
     }
   },
   computed: {
@@ -175,6 +187,9 @@ export default {
           this.eachStatus[1] = this.isSelectedFood ? 'success' : 'error'
           this.eachStatus[2] = 'process'
           break
+        case 3:
+          console.log(3)
+          this.eachStatus[2] = this.isSelectedDate ? 'success' : 'error'
       }
     },
     selectUser(user){
@@ -234,9 +249,15 @@ export default {
       this.selectedFood = null
     },
     selectDate(){
-      this.isSelectedDate = true
-      this.selectedDate = this.formDate
-      console.log(this.selectedDate)
+      if (this.formDate !== ''){
+        this.isSelectedDate = true
+        this.selectedDate = this.formDate
+        console.log(this.selectedDate)
+      }
+    },
+    deselectDate(bool){
+      this.isSelectedDate = false
+      this.selectedDate = ''
     },
     ...mapMutations({ 
       setShops: 'shops/setShops',
@@ -295,7 +316,7 @@ export default {
 .invite_content_card {
   width: 400px;
   height: 120px;
-  border: 1px solid #ccc;
+  box-shadow: 0 0 12px #ccc;
   margin-bottom: 20px;
 }
 .find_food_wrapper {
