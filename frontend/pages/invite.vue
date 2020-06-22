@@ -66,7 +66,7 @@
             <h3 class="medium">Finally! Enter a comment and let's invite you in!</h3>
             <div style="padding: 40px;">
               <el-input v-model="comment" placeholder="Comment" type="textarea" :rows="4"></el-input>
-              <el-button type="success" style="margin: 40px auto;display: block;" plain round>Invite the user</el-button>
+              <el-button @click="submitInvite" type="success" style="margin: 40px auto;display: block;" plain round>Invite the user</el-button>
             </div>
           </el-carousel-item>
         </el-carousel>
@@ -121,7 +121,7 @@
           <div style="padding: 20px;">
             <el-card v-if="isSelectedDate">
               <div class="user_card">
-                <p style="font-size: 12px; font-weight: bold;margin: 0 30px;">You invite　in {{ selectedDate }}.</p>
+                <p style="font-size: 12px; font-weight: bold;margin: 0 30px;">You invite in {{ selectedDate }}.</p>
               </div>
             </el-card>
           </div>
@@ -237,6 +237,7 @@ export default {
       this.shopInfoModalVisible = bool
     }, 
     selectFood(food){
+      console.log(food)
       this.selectedFood = food
       this.isSelectedFood = true
     },
@@ -258,6 +259,22 @@ export default {
     deselectDate(bool){
       this.isSelectedDate = false
       this.selectedDate = ''
+    },
+    submitInvite(){
+      this.$axios.$post(process.env.browserBaseUrl + '/api/invitations', {
+        inviter_id: this.$store.state.auth.currentUser.id,
+        invited_id: this.selectedUser.id,
+        shop_name: this.selectedFood.name,
+        shop_site_url: this.selectedFood.url,
+        shop_image_url: this.selectedFood.image_url.shop_image1,
+        shop_address: this.selectedFood.address,
+        something_to_eat: this.somethingToEat,
+        invite_date: this.selectedDate,
+        comment: this.comment
+      }).then(res => {
+        console.log('invite 成功')
+        console.log(res)
+      }).catch(err => { console.log(err) })
     },
     ...mapMutations({ 
       setShops: 'shops/setShops',
