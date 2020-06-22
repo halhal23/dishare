@@ -10,7 +10,7 @@
       <el-form-item label="name" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="email" :label-width="formLabelWidth">
+      <el-form-item label="email" :label-width="formLabelWidth" v-if="!$props.isLogin">
         <el-input v-model="form.email" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="password" :label-width="formLabelWidth">
@@ -59,7 +59,8 @@ export default {
         imageFile: '',
       }, 
       formLabelWidth: '120px',
-      fileList: []
+      fileList: [],
+      active: 0
     }
   },
   computed: {

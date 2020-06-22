@@ -97,7 +97,7 @@ export default {
           this.$notify({
             type: 'success',
             title: `${res.rest.length}店ヒットしました！`,
-            message: `ラーメンの検索結果`,
+            message: `検索結果`,
             position: 'bottom-left',
             duration: 3000
           })

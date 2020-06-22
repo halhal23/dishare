@@ -4,15 +4,6 @@ module Api
   module Auth
     class RegistrationsController < DeviseTokenAuth::RegistrationsController
 
-      # 新規登録後に返される User のjsonデータを Serializerで整形するために上書き 
-      # def render_create_success 
-      #   render json: resource_data, serializer: UserSerializer
-      # end 
-      # def render_update_success 
-      #   render json: resource_data, serializer: UserSerializer
-      # end 
-      
-      
       private
 
       # ストロングパラメーター設定
