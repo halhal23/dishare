@@ -12,7 +12,7 @@
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
         <a href="#" @click="onModal(true, true)" v-if="!isLoggedIn">LOGIN</a>
-        <nuxt-link :to="{ path: `/users/${$store.state.auth.currentUser.id}` }" v-else>
+        <nuxt-link :to="{ path: `/users/mypage` }" v-else>
           <el-avatar :src="currentUser.image.url" :size="40"></el-avatar>
         </nuxt-link>
       </el-menu-item>

@@ -3,7 +3,7 @@
       <el-menu class="asideMenu" :default-active="activeNumber">
         <el-menu-item index="1">
           <nuxt-link to="/posts">
-            <i class="icon el-icon-fork-spoon"></i>
+            <i class="icon el-icon-monitor"></i>
             <p class="item_name">POSTS</p>
           </nuxt-link>
         </el-menu-item>
@@ -14,9 +14,9 @@
           </nuxt-link>
         </el-menu-item>
         <el-menu-item index="3">
-          <nuxt-link to="/posts/new">
-            <i class="icon el-icon-circle-plus-outline"></i>
-            <p class="item_name">CREATE</p>
+          <nuxt-link to="/invitations/new">
+            <i class="icon el-icon-fork-spoon"></i>
+            <p class="item_name">INVITE</p>
           </nuxt-link>
         </el-menu-item>
         <el-menu-item index="4">

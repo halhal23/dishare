@@ -42,34 +42,7 @@ workflows:
     jobs:
       - test
       - aws-ecr/build-and-push-image:
-          requires:
-            - test
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          path: './frontend/'
-          dockerfile: Dockerfile.prd
-          repo: dishare-nuxt
-          tag: "latest"
-          filters:
-            branches:
-              only: master
-      # - aws-ecs/deploy-service-update:
-      #     requires:
-      #       - aws-ecr/build-and-push-image
-      #     family: 'dishare-nuxt-task' # ECSのタスク定義名
-      #     cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
-      #     service-name: 'dishare-nuxt-ecs-service'  #サービス名
-      #     container-image-name-updates: "container=nuxt-container,tag=latest"
-      #     filters:
-      #       branches:
-      #         only: master
-  rails-ecr-push:
-    jobs:
-      - test
-      - aws-ecr/build-and-push-image:
+          name: rails-build-and-push-image
           requires:
             - test
           account-url: AWS_ECR_ACCOUNT_URL
@@ -79,10 +52,70 @@ workflows:
           create-repo: true
           path: './backend/'
           repo: dishare-rails
-          tag: "latest"
-          filters:
-            branches:
-              only: master
+          tag: "${CIRCLE_SHA1}"
+          # filters:
+          #   branches:
+          #     only: master
+      - aws-ecr/build-and-push-image:
+          name: nuxt-build-and-push-image
+          requires:
+            - rails-build-and-push-image
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          path: './frontend/'
+          dockerfile: Dockerfile.prd
+          repo: dishare-nuxt
+          tag: "${CIRCLE_SHA1}"
+          # filters:
+          #   branches:
+          #     only: master
+  
+      - aws-ecs/deploy-service-update:
+          name: rails-deploy-service-update
+          requires:
+            - nuxt-build-and-push-image
+          family: 'dishare-rails-task' # ECSのタスク定義名
+          cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
+          service-name: 'dishare-rails-ecs-service'  #サービス名
+          container-image-name-updates: "container=rails-container,tag=${CIRCLE_SHA1}"
+          # filters:
+          #   branches:
+          #     only: master
+
+      - aws-ecs/deploy-service-update:
+          name: nuxt-deploy-service-update
+          requires:
+            - rails-deploy-service-update
+          family: 'dishare-nuxt-task' # ECSのタスク定義名
+          cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
+          service-name: 'dishare-nuxt-ecs-service'  #サービス名
+          container-image-name-updates: "container=nuxt-container,tag=${CIRCLE_SHA1}"
+          # filters:
+          #   branches:
+          #     only: master
+
+
+          
+  # rails-ecr-push:
+  #   jobs:
+  #     - test
+      # - aws-ecr/build-and-push-image:
+      #     requires:
+      #       - test
+      #     account-url: AWS_ECR_ACCOUNT_URL
+      #     region: AWS_REGION
+      #     aws-access-key-id: AWS_ACCESS_KEY_ID
+      #     aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+      #     create-repo: true
+      #     path: './backend/'
+      #     repo: dishare-rails
+      #     tag: "latest"
+      #     filters:
+      #       branches:
+      #         only: master
       # - aws-ecs/deploy-service-update:
       #     requires:
       #       - aws-ecr/build-and-push-image

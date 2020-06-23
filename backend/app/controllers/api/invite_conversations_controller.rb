@@ -3,7 +3,7 @@ module Api
     def create
       conv = InviteConversation.new(conv_params)
       if conv.save
-        convs = InviteConversation.all
+        convs = InviteConversation.where(invitation_id: conv.invitation_id)
         render json: convs
       else
         render json: "error"
