@@ -267,6 +267,8 @@ export default {
         shop_name: this.selectedFood.name,
         shop_site_url: this.selectedFood.url,
         shop_image_url: this.selectedFood.image_url.shop_image1,
+        shop_latitude: this.selectedFood.latitude,
+        shop_longitude: this.selectedFood.longitude,
         shop_address: this.selectedFood.address,
         something_to_eat: this.somethingToEat,
         invite_date: this.selectedDate,
@@ -274,6 +276,7 @@ export default {
       }).then(res => {
         console.log('invite 成功')
         console.log(res)
+        this.$router.push(`/invitations/${res.id}`)
       }).catch(err => { console.log(err) })
     },
     ...mapMutations({ 

@@ -24,6 +24,7 @@ module Api
                     :user_id,
                     :invitation_id)
     end
+
   end
 end
   

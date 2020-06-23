@@ -28,6 +28,15 @@
       <el-col class="center content" :sm="12" :lg="8">
         <div class="messages">
           <el-timeline style="z-index: 0;">
+            <el-timeline-item :timestamp="sliceCreatedAt(invitation.created_at)" placement="top">
+              <el-card>
+                <h4 style="margin: 5px 0;">{{ invitation.comment }}</h4>
+                <div class="flex-center" style="justify-content: flex-start;">
+                  <el-avatar :src="inviter.image.url" :size="30"></el-avatar>
+                  <p style="margin-left: 30px;">{{ inviter.name }}</p>
+                </div>
+              </el-card>
+            </el-timeline-item>
             <el-timeline-item v-for="c in conversations" :key="c.id" :timestamp="sliceCreatedAt(c.created_at)" placement="top">
               <el-card>
                 <h4 style="margin: 5px 0;">{{ c.message }}</h4>
@@ -57,24 +66,35 @@
             <el-tabs v-model="activeName">
               <el-tab-pane style="color: #eee" label="Shop MAP" name="first">
                 <GmapMap
-                  :center="{ lat: 35.681167, lng: 139.767052 }"
+                  :center="{ lat: Number(invitation.shop_latitude), lng: Number(invitation.shop_longitude) }"
                   :zoom="15"
                   map-type-id="terrain"
                   style="width: 100%; height: 450px;"
                 >
                   <GmapMarker
-                    :position="{ lat: 35.681167, lng: 139.767052 }"
+                    :position="{ lat: Number(invitation.shop_latitude), lng: Number(invitation.shop_longitude) }"
                     :clickable="true"
                     :draggable="true"
                   />
                 </GmapMap>
               </el-tab-pane>
-              <el-tab-pane  style="color: #eee" label="Shop INFO" name="second">Config</el-tab-pane>
+              <el-tab-pane  style="color: #eee;text-align: center" label="Shop INFO" name="second">
+                <el-avatar :src="invitation.shop_image_url" :size="150"></el-avatar>
+                <p style="margin-bottom: 20px;">{{ invitation.shop_name }}</p>
+                <p style="margin-bottom: 20px;">{{ invitation.shop_address }}</p>
+                <a :href="invitation.shop_site_url" style="color: #fff;font-weight: bold;" target="__blank">詳しくはこちら</a>
+              </el-tab-pane>
             </el-tabs>
-            <div class="action flex-center">
-              <el-radio-group v-model="radio1">
-                <el-radio :label="2">OK ! Let's go eat.</el-radio>
-                <el-radio :label="3">I'm sorry. I can't go.</el-radio>
+            <div class="action flex-center" :class="{ng: result == 2, ok: result == 1}" @change="changeResult">
+              <el-radio-group v-model="result" v-if="invited.id == $store.state.auth.currentUser.id">
+                <el-radio :label="1">OK ! Let's go eat.</el-radio>
+                <el-radio :label="2">I'm sorry. I can't go.</el-radio>
+                <el-radio :label="3">please waiting.</el-radio>
+              </el-radio-group>
+              <el-radio-group v-model="result" v-else>
+                <el-radio :disabled="true" :label="1">OK ! Let's go eat.</el-radio>
+                <el-radio :disabled="true" :label="2">I'm sorry. I can't go.</el-radio>
+                <el-radio :disabled="true" :label="3">please waiting.</el-radio>
               </el-radio-group>
             </div>
           </el-col>
@@ -94,7 +114,8 @@ export default {
       inviter: data.inviter,
       invited: data.invited,
       dateValue: data.invite_date,
-      conversations: data.invite_conversations
+      conversations: data.invite_conversations,
+      result: data.result
     }
   },
   data(){
@@ -121,6 +142,16 @@ export default {
     sliceCreatedAt(str){
       return str.substr(0, 10) + "  " + str.substr(11, 8)
     },
+    changeResult(result){
+      this.$axios.$put(process.env.browserBaseUrl + `/api/invitations/${this.invitation.id}`, {
+          result: this.result
+        }).then(res => {
+        this.invitation = res
+        console.log('成功')
+        console.log(res)
+        this.message = ''
+      }).catch(err => { console.log(err) })
+    }
   }
 }
 </script>
@@ -145,6 +176,13 @@ export default {
   background: #fff;
   height: 60px;
   width: 100%;
+  padding: 0 30px;
+}
+.show_invite_wrapper .right .ok{
+  background: rgb(183, 255, 89);
+}
+.show_invite_wrapper .right .ng{
+  background: rgb(255, 137, 133);
 }
 .show_invite_wrapper .right{
   background: #ece;

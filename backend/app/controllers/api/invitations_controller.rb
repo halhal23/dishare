@@ -15,6 +15,15 @@ module Api
       end
     end
 
+    def update
+      invite = Invitation.find(params[:id])
+      if invite.update(result_params)
+        render json: invite
+      else
+        render json: "error"
+      end
+    end
+
     private
 
     def invite_params
@@ -24,9 +33,15 @@ module Api
                     :shop_site_url,
                     :shop_image_url,
                     :shop_address,
+                    :shop_latitude,
+                    :shop_longitude,
                     :something_to_eat,
                     :invite_date,
                     :comment)
+    end
+
+    def result_params
+      params.permit(:result)
     end
   end
 end
