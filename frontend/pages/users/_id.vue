@@ -70,10 +70,8 @@ import userEditForm from '~/components/modals/user-edit-form.vue'
 import { mapState } from 'vuex'
 export default {
   async fetch({ params, $axios, store }){
-      console.log('fetch users_id')
       let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
       let data = await $axios.$get(baseUrl + `/api/users/${params.id}`)
-      console.log(data)
       store.commit('setUser', data )
   },
   data(){
@@ -126,7 +124,6 @@ export default {
         }
       }).then(res => {
         this.$store.commit('setUser', res )
-        console.log('unFollow 成功')
         this.$notify({
           title: 'Successfully unfollowed',
           message: `You unfollowed ${res.name}.`,

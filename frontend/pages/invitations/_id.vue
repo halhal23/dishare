@@ -63,7 +63,7 @@
             </el-calendar>
           </el-col>
           <el-col :xs="24" :sm="12" :lg="24" class="shop">
-            <el-tabs v-model="activeName">
+            <el-tabs v-model="activeName" v-if="invitation.shop_name">
               <el-tab-pane style="color: #eee" label="Shop MAP" name="first">
                 <GmapMap
                   :center="{ lat: Number(invitation.shop_latitude), lng: Number(invitation.shop_longitude) }"
@@ -85,6 +85,10 @@
                 <a :href="invitation.shop_site_url" style="color: #fff;font-weight: bold;" target="__blank">詳しくはこちら</a>
               </el-tab-pane>
             </el-tabs>
+            <h3 v-else class="flex-center" style="color: #eee;height: 100%;">
+              We're going to have {{ invitation.something_to_eat }}.
+            </h3>
+
             <div class="action flex-center" :class="{ng: result == 2, ok: result == 1}" @change="changeResult">
               <el-radio-group v-model="result" v-if="invited.id == $store.state.auth.currentUser.id">
                 <el-radio :label="1">OK ! Let's go eat.</el-radio>
@@ -108,7 +112,6 @@ export default {
   async asyncData({ $axios, params }){
     const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
     const data = await $axios.$get(baseUrl + `/api/invitations/${params.id}`)
-    console.log(data)
     return {
       invitation: data,
       inviter: data.inviter,
@@ -133,8 +136,6 @@ export default {
           invitation_id: this.invitation.id
         }).then(res => {
         this.conversations = res
-        console.log('成功')
-        console.log(res)
         this.message = ''
       }).catch(err => { console.log(err) })
     },
@@ -147,8 +148,6 @@ export default {
           result: this.result
         }).then(res => {
         this.invitation = res
-        console.log('成功')
-        console.log(res)
         this.message = ''
       }).catch(err => { console.log(err) })
     }

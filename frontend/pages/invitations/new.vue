@@ -11,20 +11,35 @@
         <el-carousel @change="prev" :autoplay="false" :loop="false" indicator-position="none" height="600px">
           <el-carousel-item>
             <h3 class="medium">Who do you want to invite?</h3>
-                <div class="users_container">
-                  <el-card v-for="u in users" :key="u.id">
-                    <div class="user_card" @click="selectUser(u)">
-                      <el-avatar :src="u.image.url" :size="40"></el-avatar>
-                      <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ u.name }}</p>
-                      <p style="font-size: 12px;">since: {{ u.created_at.substr(0, 10) }}</p>
-                    </div>
-                  </el-card>
-                </div>
+              <el-tabs v-model="activeName" @tab-click="handleClick" style="padding: 15px;">
+                <el-tab-pane label="Followers" name="first">
+                  <div class="users_container" style="overflow: hidden;">       
+                    <el-card v-for="u in users" :key="u.id">
+                      <div class="user_card" @click="selectUser(u)">
+                        <el-avatar :src="u.image.url" :size="40"></el-avatar>
+                        <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ u.name }}</p>
+                        <p style="font-size: 12px;">since: {{ u.created_at.substr(0, 10) }}</p>
+                      </div>
+                    </el-card>
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="All users" name="second">
+                  <div class="users_container" style="overflow: hidden;">       
+                    <el-card v-for="u in all_users" :key="u.id">
+                      <div class="user_card" @click="selectUser(u)">
+                        <el-avatar :src="u.image.url" :size="40"></el-avatar>
+                        <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ u.name }}</p>
+                        <p style="font-size: 12px;">since: {{ u.created_at.substr(0, 10) }}</p>
+                      </div>
+                    </el-card>
+                  </div>
+                </el-tab-pane>
+              </el-tabs>
           </el-carousel-item>
           <el-carousel-item>
             <div class="find_food_wrapper">
               <h3 class="medium">What are we going to eat?</h3>
-              <el-tabs v-model="activeName" @tab-click="handleClick">
+              <el-tabs v-model="activeName">
                 <el-tab-pane label="Find a restaurant" name="first" style="padding: 0 10px;">
                   <el-input placeholder="Please input" v-model="keyword" class="input-with-select">
                     <el-button @click="searchShops" slot="append" icon="el-icon-search"></el-button>
@@ -145,11 +160,19 @@ export default {
   data(){
     return {
       active: 0,
+      all_users: [],
       isSelectedUser: false,
       isSelectedFood: false,
       isSelectedDate: false,
       selectedUser: {} ,
-      selectedFood: {},
+      selectedFood: {
+        name: '',
+        url: '',
+        image_url: { shop_image1: '' },
+        latitude: 0,
+        longitude: 0,
+        address: '',
+      },
       selectedDate: '',
       somethingToEat: '',
       keyword: '',
@@ -164,36 +187,29 @@ export default {
     ...mapGetters({ 
       shops: 'shops/shops',
     }),
-
   },
   methods: {
     prev(num){
       this.active = num
-      console.log('num ' + num)
       switch (num){
         case 0:
-          console.log('0')
           this.eachStatus[0] = 'process'
           this.eachStatus[1] = 'wait'
           break
         case 1:
-          console.log('1')
           this.eachStatus[0] = this.isSelectedUser ? 'success' : 'error'
           this.eachStatus[1] = 'process'
           this.eachStatus[2] = 'wait'
           break
         case 2:
-          console.log('2')
           this.eachStatus[1] = this.isSelectedFood ? 'success' : 'error'
           this.eachStatus[2] = 'process'
           break
         case 3:
-          console.log(3)
           this.eachStatus[2] = this.isSelectedDate ? 'success' : 'error'
       }
     },
     selectUser(user){
-      console.log(user)
       this.isSelectedUser = true
       this.selectedUser = user
     },
@@ -201,11 +217,13 @@ export default {
       this.selectedUser = null
       this.isSelectedUser = false
     },
-    handleClick(tab, event) {
-      console.log(tab, event);
+    async handleClick(tab) {
+      if (tab.label == 'All users'){
+        const data = await this.$axios.$get(process.env.browserBaseUrl + `/api/users`)
+        this.all_users = data
+      }
     },
     searchShops(){
-      console.log('search shops')
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
@@ -220,14 +238,8 @@ export default {
             position: 'bottom-left',
             duration: 3000
           })
-          console.log('searched !!')
-          console.log(res)
-      }).catch( err => {
-        console.log(err)
-      })
-    },
+      }).catch( err => { console.log(err) })},
     showShop(shop){
-      console.log(shop)
     },
     showShopInfo(shop){
       this.onModal(true)
@@ -237,7 +249,6 @@ export default {
       this.shopInfoModalVisible = bool
     }, 
     selectFood(food){
-      console.log(food)
       this.selectedFood = food
       this.isSelectedFood = true
     },
@@ -247,13 +258,11 @@ export default {
     },
     desideSomethingToEat(){
       this.isSelectedFood = true
-      this.selectedFood = null
     },
     selectDate(){
       if (this.formDate !== ''){
         this.isSelectedDate = true
         this.selectedDate = this.formDate
-        console.log(this.selectedDate)
       }
     },
     deselectDate(bool){
@@ -274,8 +283,6 @@ export default {
         invite_date: this.selectedDate,
         comment: this.comment
       }).then(res => {
-        console.log('invite 成功')
-        console.log(res)
         this.$router.push(`/invitations/${res.id}`)
       }).catch(err => { console.log(err) })
     },

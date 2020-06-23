@@ -1,6 +1,6 @@
 <template>
   <el-header>
-    <el-menu :default-active="activeIndex" :class="{header_menu: true,hidden: isHidden}" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="activeIndex" :class="{header_menu: true,hidden: isHidden}" mode="horizontal">
       <el-menu-item class="header_item_md logo">
         <img src="~/static/images/text-logo.png" height="50px" width="160px" style="background: transparent;padding:0 20px;border-radius: 20px;">
       </el-menu-item>
@@ -12,7 +12,7 @@
       </el-menu-item>
       <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
         <a href="#" @click="onModal(true, true)" v-if="!isLoggedIn">LOGIN</a>
-        <nuxt-link :to="{ path: `/users/${$store.state.auth.currentUser.id}` }" v-else>
+        <nuxt-link :to="{ path: `/users/mypage` }" v-else>
           <el-avatar :src="currentUser.image.url" :size="40"></el-avatar>
         </nuxt-link>
       </el-menu-item>
@@ -56,9 +56,6 @@ export default {
     })
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     toggleHidden(){
       this.isHidden = !this.isHidden
     },
