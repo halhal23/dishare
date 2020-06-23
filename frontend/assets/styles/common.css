@@ -47,7 +47,7 @@ header .el-menu-item {
 }
 
 .v-modal {
-  z-index: 9 !important;
+  z-index: 3 !important;
 }
 
 

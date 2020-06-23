@@ -10,4 +10,5 @@ class InvitationSerializer < ActiveModel::Serializer
   
   belongs_to :inviter
   belongs_to :invited
+  has_many :invite_conversations
 end

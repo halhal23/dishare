@@ -28,51 +28,22 @@
       <el-col class="center content" :sm="12" :lg="8">
         <div class="messages">
           <el-timeline style="z-index: 0;">
-            <el-timeline-item timestamp="2018/4/12" placement="top">
+            <el-timeline-item v-for="c in conversations" :key="c.id" :timestamp="sliceCreatedAt(c.created_at)" placement="top">
               <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/12 20:46</p>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item timestamp="2018/4/3" placement="top">
-              <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/3 20:46</p>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item timestamp="2018/4/3" placement="top">
-              <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/3 20:46</p>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item timestamp="2018/4/3" placement="top">
-              <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/3 20:46</p>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item timestamp="2018/4/2" placement="top">
-              <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/2 20:46</p>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item timestamp="2018/4/2" placement="top">
-              <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/2 20:46</p>
-              </el-card>
-            </el-timeline-item>
-            <el-timeline-item timestamp="2018/4/2" placement="top">
-              <el-card>
-                <h4>Update Github template</h4>
-                <p>Tom committed 2018/4/2 20:46</p>
+                <h4 style="margin: 5px 0;">{{ c.message }}</h4>
+                <div class="flex-center" style="justify-content: flex-start;">
+                  <el-avatar v-if="c.user_id == inviter.id" :src="inviter.image.url" :size="30"></el-avatar>
+                  <el-avatar v-else :src="invited.image.url" :size="30"></el-avatar>
+                  <p v-if="c.user_id == inviter.id" style="margin-left: 30px;">{{ inviter.name }}</p>
+                  <p v-else style="margin-left: 30px;">{{ invited.name }}</p>
+                </div>
               </el-card>
             </el-timeline-item>
           </el-timeline>
-          <el-input type="textarea" style="margin-bottom: 30px;" :rows="4"></el-input>
-          <el-button>Comment</el-button>
+          <div class="comment_form">
+            <el-input v-model="message" type="textarea" style="margin-bottom: 30px;" :rows="4"></el-input>
+            <el-button @click="createComment">Comment</el-button>
+          </div>
         </div>
       </el-col>
       <el-col class="right content" :sm="24" :lg="8">
@@ -122,14 +93,34 @@ export default {
       invitation: data,
       inviter: data.inviter,
       invited: data.invited,
-      dateValue: data.invite_date
+      dateValue: data.invite_date,
+      conversations: data.invite_conversations
     }
   },
   data(){
     return {
       activeName: 'first',
       radio1: '',
+      message: '',
     }
+  },
+  methods: {
+    createComment(){
+      this.$axios.$post(process.env.browserBaseUrl + '/api/invite_conversations', {
+          message: this.message,
+          user_id: this.$store.state.auth.currentUser.id,
+          invitation_id: this.invitation.id
+        }).then(res => {
+        this.conversations = res
+        console.log('成功')
+        console.log(res)
+        this.message = ''
+      }).catch(err => { console.log(err) })
+    },
+    // コメントの日付のフォーマットを整形。
+    sliceCreatedAt(str){
+      return str.substr(0, 10) + "  " + str.substr(11, 8)
+    },
   }
 }
 </script>
@@ -190,10 +181,13 @@ export default {
 .show_invite_wrapper .center .messages {
   overflow-y: scroll;
   height: 100%;
-  padding: 30px 20px;
+  padding: 70px 20px 10px;
+  position: relative;
 }
 .show_invite_wrapper .center .el-timeline {
   padding: 0;
+  scroll-snap-type: y;
+  scroll-snap-align: start;
 }
 .show_invite_wrapper .right .calender{
   border-bottom: 2px solid #ffe;
