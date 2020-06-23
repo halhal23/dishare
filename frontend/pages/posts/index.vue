@@ -26,21 +26,12 @@ export default {
     const data = await $axios.$get(baseUrl + '/api/posts', {
       params: { user_id: store.state.auth.currentUser.id }
     })
-    console.log(data)
     return {
       posts: data,
       visible: false
     }
   },
   methods: {
-    getPost(){
-      console.log('getPost')
-      this.$axios.$get(process.env.apiBaseUrl + '/api/posts').then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
-    },
     redirectPost(id){
       this.$router.push(`/posts/${id}`)
     },

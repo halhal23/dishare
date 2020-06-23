@@ -1,6 +1,6 @@
 <template>
   <el-header>
-    <el-menu :default-active="activeIndex" :class="{header_menu: true,hidden: isHidden}" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="activeIndex" :class="{header_menu: true,hidden: isHidden}" mode="horizontal">
       <el-menu-item class="header_item_md logo">
         <img src="~/static/images/text-logo.png" height="50px" width="160px" style="background: transparent;padding:0 20px;border-radius: 20px;">
       </el-menu-item>
@@ -56,9 +56,6 @@ export default {
     })
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     toggleHidden(){
       this.isHidden = !this.isHidden
     },

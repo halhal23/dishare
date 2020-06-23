@@ -39,8 +39,6 @@ export default {
         data = await this.$axios.$get(process.env.browserBaseUrl + `/api/users/${this.$store.state.auth.currentUser.id}`)
         this.users = data.followers   
       }
-      console.log('tab users')
-      console.log(data)
     }
   }
 }

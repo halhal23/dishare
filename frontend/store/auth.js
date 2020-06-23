@@ -35,10 +35,9 @@ export const actions = {
       .then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push(`/users/${res.data.id}`)
+        this.$router.push(`/users/mypage`)
         return res
       }, err => {
-        console.log(err)
         return err
       })
   },
@@ -50,12 +49,9 @@ export const actions = {
     }).then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        console.log('ログインしたよｘ')
-        this.$router.push(`/users/${res.data.id}`)
+        this.$router.push(`/users/mypage`)
         return res
       }, err => {
-        console.log('ログイン失敗しちゃった。' + ' /stores/auth.js')
-        console.log(err)
         return err
       })
   },
@@ -66,7 +62,6 @@ export const actions = {
       this.$router.push("/")
       return res
     }).catch( err => {
-      console.log(err)
       return err
     })
   },

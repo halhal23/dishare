@@ -27,7 +27,7 @@ resource "aws_lb_target_group" "dishare_alb_rails_tg" {
   health_check {
     enabled             = true
     interval            = 60
-    path                = "/api/posts"
+    path                = "/api/users"
     port                = 3000
     protocol            = "HTTP"
     matcher             = "200-299"

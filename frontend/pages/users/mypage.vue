@@ -53,12 +53,23 @@
                 <el-avatar style="flex-shrink: 0;" :src="invite.invited.image.url" :size="50"></el-avatar>
                 <div style="margin: 0 12px; width: 100%;">
                   <p>{{ invite.invited.name }}</p>
-                  <el-divider content-position="right"></el-divider>
+                  <el-divider content-position="right">
+                    <i v-if="invite.result == 1" style="color: #2d2" class="el-icon-success"></i>
+                    <i v-else-if="invite.result == 2" style="color: tomato" class="el-icon-error"></i>
+                    <i v-else style="color: #bbb" class="el-icon-remove-outline"></i>
+                  </el-divider>
                   <p style="font-size: 12px; color: #999;">on {{ invite.invite_date }}</p>
                 </div>
                 <nuxt-link :to="{ path: `/invitations/${invite.id}` }" style="padding: 0;width: 40px;height: 40px;">
                   <i class="el-icon-info" style="font-size: 40px;"></i>
                 </nuxt-link>
+              </div>
+              <div v-if="user.active_invitations.length == 0" style="text-align: center;">
+                <p style="margin: 20px 0;">No invitations.</p>
+                <p style="margin: 20px 0;">Let's invite your followers</p>
+                <el-button style="margin: 20px 0;">
+                  <nuxt-link style="color: #555;" to="/invitations/new">INVITE</nuxt-link>
+                </el-button>
               </div>
             </div>
           </div>
@@ -73,12 +84,19 @@
                 <el-avatar style="flex-shrink: 0;" :src="invite.inviter.image.url" :size="50"></el-avatar>
                 <div style="margin: 0 12px; width: 100%;">
                   <p>{{ invite.inviter.name }}</p>
-                  <el-divider content-position="right"></el-divider>
+                  <el-divider content-position="right">
+                    <i v-if="invite.result == 1" style="color: #2d2" class="el-icon-success"></i>
+                    <i v-else-if="invite.result == 2" style="color: tomato" class="el-icon-error"></i>
+                    <i v-else style="color: #bbb" class="el-icon-remove-outline"></i>
+                  </el-divider>
                   <p style="font-size: 12px; color: #999;">on {{ invite.invite_date }}</p>
                 </div>
                 <nuxt-link :to="{ path: `/invitations/${invite.id}` }" style="padding: 0;width: 40px;height: 40px;">
                   <i class="el-icon-info" style="font-size: 40px;"></i>
                 </nuxt-link>
+              </div>
+              <div v-if="user.passive_invitations.length == 0" style="text-align: center;">
+                <p style="margin: 20px 0;">No invitations received.</p>
               </div>
             </div>
           </div>
@@ -86,6 +104,13 @@
         <el-col :span="24">
           <div class="posts">
             <postCard v-for="p in user.posts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+              <div v-if="user.posts.length == 0" style="text-align: center;">
+                <p style="margin: 20px 0;">No posts.</p>
+                <p style="margin: 20px 0;">Let's make a post about food!</p>
+                <el-button style="margin: 20px 0;">
+                  <nuxt-link style="color: #555;" to="/posts/new">POST CREATE</nuxt-link>
+                </el-button>
+              </div>
           </div>
         </el-col>
       </el-row>
@@ -99,10 +124,8 @@ import postCard from '~/components/post-card.vue'
 import { mapState } from 'vuex'
 export default {
   async fetch({ $axios, store }){
-      console.log('fetch users_id')
       let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
       let data = await $axios.$get(baseUrl + `/api/users/${store.state.auth.currentUser.id}`)
-      console.log(data)
       store.commit('setUser', data )
   },
   data(){
