@@ -21,7 +21,7 @@
           :on-change="handleAdd"
           list-type="picture">
           <el-button size="small" type="primary" style="margin-right: 30px;">Click to upload</el-button>
-          <span slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</span>
+          <span slot="tip" class="el-upload__tip">jpg/png files with a size less than 1MB</span>
         </el-upload>
       </el-form-item>
     </el-form>
@@ -68,11 +68,9 @@ export default {
             "Content-Type": "multipart/form-data"
         }
       }).then( res => {
-        // console.log('res desuyo')
-        // console.log(res)
         this.$store.commit('auth/setCurrentUser', res.data )
         this.$axios.$get( process.env.browserBaseUrl + `/api/users/${res.data.id}`).then(res => {
-        this.$store.commit('setUser', res )
+          this.$store.commit('setUser', res )
         })
         this.handleClose(false)
       }).catch( err => {

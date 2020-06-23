@@ -10,7 +10,7 @@
       <el-form-item label="name" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="email" :label-width="formLabelWidth">
+      <el-form-item label="email" :label-width="formLabelWidth" v-if="!$props.isLogin">
         <el-input v-model="form.email" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="password" :label-width="formLabelWidth">
@@ -59,7 +59,8 @@ export default {
         imageFile: '',
       }, 
       formLabelWidth: '120px',
-      fileList: []
+      fileList: [],
+      active: 0
     }
   },
   computed: {
@@ -74,10 +75,20 @@ export default {
     doLogin(){
       this.login(this.form)
       this.onModal() // Modalを閉じる
+      this.$notify({
+        title: 'Login successfully',
+        message: 'Welcome to dishare!!',
+        type: 'success'
+      });
     },
     doSignUp(){
       this.signUp(this.form)
       this.onModal() // Modalを閉じる
+      this.$notify({
+        title: 'SignUp successfully',
+        message: 'Welcome to dishare!!',
+        type: 'success'
+      });
     },
     testSignIn(){
       this.formData = {
@@ -88,6 +99,11 @@ export default {
       }
       this.login(this.formData)
       this.onModal()
+      this.$notify({
+        title: 'Login successfully',
+        message: 'Welcome to dishare!!',
+        type: 'success'
+      });
     },
     ...mapActions({
       login: 'auth/login',

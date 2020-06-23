@@ -69,15 +69,6 @@
 import userEditForm from '~/components/modals/user-edit-form.vue'
 import { mapState } from 'vuex'
 export default {
-  // async asyncData({ params, $axios }){
-  //     console.log('async users_id')
-  //     let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
-  //     let data = await $axios.$get(baseUrl + `/api/users/${params.id}`)
-  //     console.log(data)
-  //     return {
-  //       user: data
-  //     }
-  // },
   async fetch({ params, $axios, store }){
       console.log('fetch users_id')
       let baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl

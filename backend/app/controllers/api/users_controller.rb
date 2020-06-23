@@ -7,10 +7,15 @@ module Api
     end
   
     def show
-      user = User.find(params[:id])
-      render json: user
+      @user = User.find(params[:id])
+      # 投稿、フォロー、フォロワー、送った招待、受けた招待をユーザ情報とともに返す。
+      render json: @user, include: [
+        :followings,
+        :followers,
+        { posts: [:user, :photos] },
+        { passive_invitations: [:inviter] },
+        { active_invitations: [:invited] },
+      ]
     end
   end
 end
-
-# render json: [@posts.to_json(:include => [:comments, :images]), [user: @user.to_json]]

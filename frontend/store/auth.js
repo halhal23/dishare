@@ -45,7 +45,6 @@ export const actions = {
   async login({ commit }, formData){
     await this.$axios.$post(process.env.browserBaseUrl + '/api/auth/sign_in', {
       name: formData.name,
-      email: formData.email,
       password: formData.password,
       password_confirmation: formData.password
     }).then( res => {

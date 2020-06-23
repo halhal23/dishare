@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
@@ -17,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
+  has_many :active_invitations, class_name: "Invitation", foreign_key: "inviter_id", dependent: :destroy
+  has_many :passive_invitations, class_name: "Invitation", foreign_key: "invited_id", dependent: :destroy
 
   # フォローの処理。フォロー相手が自分自身ではなく、既にフォローもしていない場合、新たなフォロー関係をcreateする。
   def follow(other_user)

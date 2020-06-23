@@ -72,7 +72,14 @@ export default {
         cancelButtonText: 'Cancel',
         type: 'warning',
         center: true
-      }).then(() => { this.logout() }).catch(() => {})
+      }).then(() => { 
+        this.logout() 
+        this.$notify({
+          title: 'Logout successfully',
+          message: 'Thank you for visiting!',
+          type: 'success'
+        });
+      }).catch(() => {})
     },
     ...mapActions({
       logout: 'auth/logout'

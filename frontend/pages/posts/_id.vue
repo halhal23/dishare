@@ -73,6 +73,7 @@ export default {
   padding: 70px 0;
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 .post_show_wrapper ul {

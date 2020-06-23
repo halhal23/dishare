@@ -26,7 +26,7 @@
           </nuxt-link>
         </el-menu-item>
         <el-menu-item index="5">
-          <nuxt-link :to="{ path: `/users/${$store.state.auth.currentUser.id}` }">
+          <nuxt-link :to="{ path: `/users/mypage` }">
             <i class="icon el-icon-setting"></i>
             <p class="item_name">SETTING</p>
           </nuxt-link>
