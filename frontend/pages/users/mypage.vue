@@ -11,32 +11,32 @@
         <div class="info">
           <el-dropdown trigger="click">
             <el-badge :value="user.followings.length" class="item" type="warning">
-              <el-button @click="followingsVisible = !followingsVisible" style="margin-bottom: 30px;" size="small">
+              <el-button size="small">
                 Followings <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
             </el-badge>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="f in user.followings" :key="f.id" style="width: 220px;">
-                <div class="dropdown_follow_user">
+                <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
                   <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
                   {{ f.name }}
-                </div>
+                </nuxt-link>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <br>
           <el-dropdown trigger="click">
-            <el-badge :value="user.followers.length" class="item" type="warning">
-              <el-button style="margin-bottom: 30px;" size="small">
+            <el-badge style="margin-top: 30px;" :value="user.followers.length" class="item" type="warning">
+              <el-button size="small">
                 Followers <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
             </el-badge>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="f in user.followers" :key="f.id" style="width: 220px;">
-                <div class="dropdown_follow_user">
+                <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
                   <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                  {{ f.name }}  
-                </div>
+                  {{ f.name }}
+                </nuxt-link>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -56,7 +56,7 @@
                   <el-divider content-position="right"></el-divider>
                   <p style="font-size: 12px; color: #999;">on {{ invite.invite_date }}</p>
                 </div>
-                <nuxt-link to="#" style="padding: 0;width: 40px;height: 40px;">
+                <nuxt-link :to="{ path: `/invitations/${invite.id}` }" style="padding: 0;width: 40px;height: 40px;">
                   <i class="el-icon-info" style="font-size: 40px;"></i>
                 </nuxt-link>
               </div>
@@ -76,7 +76,7 @@
                   <el-divider content-position="right"></el-divider>
                   <p style="font-size: 12px; color: #999;">on {{ invite.invite_date }}</p>
                 </div>
-                <nuxt-link to="#" style="padding: 0;width: 40px;height: 40px;">
+                <nuxt-link :to="{ path: `/invitations/${invite.id}` }" style="padding: 0;width: 40px;height: 40px;">
                   <i class="el-icon-info" style="font-size: 40px;"></i>
                 </nuxt-link>
               </div>
@@ -161,6 +161,7 @@ export default {
 .dropdown_follow_user {
   display: flex;
   align-items: center;
+  color: #666;
   border-bottom: 1px solid rgba(236, 215, 25, 0.8);
 }
 .mypage_wrapper .profile .image .user_name{
@@ -180,12 +181,12 @@ export default {
   margin-bottom: 40px;
 }
 .invitations_container {
-  height: 200px;
+  height: 240px;
   overflow-y: scroll;
 }
 .invitation_card {
   box-shadow: 0 0 8px #ccc;
-  width: 270px;
+  width: 300px;
   height: 60px;
   margin: 20px auto;
   border-radius: 30px;
@@ -206,13 +207,13 @@ export default {
 
 .mypage_wrapper .posts {
   height: 100%;
-  background: #eee;
-  border: 1px solid #aaa;
+  padding: 30px 0;
+  box-shadow: 0 0 8px #ccc;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
   overflow-y: scroll;
 }
 

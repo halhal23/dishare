@@ -95,11 +95,17 @@ export default {
 .el-header {
   background: transparent;
   position: fixed;
-  z-index: 10;
+  z-index: 5;
   top: 0;
   width: 100%;
 }
 
+.header_menu {
+  display: flex;
+  background: transparent;
+  flex-wrap: wrap;
+  border-bottom: none !important;
+}
 .header_menu {
   display: flex;
   background: transparent;
@@ -114,6 +120,7 @@ export default {
 .item_span {
   padding: 0 20px;
   display: block;
+  color: #888 !important;
 }
 
 

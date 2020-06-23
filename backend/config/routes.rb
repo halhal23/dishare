@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :comments, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
-    resources :invitations, only: [:index, :create, :destroy]
+    resources :invitations, only: [:show, :create, :destroy]
     get 'test', to: 'relationships#test'
     get 'isFollowed', to: 'relationships#isFollowed'
   end

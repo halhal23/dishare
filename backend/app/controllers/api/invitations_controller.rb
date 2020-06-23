@@ -1,6 +1,11 @@
 module Api
   class InvitationsController < ApplicationController
 
+    def show
+      invite = Invitation.find(params[:id])
+      render json: invite
+    end
+
     def create
       invite = Invitation.new(invite_params)
       if invite.save

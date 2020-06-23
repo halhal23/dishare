@@ -53,23 +53,25 @@ export default {
   justify-content: center;
   position: fixed;
   top: 0;
-  z-index: 11;
+  z-index: 4;
 }
 .sideBarWrapper .asideMenu {
-  background: #ddd;
   flex-direction: column;
+  background: rgb(247, 212, 159);
 }
 .sideBarWrapper .el-menu-item {
   text-align: center;
   font-size: 24px;
   border-bottom: 1px solid #999;
+  border-right: none;
   padding: 0 !important;
 }
 .sideBarWrapper a {
   padding: 0;
-  width: 100%;
+  width: 60px;
   height: 100%;
   display: flex;
+  color: #555;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -81,7 +83,7 @@ export default {
   color: #555;
   font-weight: bold;
 }
-@media (min-width: 0px) and (max-width: 640px) {
+@media (min-width: 0px) and (max-width: 769px) {
   .sideBarWrapper {
     position: fixed;
     top: auto;
