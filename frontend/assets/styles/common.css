@@ -47,7 +47,7 @@ header .el-menu-item {
 }
 
 .v-modal {
-  z-index: 9 !important;
+  z-index: 3 !important;
 }
 
 
@@ -68,3 +68,9 @@ header .el-menu-item {
     font-size: 50px;
   }
 } */
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
