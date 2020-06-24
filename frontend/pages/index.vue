@@ -24,15 +24,47 @@
       </el-col>
     </el-row>
     <shopLists />  <!-- 検索結果一覧を表示するコンポーネント -->
+    <div class="slideshow">
+      <p style="font-size: 28px;color: #eee;font-weight: bold;margin: 20px 0 70px;">Search by category</p>
+      <el-carousel :autoplay="false" type="card" height="400px">
+
+        <el-carousel-item class="italian">
+          <div style="height: 100%;width: 100%;background: rgba(0,0,0,0.3);padding: 30px;">
+            <p class="category_title" style="">ITALIAN</p>
+            <shopCategorySearch category="イタリアン" class="category_form"/>
+          </div>
+        </el-carousel-item>
+        <el-carousel-item class="chinese">
+          <div style="height: 100%;width: 100%;background: rgba(0,0,0,0.3);padding: 30px;">
+            <p class="category_title" style="">CHINESE</p>
+            <shopCategorySearch category="中華" class="category_form"/>
+          </div>
+        </el-carousel-item>
+        <el-carousel-item class="japanese">
+          <div style="height: 100%;width: 100%;background: rgba(0,0,0,0.3);padding: 30px;">
+            <p class="category_title" style="">JAPANESE</p>
+            <shopCategorySearch category="和食" class="category_form"/>
+          </div>
+        </el-carousel-item>
+        <el-carousel-item class="french">
+          <div style="height: 100%;width: 100%;background: rgba(0,0,0,0.3);padding: 30px;">
+            <p class="category_title" style="">FRENCH</p>
+            <shopCategorySearch category="フランス" class="category_form"/>
+          </div>
+        </el-carousel-item>
+
+      </el-carousel>
+    </div>
   </el-main>
 </template>
 
 <script>
 import shopLists from '~/components/shop-lists.vue'
 import shopSearchForm from '~/components/shop-search-form.vue'
+import shopCategorySearch from '~/components/shop-category-search.vue'
 export default {
   components: {
-    shopLists,shopSearchForm
+    shopLists,shopSearchForm, shopCategorySearch
   }
 }
 // #F5F7FA
@@ -70,7 +102,53 @@ export default {
   font-family: Times, 'Times New Roman', serif;
   font-size: 24px;
 }
+.slideshow {
+  height: 700px;
+  padding: 50px 20px;
+  background: #555;
+  text-align: center;
+}
+.slideshow .el-carousel__indicators  {
+  margin-top: 20px;
+}
+.slideshow .el-carousel__item.italian {
+  background-image: url('/images/italian.png');
+  background-size: cover;
+  background-position: center;
+}
+.slideshow .el-carousel__item.chinese {
+  background-image: url('/images/chinese.png');
+  background-size: cover;
+  background-position: center;
+}
+.slideshow .el-carousel__item.japanese {
+  background-image: url('/images/japanese.png');
+  background-size: cover;
+  background-position: center;
+}
+.slideshow .el-carousel__item.french {
+  background-image: url('/images/french.png');
+  background-size: cover;
+  background-position: center;
+}
 
+.slideshow .el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.slideshow .el-carousel__item:nth-child(2n+1) {
+  background-color: #555;
+}
+.category_title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #eee;
+  text-align: center;
+  margin-bottom: 80px
+}
+.category_form {
+  margin: 0 auto;
+}
 @media (min-width: 0px) and (max-width: 768px) {
   .el-row.top_contents {
     display: flex;
@@ -82,6 +160,18 @@ export default {
   }
   .promptMsg {
     font-size: 14px;
+  }
+  .slideshow {
+    padding: 50px 0;
+  }
+  .slideshow .el-carousel__item {
+    width: 100%;
+  }
+  .category_title {
+    text-align: left;
+  }
+  .category_form {
+    margin: 0;
   }
 }
 </style>

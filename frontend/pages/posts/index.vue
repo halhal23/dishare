@@ -39,7 +39,9 @@ export default {
       console.log(tab.label);
     },
     async getUpdatePosts(){
-      const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts')
+      const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts', {
+        params: { user_id: this.$store.state.auth.currentUser.id }
+      })
       this.posts = data
     }
   },

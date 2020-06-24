@@ -1,13 +1,13 @@
 <template>
   <el-row class="searchInput" style="background: rgba(255,255,255,0);">
     <el-col :span="24" :lg="12">
-      <el-input placeholder="検索キーワード" v-model="keyword"></el-input>
+      <el-input placeholder="Please enter a keyword   ex: ラーメン,カフェ" v-model="keyword"></el-input>
     </el-col>
     <el-col :span="16" :lg="8">
-      <el-select v-model="select" placeholder="指定せず検索" class="select" style="width: 100%;background: #F5F7FA;">
-        <el-option label="近くの店を探す" value="1"></el-option>
-        <el-option label="指定せず検索" value="2"></el-option>
-        <el-option label="検索結果をクリア" value="3"></el-option>
+      <el-select v-model="select" placeholder="No specification" class="select" style="width: 100%;background: #F5F7FA;">
+        <el-option label="Find a near restaurant" value="1"></el-option>
+        <el-option label="No specification" value="2"></el-option>
+        <el-option label="clear" value="3"></el-option>
       </el-select>
     </el-col>
     <el-col :span="8" :lg="4">
@@ -55,7 +55,7 @@ export default {
       this.$axios.$get('/api/', {
         params: {
           keyid: process.env.gnavi_api_key,
-          name: this.keyword,
+          freeword: this.keyword,
         }
       }).then( res => {
         this.setShops(res.rest)
