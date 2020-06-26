@@ -69,7 +69,7 @@ export default {
 .posts_index_wrapper {
   height: 100vh;
   padding: 60px 60px 0;
-  background: rgb(255, 209, 81);
+  background: rgba(255, 227, 184, 0.6);
 }
 .new_post_icon {
   background: tomato;

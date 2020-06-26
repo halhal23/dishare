@@ -16,8 +16,14 @@
     <div class="users">
       <el-card v-for="u in users" :key="u.id">
           <div class="nameplate">
-            <el-avatar :src="u.image.url" :size="40"></el-avatar>
-            <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ u.name }}</p>
+            <nuxt-link :to="{ path: `/users/${u.id}`}" style="width: 40px;">
+              <el-avatar :src="u.image.url" :size="40"></el-avatar>
+            </nuxt-link>
+            <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">
+              <nuxt-link :to="{ path: `/users/${u.id}`}" class="dropdown_follow_user">
+                {{ u.name }}
+              </nuxt-link>
+            </p>
             <p style="font-size: 12px; color: #aaa;margin-left: auto;">since: {{ u.created_at.substr(0, 10) }}</p>
           </div>
           <div class="actions">
@@ -77,7 +83,6 @@ export default {
     const followingsData = await $axios.$get(baseUrl + `/api/users/followings`, {
       params: { id: store.state.auth.currentUser.id }
     })
-    console.log(followingsData)
     return {
       users: followingsData,
     }
@@ -112,7 +117,7 @@ export default {
 .users_index_wrapper {
   height: 100vh;
   padding: 60px 60px 0;
-  background: rgb(255, 209, 81);
+  background: rgba(255, 227, 184, 0.6);
 }
 .users_index_wrapper .users {
   display: flex;
@@ -123,7 +128,7 @@ export default {
   height: 90%;
   padding: 30px 0;
   overflow-y: scroll;
-  background: rgba(189, 187, 181, 0.281);
+  background: rgba(189, 187, 181, 0.3);
 }
 .users_index_wrapper .el-card {
   margin-bottom: 20px;

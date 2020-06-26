@@ -7,7 +7,7 @@
       <el-step title="Submit" status="success"></el-step>
     </el-steps>
     <el-row style="width: 100%;">
-      <el-col :span="24" :md="14" style="background: #fff;">
+      <el-col :span="24" :md="14">
         <el-carousel @change="prev" :autoplay="false" :loop="false" indicator-position="none" height="600px">
           <el-carousel-item>
             <h3 class="medium">Who do you want to invite?</h3>
@@ -86,7 +86,7 @@
           </el-carousel-item>
         </el-carousel>
       </el-col>
-      <el-col :span="24" :md="10" style="background: #fff;">
+      <el-col :span="24" :md="10">
         <div class="invite_content_card">
           <div style="padding: 5px 20px; background: #eec;">
             <el-checkbox :disabled="!isSelectedUser" v-model="isSelectedUser" @change="deselectUser">
@@ -299,7 +299,7 @@ export default {
 <style>
 .invite_wrapper {
   min-height: 100vh;
-  background: #fff;
+  background: rgba(255, 227, 184, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -310,7 +310,6 @@ export default {
   width: 500px;
   margin: 0 auto;
 }
-
 .invite_wrapper  .el-carousel__item h3 {
   color: #475669;
   text-align: center;
@@ -320,6 +319,11 @@ export default {
 }
 .invite_wrapper .users_container .el-card {
   width: 80%;
+  margin: 20px auto;
+  width: 280px;
+}
+.invite_wrapper .users_container .el-card:hover {
+  box-shadow: 0 0 18px #aaa;
 }
 .invite_wrapper .el-card__body {
   height: 100%;
@@ -332,8 +336,8 @@ export default {
   height: 100%;
 }
 
-.invite_wrapper  .el-carousel__item.is-active {
-  background: rgb(255,255,255);
+.invite_wrapper  .el-carousel__item {
+  background: #fff;
   border: 1px solid #ccc;
 }
 .invite_steps {
@@ -345,6 +349,7 @@ export default {
   height: 120px;
   box-shadow: 0 0 12px #ccc;
   margin-bottom: 20px;
+  background: #fff;
 }
 .find_food_wrapper {
   margin: 10px;

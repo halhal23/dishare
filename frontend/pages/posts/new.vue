@@ -89,6 +89,10 @@ export default {
   height: 100vh;
   flex-direction: column;
   padding: 70px 0;
+  background: rgb(255, 238, 211);
+}
+.new_post_wrapper .el-divider__text {
+  background: rgb(255, 238, 211);
 }
 .new_post_wrapper .el-form {
   /* box-shadow: 0 0 18px #ccc; */

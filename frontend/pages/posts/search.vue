@@ -1,8 +1,8 @@
 <template>
   <el-main class="search_wrapper">
-    <el-divider class="title" style="margin: 60px;">
-      <h1 @click="test">You can do a detailed search</h1>
-    </el-divider>
+    
+    <h1 @click="test" style="text-align: center;margin: 60px 0;">You can do a detailed search</h1>
+   
     
     <el-form label-width="120px">
       <el-form-item label="keyword">
@@ -150,6 +150,9 @@ export default {
 </script>
 
 <style>
+.search_wrapper {
+  background: rgba(255, 227, 184, 0.6);
+}
 .el-checkbox {
   margin-left: 0 !important;
 }
