@@ -72,11 +72,35 @@ workflows:
           filters:
             branches:
               only: master
-  
+
+      # terraformにて管理しているマイグレーション用タスクのアップデートと実行。
+      - aws-ecs/update-task-definition:
+          requires:
+            - nuxt-build-and-push-image
+          family: dishare_db_migrate
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: '${AWS_REGION}'
+          filters:
+            branches:
+              only: master
+      - aws-ecs/run-task:
+          requires:
+            - aws-ecs/update-task-definition
+          cluster: '${ECS_ARN}'
+          task-definition: dishare_db_migrate
+          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
+          assign-public-ip: ENABLED
+          security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
+          filters:
+            branches:
+              only: master
+
+
       - aws-ecs/deploy-service-update:
           name: rails-deploy-service-update
           requires:
-            - nuxt-build-and-push-image
+            - aws-ecs/run-task
           family: 'dishare-rails-task' # ECSのタスク定義名
           cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
           service-name: 'dishare-rails-ecs-service'  #サービス名

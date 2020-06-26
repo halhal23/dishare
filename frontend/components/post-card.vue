@@ -108,7 +108,6 @@ export default {
       }).then(() => { 
         this.$axios.$delete(process.env.browserBaseUrl + `/api/posts/${id}`).then(res => {
           console.log('delete')
-          console.log(res)
           this.$emit('getUpdatePosts')
         })
        }).catch(() => {})

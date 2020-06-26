@@ -169,6 +169,7 @@ export default {
   }
   .category_title {
     text-align: left;
+    margin-bottom: 30px;
   }
   .category_form {
     margin: 0;

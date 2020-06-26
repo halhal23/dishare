@@ -158,6 +158,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding-left: 30px;
+  background: rgba(255, 227, 184, 0.6);
 }
 .mypage_wrapper .box {
   width: 95%;
@@ -173,6 +174,7 @@ export default {
   margin-right: 10px;
   border-radius: 14px;
   box-shadow: 0 0 10px #ccc;
+  background: #fff;
 }
 .mypage_wrapper .profile .image {
   background: linear-gradient(to right,#d4a300,#ffdc68);
@@ -202,6 +204,7 @@ export default {
   box-shadow: 0 0 8px #ccc;
   width: 100%;
   margin-bottom: 40px;
+  background: #fff;
 }
 .invitations_container {
   height: 240px;
@@ -238,6 +241,7 @@ export default {
   flex-direction: column;
   height: 400px;
   overflow-y: scroll;
+  background: #fff;
 }
 
 @media (min-width: 0px) and (max-width: 992px) {
