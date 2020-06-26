@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get 'isFollowed', to: 'relationships#isFollowed'
     get 'posts/following_posts'
     get 'posts/follower_posts'
+    get 'users/followings'
+    get 'users/followers'
     resources :users, only: [:index, :show]
     resources :posts
     resources :comments, only: [:create, :destroy]

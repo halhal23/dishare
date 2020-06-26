@@ -35,7 +35,7 @@ export const actions = {
       .then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push(`/users/mypage`)
+        this.$router.push(`/posts`)
         return res
       }, err => {
         return err
@@ -49,7 +49,7 @@ export const actions = {
     }).then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push(`/users/mypage`)
+        this.$router.push(`/posts`)
         return res
       }, err => {
         return err

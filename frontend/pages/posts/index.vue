@@ -68,7 +68,6 @@ export default {
 <style>
 .posts_index_wrapper {
   height: 100vh;
-  background: #ffffff;
   padding: 60px 60px 0;
   background: rgb(255, 209, 81);
 }
@@ -93,9 +92,6 @@ export default {
   padding: 30px 0;
   overflow-y: scroll;
   background: rgba(189, 187, 181, 0.281);
-}
-.posts_index_wrapper .el-tabs__content {
-  height: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .posts_index_wrapper {
