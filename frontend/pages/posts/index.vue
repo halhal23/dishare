@@ -1,20 +1,23 @@
 <template>
   <el-main class="posts_index_wrapper">
-    <el-menu
-      default-active="1"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelectUsers"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b">
-      <el-menu-item index="1">Followings</el-menu-item>
-      <el-menu-item index="2">Followers</el-menu-item>
-      <el-menu-item index="3">All users</el-menu-item>
-    </el-menu>
-
     <div class="posts">
-      <postCard v-for="p in posts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+      <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
+        <el-tab-pane label="Followings" name="first">
+          <div class="posts_container">
+            <postCard v-for="p in followingPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="Followers" name="second">
+          <div class="posts_container">
+            <postCard v-for="p in followerPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="All posts" name="third">
+          <div class="posts_container">
+            <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+          </div>
+        </el-tab-pane>
+      </el-tabs>
     </div>
     <nuxt-link :to="{ path: '/posts/new'}" class="flex-center new_post_icon">
       <i class="el-icon-plus"></i>
@@ -28,35 +31,35 @@ export default {
   // フォローしているユーザの記事のみを取得
   async asyncData({ $axios, params, store}){
     const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
-    const data = await $axios.$get(baseUrl + '/api/posts/following_posts', {
-      params: { user_id: store.state.auth.currentUser.id }
-    })   
+    const followingPosts = await $axios.$get(baseUrl + '/api/posts/following_posts', {
+      params: { user_id: store.state.auth.currentUser.id } 
+    }) 
     return {
-      posts: data,
+      followingPosts: followingPosts,
+      followerPosts: [],
+      allPosts: [],
+      tabActive: 'first'
     }
   },
   methods: {
-    async handleSelectUsers(key, keyPath) {
-      if(key == 1){
-        const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts/following_posts', {
-          params: { user_id: this.$store.state.auth.currentUser.id }
-        })         
-        this.posts = data  
-      } else if (key == 2){
-        const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts/follower_posts', {
-          params: { user_id: this.$store.state.auth.currentUser.id }
-        }) 
-        this.posts = data      
-      } else if (key == 3){
-        const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts')
-        this.posts = data
+    async handleSelectUsers(tab) {
+      console.log(tab.label)
+      switch (tab.label){
+        case 'Followers':
+          const follwerPosts = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts/follower_posts', {
+            params: { user_id: this.$store.state.auth.currentUser.id }
+          }) 
+          this.followerPosts = follwerPosts 
+          break
+        case 'All posts':
+          const allPosts = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts')
+          this.allPosts = allPosts
+          break   
       }
     },
     async getUpdatePosts(){
-      const data = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts', {
-        params: { user_id: this.$store.state.auth.currentUser.id }
-      })
-      this.posts = data
+          const allPosts = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts')
+          this.allPosts = allPosts
     }
   },
   components: {
@@ -69,7 +72,6 @@ export default {
 .posts_index_wrapper {
   height: 100vh;
   padding: 60px 60px 0;
-  background: rgba(255, 227, 184, 0.6);
 }
 .new_post_icon {
   background: tomato;
@@ -84,18 +86,29 @@ export default {
   z-index: 5;
 }
 .posts_index_wrapper .posts {
+  padding: 0 10px 0;
+  background: #f1decc;
+}
+.posts_index_wrapper .el-tabs__content {
+  background: #f1decc;
+  height: 80vh;
+}
+.posts_index_wrapper .el-tabs__header {
+  background: #f1decc;
+  padding: 20px;
+  margin: 0;
+}
+.posts_index_wrapper .posts_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: flex-start;
-  height: 90%;
-  padding: 30px 0;
-  overflow-y: scroll;
-  background: rgba(189, 187, 181, 0.281);
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .posts_index_wrapper {
     padding: 70px 0;
+  }
+  .posts_index_wrapper .el-tabs__content {
+    height: 72vh;
   }
 }
 </style>

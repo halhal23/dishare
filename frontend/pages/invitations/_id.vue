@@ -58,18 +58,18 @@
       <el-col class="right content" :sm="24" :lg="8">
         <el-row style="height: 100%;">
           <el-col :xs="24" :sm="12" :lg="24" class="calender">
-            <p style="text-align:center;font-size: 25px;font-weight:bold;padding-top: 50px;">The date is the {{ invitation.invite_date }}</p>
+            <p class="calendar_title">The date is the {{ invitation.invite_date }}</p>
             <el-calendar  v-model="dateValue">
             </el-calendar>
           </el-col>
           <el-col :xs="24" :sm="12" :lg="24" class="shop">
             <el-tabs v-model="activeName" v-if="invitation.shop_name">
-              <el-tab-pane style="color: #eee" label="Shop MAP" name="first">
+              <el-tab-pane style="color: #eee; height: 100%;" label="Shop MAP" name="first">
                 <GmapMap
                   :center="{ lat: Number(invitation.shop_latitude), lng: Number(invitation.shop_longitude) }"
                   :zoom="15"
                   map-type-id="terrain"
-                  style="width: 100%; height: 450px;"
+                  style="width: 100%; height: 100%;"
                 >
                   <GmapMarker
                     :position="{ lat: Number(invitation.shop_latitude), lng: Number(invitation.shop_longitude) }"
@@ -80,8 +80,8 @@
               </el-tab-pane>
               <el-tab-pane  style="color: #eee;text-align: center" label="Shop INFO" name="second">
                 <el-avatar :src="invitation.shop_image_url" :size="150"></el-avatar>
-                <p style="margin-bottom: 20px;">{{ invitation.shop_name }}</p>
-                <p style="margin-bottom: 20px;">{{ invitation.shop_address }}</p>
+                <p style="margin-bottom: 5px;">{{ invitation.shop_name }}</p>
+                <p style="margin-bottom: 5px;">{{ invitation.shop_address }}</p>
                 <a :href="invitation.shop_site_url" style="color: #fff;font-weight: bold;" target="__blank">詳しくはこちら</a>
               </el-tab-pane>
             </el-tabs>
@@ -178,7 +178,7 @@ export default {
   padding: 0 30px;
 }
 .show_invite_wrapper .right .ok{
-  background: rgb(183, 255, 89);
+  background: rgba(183, 255, 89);
 }
 .show_invite_wrapper .right .ng{
   background: rgb(255, 137, 133);
@@ -241,6 +241,7 @@ export default {
 .show_invite_wrapper .right .el-tabs__content{
   height: 90%;
   overflow-y: hidden;
+  padding-bottom: 15px;
 }
 .show_invite_wrapper .right .el-tabs__item {
   color: #eee;
@@ -259,6 +260,12 @@ export default {
 .show_invite_wrapper .right .el-calendar-day span {
   font-size: 10px;
 }
+.show_invite_wrapper .right .calendar_title {
+  text-align:center;
+  font-size: 17px;
+  font-weight:bold;
+  padding-top: 60px;
+}
 @media (min-width: 769px) and (max-width: 1200px) {
   .show_invite_wrapper .content{
     height: 50%;
@@ -276,7 +283,7 @@ export default {
   .show_invite_wrapper .left .title p{
     text-orientation: upright;
     writing-mode: vertical-rl;
-    font-size: 20px;
+    font-size: 15px;
     text-align:center;
     margin: 20px auto;
   }
@@ -290,6 +297,13 @@ export default {
   }
   .show_invite_wrapper .right .action {
     width: 50%;
+  }
+  .show_invite_wrapper .right .calender {
+    padding: 0 60px;
+  }
+  .show_invite_wrapper .right .calendar_title,
+  .show_invite_wrapper .right .el-calendar__header{
+    padding: 0;
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {

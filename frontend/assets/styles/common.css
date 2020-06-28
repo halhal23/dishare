@@ -34,7 +34,7 @@ a {
 
 .el-container {
   flex-direction: column;
-  background: #fff;
+  background: rgb(255, 239, 215);
   position: relative;
 }
 h1 {

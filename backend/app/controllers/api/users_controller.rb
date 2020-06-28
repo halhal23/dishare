@@ -11,8 +11,10 @@ module Api
     def show
       # 投稿、フォロー、フォロワー、送った招待、受けた招待をユーザ情報とともに返す。
       render json: @user, include: [
-        :followings,
-        :followers,
+        # :followings,
+        # :followers,
+        { followings: [:posts, :followings, :followers]},
+        { followers: [:posts, :followings, :followers]},
         { posts: [:user, :photos] },
         { passive_invitations: [:inviter] },
         { active_invitations: [:invited] },

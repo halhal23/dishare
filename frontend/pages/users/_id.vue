@@ -160,7 +160,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 227, 184, 0.6);
 }
 
 .user_info_card {

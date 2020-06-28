@@ -158,7 +158,6 @@ export default {
   justify-content: center;
   align-items: center;
   padding-left: 30px;
-  background: rgba(255, 227, 184, 0.6);
 }
 .mypage_wrapper .box {
   width: 95%;
