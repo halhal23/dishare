@@ -299,7 +299,6 @@ export default {
 <style>
 .invite_wrapper {
   min-height: 100vh;
-  background: rgba(255, 227, 184, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;

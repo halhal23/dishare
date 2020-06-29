@@ -35,7 +35,7 @@ export const actions = {
       .then( res => {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
-        this.$router.push(`/posts`)
+        this.$router.push(`/users/mypage`)
         return res
       }, err => {
         return err

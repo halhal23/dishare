@@ -59,7 +59,7 @@ workflows:
       - aws-ecr/build-and-push-image:
           name: nuxt-build-and-push-image
           requires:
-            - rails-build-and-push-image
+            - test
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
@@ -73,10 +73,22 @@ workflows:
             branches:
               only: master
 
+      - aws-ecs/deploy-service-update:
+          name: nuxt-deploy-service-update
+          requires:
+            - nuxt-build-and-push-image
+          family: 'dishare-nuxt-task' # ECSのタスク定義名
+          cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
+          service-name: 'dishare-nuxt-ecs-service'  #サービス名
+          container-image-name-updates: "container=nuxt-container,tag=${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: master
+
       # terraformにて管理しているマイグレーション用タスクのアップデートと実行。
       - aws-ecs/update-task-definition:
           requires:
-            - nuxt-build-and-push-image
+            - rails-build-and-push-image
           family: dishare_db_migrate
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
@@ -109,14 +121,3 @@ workflows:
             branches:
               only: master
 
-      - aws-ecs/deploy-service-update:
-          name: nuxt-deploy-service-update
-          requires:
-            - nuxt-build-and-push-image
-          family: 'dishare-nuxt-task' # ECSのタスク定義名
-          cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
-          service-name: 'dishare-nuxt-ecs-service'  #サービス名
-          container-image-name-updates: "container=nuxt-container,tag=${CIRCLE_SHA1}"
-          filters:
-            branches:
-              only: master

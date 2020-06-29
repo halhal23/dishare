@@ -1,7 +1,20 @@
 <template>
   <el-main class="users_index_wrapper">
+    <!-- <el-menu
+      default-active="1"
+      class="el-menu-demo"
+      mode="horizontal"
+      @select="handleSelectUsers"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b">
+      <el-menu-item index="1">Followings</el-menu-item>
+      <el-menu-item index="2">Followers</el-menu-item>
+      <el-menu-item index="3">All users</el-menu-item>
+    </el-menu> -->
     <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
       <el-tab-pane label="Followings" name="first">
+
         <div class="users">
           <el-card v-for="u in followings" :key="u.id">
               <div class="nameplate">
@@ -282,9 +295,6 @@ export default {
 @media (min-width: 0px) and (max-width: 768px) {
   .users_index_wrapper {
     padding: 70px 0;
-  }
-  .users_index_wrapper .el-tabs__content {
-    height: 72vh;
   }
 }
 </style>

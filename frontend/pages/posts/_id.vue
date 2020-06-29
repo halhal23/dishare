@@ -75,13 +75,11 @@ export default {
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
+  height: 100vh;
 }
 .post_show_wrapper ul {
   padding: 0;
 }
-/* .post_show_wrapper .el-card__body {
-  padding: 10px;
-} */
 @media (min-width: 0px) and (max-width: 768px) {
   .comments_wrapper {
     width: 95%;
