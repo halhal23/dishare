@@ -53,9 +53,9 @@ workflows:
           path: './backend/'
           repo: dishare-rails
           tag: "${CIRCLE_SHA1}"
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
       - aws-ecr/build-and-push-image:
           name: nuxt-build-and-push-image
           requires:
@@ -69,9 +69,9 @@ workflows:
           dockerfile: Dockerfile.prd
           repo: dishare-nuxt
           tag: "${CIRCLE_SHA1}"
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 
       - aws-ecs/deploy-service-update:
           name: nuxt-deploy-service-update
@@ -81,9 +81,9 @@ workflows:
           cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
           service-name: 'dishare-nuxt-ecs-service'  #サービス名
           container-image-name-updates: "container=nuxt-container,tag=${CIRCLE_SHA1}"
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 
       # terraformにて管理しているマイグレーション用タスクのアップデートと実行。
       - aws-ecs/update-task-definition:
@@ -93,9 +93,9 @@ workflows:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           aws-region: '${AWS_REGION}'
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
       - aws-ecs/run-task:
           requires:
             - aws-ecs/update-task-definition
@@ -104,9 +104,9 @@ workflows:
           subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 
 
       - aws-ecs/deploy-service-update:
@@ -117,7 +117,7 @@ workflows:
           cluster-name: '${ECS_ARN}'  #ECSのクラスターのARN
           service-name: 'dishare-rails-ecs-service'  #サービス名
           container-image-name-updates: "container=rails-container,tag=${CIRCLE_SHA1}"
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 
