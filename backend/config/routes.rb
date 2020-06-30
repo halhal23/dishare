@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   
   namespace :api do
-    get 'invite_conversations/create'
-    get 'invite_conversations/destroy'
   end
   # API設計の観点からnamespaceを使用し、 /api/each_api 形式でrouting設定を行う
   namespace :api, format: 'json' do
@@ -16,7 +14,10 @@ Rails.application.routes.draw do
     get 'posts/each_posts'
     get 'users/followings'
     get 'users/followers'
-    resources :users, only: [:index, :show]
+    get 'users/get_user_names'
+    resources :users do
+      get "search", on: :collection
+    end
     resources :posts
     resources :comments, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]

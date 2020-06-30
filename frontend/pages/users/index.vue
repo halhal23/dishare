@@ -1,197 +1,41 @@
 <template>
   <el-main class="users_index_wrapper">
-    <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
-      <el-tab-pane label="Followings" name="first">
-        <div class="users">
-          <el-card v-for="u in followings" :key="u.id">
-              <div class="nameplate">
-                <nuxt-link :to="{ path: `/users/${u.id}`}" style="width: 40px;">
-                  <el-avatar :src="u.image.url" :size="40"></el-avatar>
-                </nuxt-link>
-                <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">
-                  <nuxt-link :to="{ path: `/users/${u.id}`}" class="dropdown_follow_user">
-                    {{ u.name }}
-                  </nuxt-link>
-                </p>
-                <p style="font-size: 12px; color: #aaa;margin-left: auto;">since: {{ u.created_at.substr(0, 10) }}</p>
-              </div>
-              <div class="actions">
-                <el-dropdown trigger="click">
-                  <el-badge :value="u.followings.length" class="item" type="warning">
-                    <el-button size="small">
-                      Followings <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                  </el-badge>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="f in u.followings" :key="f.id" style="width: 220px;">
-                      <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
-                        <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                        {{ f.name }}
-                      </nuxt-link>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-                
-                <el-dropdown trigger="click" style="margin: 0 20px;">
-                  <el-badge :value="u.followers.length" class="item" type="warning">
-                    <el-button size="small">
-                      Followers <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                  </el-badge>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="f in u.followers" :key="f.id" style="width: 220px;">
-                      <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
-                        <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                        {{ f.name }}
-                      </nuxt-link>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-
-            
-                <el-badge :value="u.posts.length" class="item" type="warning">
-                  <nuxt-link :to="{ path: `/users/${u.id}`}">
-                    <el-button size="small">
-                        Posts
-                    </el-button>
-                  </nuxt-link>
-                </el-badge>
-              </div>
-          </el-card>
+    <el-row>
+      <el-col :md="14" :span="24">
+        <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
+          <el-tab-pane label="Followings" name="first">
+            <div class="users">
+              <userIndexCard v-for="u in followings" :user="u" :key="u.id" />
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="Followers" name="second">
+            <div class="users">
+              <userIndexCard v-for="u in followers" :user="u" :key="u.id" />
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </el-col>
+      <el-col :md="10" :span="24" style="height: 90vh; background: #ddd;text-align: center;">
+        <p style="font-weight: bold;padding: 20px;margin: 0 20px;border-bottom: 1px solid #555;">Search by all Users</p>
+        <el-autocomplete
+          v-model="searchKeyword"
+          :fetch-suggestions="querySearchAsync"
+          placeholder="Please input"
+          style="margin: 20px 0;"
+        >
+          <el-button @click="searchUsers" slot="append" icon="el-icon-search"></el-button>
+        </el-autocomplete>
+        <div style="overflow-y: scroll;height: 75%;padding: 5px;display: flex; flex-wrap: wrap;justify-content: space-around;align-items: flex-start;">
+          <userIndexCard v-for="u in searchedUsers" :user="u" :key="u.id" />
         </div>
-
-      </el-tab-pane>
-      <el-tab-pane label="Followers" name="second">
-
-
-        <div class="users">
-          <el-card v-for="u in followers" :key="u.id">
-              <div class="nameplate">
-                <nuxt-link :to="{ path: `/users/${u.id}`}" style="width: 40px;">
-                  <el-avatar :src="u.image.url" :size="40"></el-avatar>
-                </nuxt-link>
-                <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">
-                  <nuxt-link :to="{ path: `/users/${u.id}`}" class="dropdown_follow_user">
-                    {{ u.name }}
-                  </nuxt-link>
-                </p>
-                <p style="font-size: 12px; color: #aaa;margin-left: auto;">since: {{ u.created_at.substr(0, 10) }}</p>
-              </div>
-              <div class="actions">
-                <el-dropdown trigger="click">
-                  <el-badge :value="u.followings.length" class="item" type="warning">
-                    <el-button size="small">
-                      Followings <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                  </el-badge>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="f in u.followings" :key="f.id" style="width: 220px;">
-                      <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
-                        <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                        {{ f.name }}
-                      </nuxt-link>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-                
-                <el-dropdown trigger="click" style="margin: 0 20px;">
-                  <el-badge :value="u.followers.length" class="item" type="warning">
-                    <el-button size="small">
-                      Followers <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                  </el-badge>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="f in u.followers" :key="f.id" style="width: 220px;">
-                      <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
-                        <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                        {{ f.name }}
-                      </nuxt-link>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-
-            
-                <el-badge :value="u.posts.length" class="item" type="warning">
-                  <nuxt-link :to="{ path: `/users/${u.id}`}">
-                    <el-button size="small">
-                        Posts
-                    </el-button>
-                  </nuxt-link>
-                </el-badge>
-              </div>
-          </el-card>
-        </div>
-
-      </el-tab-pane>
-      <el-tab-pane label="All users" name="third">
-
-        <div class="users">
-          <el-card v-show="allUsers.length != 0" v-for="u in allUsers" :key="u.id">
-              <div class="nameplate">
-                <nuxt-link :to="{ path: `/users/${u.id}`}" style="width: 40px;">
-                  <el-avatar :src="u.image.url" :size="40"></el-avatar>
-                </nuxt-link>
-                <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">
-                  <nuxt-link :to="{ path: `/users/${u.id}`}" class="dropdown_follow_user">
-                    {{ u.name }}
-                  </nuxt-link>
-                </p>
-                <p style="font-size: 12px; color: #aaa;margin-left: auto;">since: {{ u.created_at.substr(0, 10) }}</p>
-              </div>
-              <div class="actions">
-                <el-dropdown trigger="click">
-                  <el-badge :value="u.followings.length" class="item" type="warning">
-                    <el-button size="small">
-                      Followings <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                  </el-badge>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="f in u.followings" :key="f.id" style="width: 220px;">
-                      <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
-                        <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                        {{ f.name }}
-                      </nuxt-link>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-                
-                <el-dropdown trigger="click" style="margin: 0 20px;">
-                  <el-badge :value="u.followers.length" class="item" type="warning">
-                    <el-button size="small">
-                      Followers <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                  </el-badge>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="f in u.followers" :key="f.id" style="width: 220px;">
-                      <nuxt-link :to="{ path: `/users/${f.id}`}" class="dropdown_follow_user">
-                        <el-avatar :src="f.image.url" :size="30" style="margin-right: 30px;"></el-avatar>
-                        {{ f.name }}
-                      </nuxt-link>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
-
-            
-                <el-badge :value="u.posts.length" class="item" type="warning">
-                  <nuxt-link :to="{ path: `/users/${u.id}`}">
-                    <el-button size="small">
-                        Posts
-                    </el-button>
-                  </nuxt-link>
-                </el-badge>
-              </div>
-          </el-card>
-        </div>
-
-
-      </el-tab-pane>
-    </el-tabs>
-
+      </el-col>
+    </el-row>
   </el-main>
 </template>
 </template>
 
 <script>
+import userIndexCard from '~/components/user-index-card.vue'
 export default {
   async asyncData({ $axios, store }){
     const baseUrl = process.client ? process.env.browserBaseUrl : process.env.apiBaseUrl
@@ -200,7 +44,11 @@ export default {
       followings: user.followings,
       followers: user.followers,
       allUsers: [],
-      tabActive: 'first'
+      searchedUsers: [],
+      tabActive: 'first',
+      userNames: [],
+      searchKeyword: '',
+      timeout:  null
     }
   },
   methods: {
@@ -233,7 +81,37 @@ export default {
           this.users = allUsersData
           break   
       }
+    },
+    async searchUsers(){
+      const searchedUsers = await this.$axios.$get(process.env.browserBaseUrl + '/api/users/search', {
+        params: { query: this.searchKeyword }
+      })
+      this.searchedUsers = searchedUsers
+    },
+    querySearchAsync(queryString, cb) {
+      var userNames = this.userNames;
+      var results = queryString ? userNames.filter(this.createFilter(queryString)) : userNames;
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        cb(results);
+      }, 1000);
+    },
+    createFilter(queryString) {
+      return (name) => {
+        return (name.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+      };
     }
+  },
+  async mounted() {
+    const names = await this.$axios.$get(process.env.browserBaseUrl + '/api/users/get_user_names')
+    // 配列の要素を名前の文字列から { value: 名前 } のオブジェクト形式に変換
+    const objNames = names.map( v => {
+      return { value: v }
+    })
+    this.userNames = objNames;
+  },
+  components: {
+    userIndexCard
   }
 }
 </script>

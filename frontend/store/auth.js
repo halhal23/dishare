@@ -50,14 +50,15 @@ export const actions = {
         commit('setCurrentUser', res.data)
         commit('setIsLoggedIn', true)
         this.$router.push(`/posts`)
-        return res
+        return 'res'
       }, err => {
+        console.log(err.response.data.errors[0])
         return err
       })
   },
   async logout({ commit }){
     await this.$axios.$delete(process.env.browserBaseUrl + '/api/auth/sign_out').then( res => {
-      commit('setCurrentUser', null)
+      commit('setCurrentUser', {})
       commit('setIsLoggedIn', false)
       this.$router.push("/")
       return res

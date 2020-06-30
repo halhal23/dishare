@@ -21,6 +21,16 @@ module Api
       ]
     end
 
+    def search
+      users = User.search(params[:query])
+      render json: users
+    end
+
+    def get_user_names
+      names = User.all.pluck(:name)
+      render json: names
+    end
+
     # ログインユーザのフォローユーザーを返す
     def followings
       render json: @user.followings
