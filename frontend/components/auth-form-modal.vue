@@ -72,14 +72,10 @@ export default {
     onModal(){
       this.$emit('onModal')
     },
-    doLogin(){
-      this.login(this.form)
+    async doLogin(){
+      const result = await this.login(this.form)
+      console.log(result)
       this.onModal() // Modalを閉じる
-      this.$notify({
-        title: 'Login successfully',
-        message: 'Welcome to dishare!!',
-        type: 'success'
-      });
     },
     doSignUp(){
       this.signUp(this.form)

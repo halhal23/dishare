@@ -157,14 +157,14 @@ export default {
   margin: 60px 0;
 }
 
-.search_wrapper .el-form {
+.search_wrapper > .el-form {
   padding: 0 200px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .el-divider--horizontal.title h1{
     font-size: 12px;
   }
-  .search_wrapper .el-form {
+  .search_wrapper > .el-form {
     padding: 0;
   }
 }

@@ -34,4 +34,14 @@ class User < ActiveRecord::Base
   def following?(other_user)
     self.followings.include?(other_user)
   end
+
+  class << self
+    def search(query)
+      rel = order(created_at: :desc)
+      if query.present?
+        rel = rel.where("name LIKE ?", "%#{query}%")
+      end
+      rel
+    end
+  end
 end

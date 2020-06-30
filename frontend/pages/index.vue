@@ -1,6 +1,5 @@
 <template>
   <el-main class="top_main" style="padding: 0;">
-    
     <el-row class="top_contents" style="height: 100vh;">
       <el-col :span="11" class="left main"></el-col>
       <el-col :span="13" class="right main">
@@ -52,7 +51,6 @@
             <shopCategorySearch category="フランス" class="category_form"/>
           </div>
         </el-carousel-item>
-
       </el-carousel>
     </div>
   </el-main>

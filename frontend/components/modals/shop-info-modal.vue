@@ -72,7 +72,7 @@
             <el-divider content-position="left">
               <h3 style="margin: 20px 0;letter-spacing: 4px;font-family: cursive;">Write a message</h3>
             </el-divider>
-            <el-input type="textarea" :rows="5" v-model="form.content" ></el-input>
+            <el-input type="textarea" :rows="5" maxlength="140" v-model="form.content" show-word-limit></el-input>
             <el-button @click="postsCreate" style="margin: 20px 0;">Submit</el-button>
           </el-form>
           <div v-else>
