@@ -58,7 +58,7 @@
       <el-col class="right content" :sm="24" :lg="8">
         <el-row style="height: 100%;">
           <el-col :xs="24" :sm="12" :lg="24" class="calender">
-            <p class="calendar_title">The date is the {{ invitation.invite_date }}</p>
+            <p class="calendar_title">It's scheduled for {{ invitation.invite_date }}</p>
             <el-calendar  v-model="dateValue">
             </el-calendar>
           </el-col>
@@ -220,6 +220,7 @@ export default {
   height: 100%;
   padding: 70px 20px 10px;
   position: relative;
+  background: #fff;
 }
 .show_invite_wrapper .center .el-timeline {
   padding: 0;
@@ -307,17 +308,21 @@ export default {
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
+  .show_invite_wrapper{
+    padding: 60px 30px;
+  }
   .show_invite_wrapper .content{
     height: 50%;
   }
   .show_invite_wrapper .right,
+  .show_invite_wrapper .center,
   .show_invite_wrapper .inviter,
   .show_invite_wrapper .invited {
     height: 100%;
   }
   .show_invite_wrapper .left .title p{
     text-align: center;
-    font-size: 38px;
+    font-size: 20px;
     margin-top: 5px;
   }
   .show_invite_wrapper .inviter {
