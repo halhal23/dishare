@@ -1,24 +1,101 @@
 <template>
   <el-main class="posts_index_wrapper">
-    <div class="posts">
-      <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
-        <el-tab-pane label="Followings" name="first">
-          <div class="posts_container">
-            <postCard v-for="p in followingPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="Followers" name="second">
-          <div class="posts_container">
-            <postCard v-for="p in followerPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="All posts" name="third">
-          <div class="posts_container">
-            <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
-          </div>
-        </el-tab-pane>
-      </el-tabs>
-    </div>
+    <el-row>
+      <el-col :sm="17" :span="24">
+        <div class="posts">
+          <el-menu
+            default-active="1-1"
+            class="el-menu-demo"
+            mode="horizontal"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+            <el-submenu index="1">
+              <template slot="title">Followings</template>
+              <el-menu-item index="1-1">All posts</el-menu-item>
+              <el-menu-item index="1-2">Simple posts</el-menu-item>
+              <el-menu-item index="1-3">Shop introduction</el-menu-item>
+            </el-submenu>
+            <el-submenu index="2">
+              <template slot="title">Followers</template>
+              <el-menu-item index="2-1">All posts</el-menu-item>
+              <el-menu-item index="2-2">Simple posts</el-menu-item>
+              <el-menu-item index="2-3">Shop introduction</el-menu-item>
+            </el-submenu>
+            <el-submenu index="3">
+              <template slot="title">All users</template>
+              <el-menu-item index="3-1">All posts</el-menu-item>
+              <el-menu-item index="3-2">Simple posts</el-menu-item>
+              <el-menu-item index="3-3">Shop introduction</el-menu-item>
+            </el-submenu>
+          </el-menu>
+          <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
+            <el-tab-pane label="Followings" name="first">
+              <div class="posts_container">
+                <postCard v-for="p in followingPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+                <!-- <button @click="search">seached</button> -->
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="Followers" name="second">
+              <div class="posts_container">
+                <postCard v-for="p in followerPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="All posts" name="third">
+              <div class="posts_container">
+                <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="Searched postss" name="fourth" v-if="searchedPosts.length > 0">
+              <div class="posts_container">
+                <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+      </el-col>
+      <el-col :sm="7" :span="24" style="height: 80vh;background: #545c64;">
+        <h5 style="text-align: center;background: #545c64;color: #fff;font-size: 20px; padding: 20px;">Search by all posts</h5>
+        <el-menu
+          default-active="2"
+          class="el-menu-vertical-demo"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b">
+          <!-- <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-tickets"></i>
+              <span>Simple post</span>
+            </template>       
+            <el-menu-item index="1-1">search by users</el-menu-item>
+            <el-menu-item index="1-2">search by contents</el-menu-item>
+          </el-submenu> -->
+          <el-menu-item index="1">
+            <template slot="title">
+              <i class="el-icon-tickets"></i>
+              <span>Simple post</span>
+            </template> 
+          </el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-knife-fork"></i>
+              <span>Shop introduction</span>
+            </template>
+            <el-menu-item-group title="Group One">
+              <el-menu-item index="1-1">item one</el-menu-item>
+              <el-menu-item index="1-2">item one</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="Group Two">
+              <el-menu-item index="1-3">item three</el-menu-item>
+            </el-menu-item-group>
+            <el-submenu index="1-4">
+              <template slot="title">item four</template>
+              <el-menu-item index="1-4-1">item one</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+        </el-menu>
+      </el-col>
+    </el-row>
     <nuxt-link :to="{ path: '/posts/new'}" class="flex-center new_post_icon">
       <i class="el-icon-plus"></i>
     </nuxt-link>
@@ -38,6 +115,7 @@ export default {
       followingPosts: followingPosts,
       followerPosts: [],
       allPosts: [],
+      searchedPosts: [],
       tabActive: 'first'
     }
   },
@@ -60,6 +138,16 @@ export default {
     async getUpdatePosts(){
           const allPosts = await this.$axios.$get(process.env.browserBaseUrl + '/api/posts')
           this.allPosts = allPosts
+    },
+    search(){
+      this.searchedPosts = [1]
+      this.tabActive = "fourth"
+    },
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     }
   },
   components: {
@@ -71,7 +159,7 @@ export default {
 <style>
 .posts_index_wrapper {
   height: 100vh;
-  padding: 60px 60px 0;
+  padding: 60px 0 0 60px;
 }
 .new_post_icon {
   background: tomato;

@@ -74,3 +74,16 @@ header .el-menu-item {
   justify-content: center;
   align-items: center;
 }
+.flex-full-center {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.flex-col-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
