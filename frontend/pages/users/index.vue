@@ -1,7 +1,7 @@
 <template>
   <el-main class="users_index_wrapper">
     <el-row>
-      <el-col :md="14" :span="24">
+      <el-col :sm="12" :span="24">
         <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
           <el-tab-pane label="Followings" name="first">
             <div class="users">
@@ -15,7 +15,7 @@
           </el-tab-pane>
         </el-tabs>
       </el-col>
-      <el-col :md="10" :span="24" style="height: 90vh; background: #ddd;text-align: center;">
+      <el-col :sm="12" :span="24" style="height: 90vh; background: #ddd;text-align: center;">
         <p style="font-weight: bold;padding: 20px;margin: 0 20px;border-bottom: 1px solid #555;">Search by all Users</p>
         <el-autocomplete
           v-model="searchKeyword"
@@ -119,7 +119,7 @@ export default {
 <style>
 .users_index_wrapper {
   height: 100vh;
-  padding: 60px 60px 0;
+  padding: 60px 0 0 60px;
 }
 .users_index_wrapper .users {
   display: flex;

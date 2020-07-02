@@ -330,6 +330,8 @@ export default {
   }
   .show_invite_wrapper .right .shop {
     height: 600px;
+    padding-bottom: 0;
+    margin-bottom: 150px;
   }
   .show_invite_wrapper .right .action {
     margin-bottom: 60px;
@@ -340,6 +342,9 @@ export default {
   }
   .show_invite_wrapper .right .el-calendar-day {
     height: 80px;
+  }
+  .show_invite_wrapper .right .calendar_title {
+    padding: 10px;
   }
 }
 </style>

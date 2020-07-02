@@ -3,7 +3,7 @@
     <el-row>
       <el-col :sm="17" :span="24">
         <div class="posts">
-          <el-menu
+          <!-- <el-menu
             default-active="1-1"
             class="el-menu-demo"
             mode="horizontal"
@@ -28,7 +28,7 @@
               <el-menu-item index="3-2">Simple posts</el-menu-item>
               <el-menu-item index="3-3">Shop introduction</el-menu-item>
             </el-submenu>
-          </el-menu>
+          </el-menu> -->
           <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
             <el-tab-pane label="Followings" name="first">
               <div class="posts_container">
