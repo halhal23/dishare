@@ -3,47 +3,32 @@
     <el-row>
       <el-col :sm="17" :span="24">
         <div class="posts">
-          <el-menu
-            default-active="1-1"
-            class="el-menu-demo"
-            mode="horizontal"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b">
-            <el-submenu index="1">
-              <template slot="title">Followings</template>
-              <el-menu-item index="1-1">All posts</el-menu-item>
-              <el-menu-item index="1-2">Simple posts</el-menu-item>
-              <el-menu-item index="1-3">Shop introduction</el-menu-item>
-            </el-submenu>
-            <el-submenu index="2">
-              <template slot="title">Followers</template>
-              <el-menu-item index="2-1">All posts</el-menu-item>
-              <el-menu-item index="2-2">Simple posts</el-menu-item>
-              <el-menu-item index="2-3">Shop introduction</el-menu-item>
-            </el-submenu>
-            <el-submenu index="3">
-              <template slot="title">All users</template>
-              <el-menu-item index="3-1">All posts</el-menu-item>
-              <el-menu-item index="3-2">Simple posts</el-menu-item>
-              <el-menu-item index="3-3">Shop introduction</el-menu-item>
-            </el-submenu>
-          </el-menu>
           <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
             <el-tab-pane label="Followings" name="first">
               <div class="posts_container">
-                <postCard v-for="p in followingPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
-                <!-- <button @click="search">seached</button> -->
+              <el-timeline>
+                <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in followingPosts" :key="p.id">
+                  <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
+                </el-timeline-item>
+              </el-timeline>
               </div>
             </el-tab-pane>
             <el-tab-pane label="Followers" name="second">
               <div class="posts_container">
-                <postCard v-for="p in followerPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+                <el-timeline>
+                  <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in followerPosts" :key="p.id">
+                    <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
+                  </el-timeline-item>
+                </el-timeline>
               </div>
             </el-tab-pane>
             <el-tab-pane label="All posts" name="third">
               <div class="posts_container">
-                <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+                <el-timeline>
+                  <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in allPosts" :key="p.id">
+                    <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
+                  </el-timeline-item>
+                </el-timeline>
               </div>
             </el-tab-pane>
             <el-tab-pane label="Searched postss" name="fourth" v-if="searchedPosts.length > 0">
@@ -148,7 +133,10 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-    }
+    },
+    sliceCreatedAt(str){
+      return str.substr(0, 10) + "  " + str.substr(11, 8)
+    },
   },
   components: {
     postCard
@@ -175,14 +163,14 @@ export default {
 }
 .posts_index_wrapper .posts {
   padding: 0 10px 0;
-  background: #f1decc;
+  background: #d8b390;
 }
 .posts_index_wrapper .el-tabs__content {
-  background: #f1decc;
+  background: #d8b390;
   height: 80vh;
 }
 .posts_index_wrapper .el-tabs__header {
-  background: #f1decc;
+  background: #d8b390;
   padding: 20px;
   margin: 0;
 }
@@ -191,12 +179,23 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.posts_index_wrapper ul.el-timeline {
+  padding: 0;
+}
+.posts_index_wrapper .el-timeline-item__timestamp {
+  color: #fff;
+
+}
 @media (min-width: 0px) and (max-width: 768px) {
   .posts_index_wrapper {
     padding: 70px 0;
   }
   .posts_index_wrapper .el-tabs__content {
     height: 72vh;
+  }
+  .posts_index_wrapper ul.el-timeline {
+    padding: 0;
+    width: 100%;
   }
 }
 </style>

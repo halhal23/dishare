@@ -6,7 +6,7 @@
           <el-image
           :src="post.shop_image_url"
           style="width: 100%;height: 100%;"
-          fit="fill"></el-image>
+          fit="cover"></el-image>
         </el-carousel-item>
         <el-carousel-item v-for="photo in post.photos" :key="photo.id">
           <!-- <el-image
@@ -18,7 +18,7 @@
           v-if="photo"
           :src="photo.picture.url"
           style="width: 100%;height: 100%;"
-          fit="fill"></el-image>
+          fit="cover"></el-image>
           <el-image
           v-else
           src="images/noimage.png"
