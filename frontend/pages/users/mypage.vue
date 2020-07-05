@@ -3,7 +3,7 @@
     <div class="box">
       <div class="profile">
         <div class="image">
-          <el-avatar :src="user.image.url" :size="120"></el-avatar>
+          <el-avatar :src="user.image.url" :size="120" fit="fill"></el-avatar>
           <p class="user_name">
             {{ user.name }}  <i @click="onModal(true)" class="el-icon-edit" style="font-size: 30px;cursor: pointer;"></i>
           </p>

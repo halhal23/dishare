@@ -1,86 +1,42 @@
 <template>
   <el-main class="posts_index_wrapper">
-    <el-row>
-      <el-col :sm="17" :span="24">
-        <div class="posts">
-          <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
-            <el-tab-pane label="Followings" name="first">
-              <div class="posts_container">
-              <el-timeline>
-                <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in followingPosts" :key="p.id">
-                  <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
-                </el-timeline-item>
-              </el-timeline>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="Followers" name="second">
-              <div class="posts_container">
-                <el-timeline>
-                  <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in followerPosts" :key="p.id">
-                    <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
-                  </el-timeline-item>
-                </el-timeline>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="All posts" name="third">
-              <div class="posts_container">
-                <el-timeline>
-                  <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in allPosts" :key="p.id">
-                    <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
-                  </el-timeline-item>
-                </el-timeline>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="Searched postss" name="fourth" v-if="searchedPosts.length > 0">
-              <div class="posts_container">
-                <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
-              </div>
-            </el-tab-pane>
-          </el-tabs>
-        </div>
-      </el-col>
-      <el-col :sm="7" :span="24" style="height: 80vh;background: #545c64;">
-        <h5 style="text-align: center;background: #545c64;color: #fff;font-size: 20px; padding: 20px;">Search by all posts</h5>
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
-          <!-- <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-tickets"></i>
-              <span>Simple post</span>
-            </template>       
-            <el-menu-item index="1-1">search by users</el-menu-item>
-            <el-menu-item index="1-2">search by contents</el-menu-item>
-          </el-submenu> -->
-          <el-menu-item index="1">
-            <template slot="title">
-              <i class="el-icon-tickets"></i>
-              <span>Simple post</span>
-            </template> 
-          </el-menu-item>
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-knife-fork"></i>
-              <span>Shop introduction</span>
-            </template>
-            <el-menu-item-group title="Group One">
-              <el-menu-item index="1-1">item one</el-menu-item>
-              <el-menu-item index="1-2">item one</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-              <el-menu-item index="1-3">item three</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <template slot="title">item four</template>
-              <el-menu-item index="1-4-1">item one</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-        </el-menu>
-      </el-col>
-    </el-row>
+    <div class="posts">
+      <el-tabs v-model="tabActive" @tab-click="handleSelectUsers">
+        <el-tab-pane label="Followings" name="first">
+          <div class="posts_container">
+          <el-timeline>
+            <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in followingPosts" :key="p.id">
+              <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
+            </el-timeline-item>
+          </el-timeline>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="Followers" name="second">
+          <div class="posts_container">
+            <el-timeline>
+              <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in followerPosts" :key="p.id">
+                <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
+              </el-timeline-item>
+            </el-timeline>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="All posts" name="third">
+          <div class="posts_container">
+            <el-timeline>
+              <el-timeline-item :timestamp="sliceCreatedAt(p.created_at)" placement="top" v-for="p in allPosts" :key="p.id">
+                <postCard :post="p" @getUpdatePosts="getUpdatePosts" />
+              </el-timeline-item>
+            </el-timeline>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="Searched postss" name="fourth" v-if="searchedPosts.length > 0">
+          <div class="posts_container">
+            <postCard v-for="p in allPosts" :key="p.id" :post="p" @getUpdatePosts="getUpdatePosts" />
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+
     <nuxt-link :to="{ path: '/posts/new'}" class="flex-center new_post_icon">
       <i class="el-icon-plus"></i>
     </nuxt-link>
@@ -147,7 +103,7 @@ export default {
 <style>
 .posts_index_wrapper {
   height: 100vh;
-  padding: 60px 0 0 60px;
+  padding: 60px 100px 0;
 }
 .new_post_icon {
   background: tomato;
@@ -184,7 +140,14 @@ export default {
 }
 .posts_index_wrapper .el-timeline-item__timestamp {
   color: #fff;
-
+}
+.posts_index_wrapper .el-timeline-item__timestamp {
+  color: #fff;
+}
+.posts_index_wrapper .pagenation {
+  background: #ccc;
+  width: 500px;
+  margin: 10px auto;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .posts_index_wrapper {
