@@ -12,7 +12,7 @@
           <el-carousel-item>
             <h3 class="medium">Who do you want to invite?</h3>
               <el-tabs v-model="activeName" @tab-click="handleClick" style="padding: 15px;">
-                <el-tab-pane label="Followers" name="first">
+                <el-tab-pane label="Followings" name="first">
                   <div class="users_container" style="overflow: hidden;">       
                     <el-card v-for="u in users" :key="u.id">
                       <div class="user_card" @click="selectUser(u)">
@@ -23,9 +23,9 @@
                     </el-card>
                   </div>
                 </el-tab-pane>
-                <el-tab-pane label="All users" name="second">
+                <el-tab-pane label="Followers" name="second">
                   <div class="users_container" style="overflow: hidden;">       
-                    <el-card v-for="u in all_users" :key="u.id">
+                    <el-card v-for="u in followers" :key="u.id">
                       <div class="user_card" @click="selectUser(u)">
                         <el-avatar :src="u.image.url" :size="40"></el-avatar>
                         <p style="font-size: 20px; font-weight: bold;margin: 0 30px;">{{ u.name }}</p>
@@ -160,7 +160,7 @@ export default {
   data(){
     return {
       active: 0,
-      all_users: [],
+      followers: [],
       isSelectedUser: false,
       isSelectedFood: false,
       isSelectedDate: false,
@@ -218,9 +218,12 @@ export default {
       this.isSelectedUser = false
     },
     async handleClick(tab) {
-      if (tab.label == 'All users'){
-        const data = await this.$axios.$get(process.env.browserBaseUrl + `/api/users`)
-        this.all_users = data
+      if (tab.label == 'Followers'){
+        // const data = await this.$axios.$get(process.env.browserBaseUrl + `/api/users`)
+        const followersData = await this.$axios.$get(process.env.browserBaseUrl + '/api/users/followers', {
+          params: { id: this.$store.state.auth.currentUser.id }
+        })
+        this.followers = followersData
       }
     },
     searchShops(){
