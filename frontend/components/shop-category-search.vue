@@ -1,24 +1,10 @@
 <template>
     <div class="search_category_form">
-      <el-select
-        style="background: transparent;"
-        v-model="value"
-        filterable
-        remote
-        :clearable="true"
-        reserve-keyword
-        :automatic-dropdown="true"
-        placeholder="Please enter a place"
-        @focus="selectFocus"
-        :remote-method="remoteMethod"
-        :loading="loading">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
+      <el-autocomplete
+        v-model="searchKeyword"
+        :fetch-suggestions="querySearchAsync"
+        placeholder="Please input"
+      ></el-autocomplete>
       <el-button @click="searchShop" icon="el-icon-search" style="padding: 10px;display: block;flex-shrink: 0;" round></el-button>
     </div>
 </template>
@@ -32,6 +18,8 @@ export default {
       value: [],
       list: [],
       loading: false,
+      searchKeyword: '',
+      timeout:  null,
       states: [
             '北海道',
             '青森県',
@@ -83,11 +71,6 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.list = this.states.map((item) => {
-      return { value: item, label: item };
-    });
-  },
   methods: {
     remoteMethod(query) {
       console.log(query)
@@ -129,11 +112,31 @@ export default {
         console.log(err)
       })
     },
+    querySearchAsync(queryString, cb) {
+      var states = this.states;
+      var results = queryString ? states.filter(this.createFilter(queryString)) : states;
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        cb(results);
+      }, 200);
+    },
+    createFilter(queryString) {
+      return (name) => {
+        return (name.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+      };
+    },
     ...mapMutations({ 
       setShops: 'shops/setShops',
       setCurrentPosition: 'shops/setCurrentPosition',
     })
-  }
+  },
+  async mounted() {
+    const states = this.states
+    const objNames = states.map( v => {
+      return { value: v }
+    })
+    this.states = objNames;
+  },
 }
 </script>
 <style>
