@@ -8,15 +8,12 @@
         <nuxt-link to="/" >HOME</nuxt-link>
       </el-menu-item>
       <el-menu-item index="2" class="header_item_md" @click="toggleHidden">
-        <nuxt-link to="/" >ABOUT</nuxt-link>
-      </el-menu-item>
-      <el-menu-item index="4" class="header_item_md" @click="toggleHidden">
         <a href="#" @click="onModal(true, true)" v-if="!isLoggedIn">LOGIN</a>
         <nuxt-link :to="{ path: `/users/mypage` }" v-else>
           <el-avatar :src="currentUser.image.url" :size="40"></el-avatar>
         </nuxt-link>
       </el-menu-item>
-      <el-menu-item index="5" class="header_item_md" @click="toggleHidden">
+      <el-menu-item index="3" class="header_item_md" @click="toggleHidden">
         <!-- <nuxt-link to="/sign_in_up" v-if="!isLoggedIn">SIGNUP</nuxt-link> -->
         <a href="#" @click="onModal(true, false)" v-if="!isLoggedIn">SIGNUP</a>
         <span @click="clickLogout" class="item_span" v-else>LOGOUT</span>
