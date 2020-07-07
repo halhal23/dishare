@@ -1,7 +1,7 @@
 <template>
   <el-row class="searchInput" style="background: rgba(255,255,255,0);">
     <el-col :span="24" :lg="12">
-      <el-input placeholder="Please enter a keyword   ex: ラーメン,カフェ" v-model="keyword"></el-input>
+      <el-input placeholder="Enter a keyword    ex: イタリアン" v-model="keyword"></el-input>
     </el-col>
     <el-col :span="16" :lg="8">
       <el-select v-model="select" placeholder="No specification" class="select" style="width: 100%;background: #F5F7FA;">
